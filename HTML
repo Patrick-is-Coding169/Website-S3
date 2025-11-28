@@ -1,0 +1,364 @@
+```html
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureStay Solutions - Sicherheitsconsulting & Risikomanagement</title>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <a href="#" class="logo" onclick="showSection('home')">SecureStay</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#" onclick="showSection('home')" class="nav-link">Home</a></li>
+                <li><a href="#" onclick="showSection('consulting')" class="nav-link">Consulting</a></li>
+                <li><a href="#" onclick="showSection('analytics')" class="nav-link">Analytics</a></li>
+                <li><a href="#" onclick="showSection('benefits')" class="nav-link">Vorteile</a></li>
+                <li><a href="#" onclick="showSection('contact')" class="nav-link">Kontakt</a></li>
+                <li><a href="#" onclick="showSection('datenschutz')" class="nav-link">Datenschutz</a></li>
+            </ul>
+            <div class="mobile-menu" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home" class="page-section active">
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>SecureStay Solutions</h1>
+                    <p class="subtitle">Ihr Partner für professionelles Sicherheitsconsulting</p>
+                    <p>Führendes Beratungsunternehmen für organisatorische Sicherheit, Risikomanagement und Risikobewertung. Wir machen Unternehmen resilient, compliant und handlungsfähig - besonders in Zeiten steigender regulatorischer Anforderungen wie KRITIS oder NIS2.</p>
+                    <a href="#" onclick="showSection('consulting')" class="cta-button">Consulting entdecken</a>
+                    <a href="#" onclick="showSection('analytics')" class="cta-button cta-secondary">Analytics Platform</a>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- Consulting Section -->
+    <section id="consulting" class="page-section">
+        <div class="container">
+            <h2 class="section-title fade-in">Sicherheitsconsulting & Risikomanagement</h2>
+            <div class="analytics-hero fade-in">
+                <p>Als spezialisierte Beratungsgesellschaft für organisatorische Sicherheit entwickeln wir maßgeschneiderte Lösungen für Ihr Risikomanagement. Von der ganzheitlichen Sicherheitsanalyse bis zur compliant-konformen Umsetzung begleiten wir Sie auf dem Weg zu einer resilienten Unternehmensstruktur.</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <h3>🔍 Ganzheitliche Sicherheitsanalyse</h3>
+                    <p>Wir erstellen ein vollständiges Sicherheitsprofil Ihres Unternehmens und identifizieren Schwachstellen in allen relevanten Bereichen.</p>
+                    <ul>
+                        <li>Organisatorische Sicherheit: Strukturen, Rollen, Verantwortlichkeiten</li>
+                        <li>Physische Sicherheit: Zutrittskontrollen, Überwachung, kritische Infrastruktur</li>
+                        <li>Prozesse & Abläufe: Notfall- und Krisenmanagement</li>
+                        <li>Compliance & Regulierung: KRITIS, NIS2, branchenspezifische Standards</li>
+                    </ul>
+                </div>
+
+                <div class="service-card fade-in">
+                    <h3>⚖️ Risikobewertung & Priorisierung</h3>
+                    <p>Bewertung von Risiken nach Wahrscheinlichkeit und Auswirkung mit nachvollziehbarer Priorisierung und dynamischer Anpassung.</p>
+                    <ul>
+                        <li>Risikokategorisierung (hoch, mittel, niedrig)</li>
+                        <li>Maßnahmenpriorisierung nach Wirksamkeit und Aufwand</li>
+                        <li>Definition von Verantwortlichkeiten und Fristen</li>
+                        <li>Dynamische Anpassung an Unternehmensveränderungen</li>
+                    </ul>
+                </div>
+
+                <div class="service-card fade-in">
+                    <h3>📋 Maßnahmenplanung & Umsetzung</h3>
+                    <p>Entwicklung umsetzbarer Maßnahmenpläne für die schrittweise und nachhaltige Reduzierung von Risiken.</p>
+                    <ul>
+                        <li>Konkrete Handlungsempfehlungen für jeden Risikobereich</li>
+                        <li>Zeitlich strukturierte Maßnahmen mit klaren Verantwortlichkeiten</li>
+                        <li>Kontinuierliche Fortschrittskontrolle und Reporting</li>
+                        <li>Integration physischer, organisatorischer und technischer Maßnahmen</li>
+                    </ul>
+                </div>
+
+                <div class="service-card fade-in">
+                    <h3>✅ Compliance & Auditfähigkeit</h3>
+                    <p>Vollständig auditfähige Dokumentationen, die regulatorische Anforderungen erfüllen und als solide Grundlage für Prüfungen dienen.</p>
+                    <ul>
+                        <li>Nachweisbare Umsetzung von Schutzmaßnahmen</li>
+                        <li>Fundament für interne und externe Audits</li>
+                        <li>Unterstützung bei KRITIS- und NIS2-Prüfungen</li>
+                        <li>Nachvollziehbare Entscheidungsprozesse für Management und Behörden</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Analytics Section -->
+    <section id="analytics" class="page-section">
+        <div class="container">
+            <div class="analytics-hero fade-in">
+                <h1>SecureStay Analytics</h1>
+                <p>Plattform für intelligentes Risikomanagement und dynamische Risikobewertung – schnell, datengetrieben, zukunftssicher</p>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title fade-in">So funktioniert SecureStay Analytics</h2>
+                <p style="text-align: center; margin-bottom: 2rem; font-size: 1.1rem;" class="fade-in">Ein durchdachter Prozess in sechs Schritten – von der Analyse bis zum Live-Dashboard</p>
+                
+                <div class="process-steps">
+                    <div class="process-step fade-in">
+                        <div class="step-number">1</div>
+                        <h3>Digitales Abbild</h3>
+                        <p>Aufbau eines präzisen digitalen Zwillings Ihres Unternehmens mit allen sicherheitsrelevanten Komponenten</p>
+                    </div>
+                    <div class="process-step fade-in">
+                        <div class="step-number">2</div>
+                        <h3>Maßnahmenerfassung</h3>
+                        <p>Systematische Erfassung aller vorhandenen Schutzmaßnahmen, Verantwortlichkeiten und Prozesse</p>
+                    </div>
+                    <div class="process-step fade-in">
+                        <div class="step-number">3</div>
+                        <h3>KI-Risikobewertung</h3>
+                        <p>Intelligente, KI-gestützte Analyse und Bewertung aller identifizierten Risikofaktoren</p>
+                    </div>
+                    <div class="process-step fade-in">
+                        <div class="step-number">4</div>
+                        <h3>Maßnahmenplan</h3>
+                        <p>Erstellung eines priorisierten Maßnahmenplans mit klaren Handlungsempfehlungen</p>
+                    </div>
+                    <div class="process-step fade-in">
+                        <div class="step-number">5</div>
+                        <h3>Live-Updates</h3>
+                        <p>Kontinuierliche Aktualisierung bei Änderungen in Ihrem Unternehmen oder der Bedrohungslage</p>
+                    </div>
+                    <div class="process-step fade-in">
+                        <div class="step-number">6</div>
+                        <h3>Reporting</h3>
+                        <p>Übersichtliche Dashboards und exportierbare Reports für Management und Compliance-Nachweise</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title fade-in">Warum SecureStay Analytics?</h2>
+                
+                <div class="features-why">
+                    <div class="feature-why fade-in">
+                        <h4>📊 Datengetrieben</h4>
+                        <p>Entscheidungen auf Basis von Fakten und KI-Analysen statt Bauchgefühl</p>
+                    </div>
+                    <div class="feature-why fade-in">
+                        <h4>🔄 Dynamisch</h4>
+                        <p>Analysen passen sich automatisch an neue Bedrohungen und Änderungen an</p>
+                    </div>
+                    <div class="feature-why fade-in">
+                        <h4>👁️ Transparent</h4>
+                        <p>Management, Sicherheitsbeauftragte und Auditoren haben jederzeit den vollen Überblick</p>
+                    </div>
+                    <div class="feature-why fade-in">
+                        <h4>⚡ Effizient</h4>
+                        <p>Spart wertvolle Zeit, reduziert Fehler und erleichtert Compliance-Nachweise erheblich</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title fade-in">Unsere Lösung: SecureStay Analytics</h2>
+                <p style="text-align: center; margin-bottom: 2rem; font-size: 1.1rem;" class="fade-in">Eine intelligente Plattform, die Ihr Risikomanagement auf ein neues Level hebt</p>
+                
+                <div class="solution-features">
+                    <div class="solution-feature fade-in">
+                        <h4>🏢 Digitaler Abdruck</h4>
+                        <p>Vollständige Abbildung Ihres Unternehmens in Sachen Sicherheit, Risiken und Compliance-Anforderungen</p>
+                    </div>
+                    <div class="solution-feature fade-in">
+                        <h4>🎯 Umfassende Bewertung</h4>
+                        <p>KI-gestützte Risikobewertung aller relevanten Faktoren mit Berücksichtigung von Eintrittswahrscheinlichkeit und Schadenshöhe</p>
+                    </div>
+                    <div class="solution-feature fade-in">
+                        <h4>🧠 Intelligente Planung</h4>
+                        <p>Maßnahmenplanung basierend auf Priorität, Aufwand und Wirksamkeit – für optimalen Ressourceneinsatz</p>
+                    </div>
+                    <div class="solution-feature fade-in">
+                        <h4>🔄 Live-Anpassung</h4>
+                        <p>Dynamische Analysen, die Änderungen automatisch in neue Bewertungen übernehmen – immer aktuell</p>
+                    </div>
+                    <div class="solution-feature fade-in">
+                        <h4>📈 Klare Visualisierung</h4>
+                        <p>Grafische Übersicht über Status aller Risiken und Maßnahmen für schnelle Orientierung</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="page-section">
+        <div class="container">
+            <h2 class="section-title fade-in">Nutzen für Unternehmen</h2>
+            <p style="text-align: center; margin-bottom: 3rem; font-size: 1.1rem;" class="fade-in">Mit SecureStay Solutions und SecureStay Analytics profitieren Unternehmen von:</p>
+            
+            <div class="benefits-grid">
+                <div class="benefit-item fade-in">
+                    <div class="benefit-icon">🔍</div>
+                    <h4>Transparenz</h4>
+                    <p>Alle Risiken, Maßnahmen und Verantwortlichkeiten an einem zentralen Ort</p>
+                </div>
+                <div class="benefit-item fade-in">
+                    <div class="benefit-icon">⚡</div>
+                    <h4>Effizienz</h4>
+                    <p>Zeitersparnis durch automatisierte Analysen und Priorisierung</p>
+                </div>
+                <div class="benefit-item fade-in">
+                    <div class="benefit-icon">📊</div>
+                    <h4>Schnelle Entscheidungen</h4>
+                    <p>Valide, aktuelle Daten für das Management</p>
+                </div>
+                <div class="benefit-item fade-in">
+                    <div class="benefit-icon">🛡️</div>
+                    <h4>Sicherheitssteigerung</h4>
+                    <p>Risikoreduktion und Schwachstellenschließung</p>
+                </div>
+                <div class="benefit-item fade-in">
+                    <div class="benefit-icon">✅</div>
+                    <h4>Compliance</h4>
+                    <p>Erfüllung gesetzlicher Vorgaben</p>
+                </div>
+                <div class="benefit-item fade-in">
+                    <div class="benefit-icon">📋</div>
+                    <h4>Auditfähigkeit</h4>
+                    <p>Nachvollziehbare Dokumentation</p>
+                </div>
+            </div>
+
+            <div class="section" style="margin-top: 5rem;">
+                <div class="contact-section fade-in">
+                    <h2 style="color: #00d4ff; margin-bottom: 2rem;">Unser Ziel</h2>
+                    <p style="font-size: 1.1rem; margin-bottom: 2rem;">
+                        SecureStay Solutions kombiniert Beratung, Risikomanagement-Methoden und eine eigene Softwarelösung – SecureStay Analytics – um Unternehmen sichtbar, sicher und resilient zu machen.
+                    </p>
+                    <p style="font-size: 1rem; color: #00d4ff; margin-bottom: 2rem;">
+                        <strong>Ziel:</strong> Risiken erkennen, bewerten, Maßnahmen umsetzen und Sicherheit nachhaltig steigern – für KMU, kritische Infrastrukturen und Unternehmen mit hohen Sicherheitsanforderungen.
+                    </p>
+                    <a href="#" onclick="showSection('contact')" class="cta-button">Jetzt Kontakt aufnehmen</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="page-section">
+        <div class="container">
+            <h2 class="section-title fade-in">Kontakt</h2>
+            <div class="contact-section fade-in">
+                <h3 style="color: #00d4ff; margin-bottom: 2rem;">SecureStaySolutions UG (haftungsbeschränkt)</h3>
+                <div class="contact-info">
+                    <p><strong>Adresse:</strong><br>
+                    Friedrich-Ebert-Straße 70<br>
+                    55130 Mainz</p>
+                    
+                    <p><strong>Telefon:</strong> +49 174 6703741</p>
+                    <p><strong>E-Mail:</strong> info@securestay.de</p>
+                    
+                    <div style="margin: 3rem 0;">
+                        <a href="mailto:info@securestay.de?subject=Bitte%20um%20Kontaktaufnahme" class="cta-button">
+                            📧 E-Mail senden
+                        </a>
+                    </div>
+                    
+                    <div style="margin-top: 3rem; font-size: 0.9rem; color: #888;">
+                        <p><strong>Impressum:</strong></p>
+                        <p>Amtsgericht Mainz HRB 53600<br>
+                        Geschäftsführer: Patrick Devosse & Grygoriy Ogorinskyy<br>
+                        Kein Ausweis von Umsatzsteuer gemäß § 19 UStG.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Datenschutz Section -->
+    <section id="datenschutz" class="page-section">
+        <div class="container">
+            <h2 class="section-title fade-in">Datenschutzerklärung</h2>
+            <div style="background: rgba(26, 26, 26, 0.8); padding: 3rem; border-radius: 15px; border: 1px solid #333; max-width: 1000px; margin: 0 auto;">
+                
+                <h3 style="color: #00d4ff; margin-bottom: 1rem;">Verantwortliche Stelle</h3>
+                <p style="margin-bottom: 2rem;">Verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:<br>
+                <strong>SecureStaySolutions UG (haftungsbeschränkt)</strong><br>
+                Friedrich-Ebert-Straße 70<br>
+                55130 Mainz, Deutschland<br>
+                E-Mail: info@securestay.de</p>
+
+                <h3 style="color: #00d4ff; margin-bottom: 1rem;">Erhebung und Verarbeitung personenbezogener Daten</h3>
+                <p style="margin-bottom: 1rem;">Wir erheben und verarbeiten personenbezogene Daten nur, soweit dies zur Bereitstellung unserer Website und der angebotenen Funktionen erforderlich ist. Hierzu zählen:</p>
+                <ul style="margin-bottom: 2rem; padding-left: 1.5rem;">
+                    <li>Daten, die Sie uns freiwillig über das Kontaktformular oder per E-Mail mitteilen (z. B. Name, E-Mail-Adresse, Telefonnummer, Nachricht)</li>
+                    <li>Daten im Rahmen der Online-Terminbuchung (z. B. gewählter Termin, Name, Kontakt)</li>
+                    <li>Technische Zugriffsdaten (z. B. IP-Adresse, Datum und Uhrzeit des Zugriffs, Browsertyp und Betriebssystem), die automatisch durch unseren Website-Hoster verarbeitet werden</li>
+                </ul>
+
+                <h3 style="color: #00d4ff; margin-bottom: 1rem;">Zweck und Rechtsgrundlage der Verarbeitung</h3>
+                <p style="margin-bottom: 1rem;">Die Verarbeitung Ihrer Daten erfolgt zu folgenden Zwecken:</p>
+                <ul style="margin-bottom: 2rem; padding-left: 1.5rem;">
+                    <li>Bearbeitung Ihrer Anfragen (Art. 6 Abs. 1 lit. b DSGVO)</li>
+                    <li>Durchführung von Online-Terminbuchungen (Art. 6 Abs. 1 lit. b DSGVO)</li>
+                    <li>Technische Bereitstellung und Sicherheit der Website (Art. 6 Abs. 1 lit. f DSGVO)</li>
+                    <li>Erfüllung gesetzlicher Verpflichtungen (Art. 6 Abs. 1 lit. c DSGVO)</li>
+                </ul>
+
+                <h3 style="color: #00d4ff; margin-bottom: 1rem;">Hosting über Wix.com</h3>
+                <p style="margin-bottom: 2rem;">Unsere Website wird über Wix.com Ltd., Nemal St. 40, 6350671 Tel Aviv, Israel gehostet. Personenbezogene Daten können auf den Servern von Wix verarbeitet werden. Wix ist nach dem EU-US Data Privacy Framework zertifiziert und gewährleistet ein angemessenes Datenschutzniveau. Weitere Informationen finden Sie unter:<br>
+                <a href="https://de.wix.com/about/privacy" style="color: #00d4ff;">https://de.wix.com/about/privacy</a></p>
+
+                <h3 style="color: #00d4ff; margin-bottom: 1rem;">Kontaktformular & Terminbuchung</h3>
+                <p style="margin-bottom: 2rem;">Wenn Sie uns über das Kontaktformular oder den eingebundenen Kalender kontaktieren, verarbeiten wir Ihre Angaben zur Bearbeitung Ihrer Anfrage bzw. Buchung. Die Daten werden nicht an Dritte weitergegeben und nach Erledigung der Anfrage gelöscht, sofern keine gesetzlichen Aufbewahrungspflichten bestehen.</p>
+
+                <h3 style="color: #00d4ff; margin-bottom: 1rem;">Google Maps</h3>
+                <p style="margin-bottom: 2rem;">Unsere Website nutzt eine Einbettung von Google Maps zur Darstellung unseres Standorts. Anbieter ist Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland. Beim Laden der Karte wird Ihre IP-Adresse an Google übermittelt.<br>
+                Mehr Informationen finden Sie in der Datenschutzerklärung von Google:<br>
+                <a href="https://policies.google.com/privacy" style="color: #00d4ff;">https://policies.google.com/privacy</a></p>
+
+                <h3 style="color: #00d4ff; margin-bottom: 1rem;">Cookies & Tracking</h3>
+                <p style="margin-bottom: 2rem;">Unsere Website verwendet keine Analyse- oder Marketing-Tools und kein Cookie-Banner. Wix kann technisch erforderliche Cookies setzen, die für den Betrieb der Seite notwendig sind. Diese Cookies enthalten keine personenbezogenen Daten und erfordern keine Einwilligung.</p>
+
+                <h3 style="color: #00d4ff; margin-bottom: 1rem;">Weitergabe an Dritte</h3>
+                <p style="margin-bottom: 1rem;">Eine Weitergabe Ihrer Daten erfolgt nur:</p>
+                <ul style="margin-bottom: 2rem; padding-left: 1.5rem;">
+                    <li>wenn dies zur Vertragserfüllung notwendig ist,</li>
+                    <li>wenn wir gesetzlich dazu verpflichtet sind oder</li>
+                    <li>wenn Sie ausdrücklich eingewilligt haben.</li>
+                </ul>
+                <p style="margin-bottom: 2rem;">Eine Übermittlung in Drittstaaten erfolgt ausschließlich unter Einhaltung der datenschutzrechtlichen Vorgaben.</p>
+
+                <h3 style="color: #00d4ff; margin-bottom: 1rem;">Speicherdauer</h3>
+                <p style="margin-bottom: 2rem;">Personenbezogene Daten werden gelöscht, sobald der Zweck der Speicherung entfällt oder gesetzliche Aufbewahrungspflichten ablaufen.</p>
+
+                <h3 style="color: #00d4ff; margin-bottom: 1rem;">Ihre Rechte</h3>
+                <p style="margin-bottom: 1rem;">Sie haben das Recht auf:</p>
+                <ul style="margin-bottom: 1rem; padding-left: 1.5rem;">
+                    <li>Auskunft über Ihre gespeicherten Daten</li>
+                    <li>Berichtigung unrichtiger Daten</li>
+                    <li>Löschung oder Einschränkung der Verarbeitung</li>
+                    <li>Datenübertragbarkeit</li>
+                    <li>Widerspruch gegen die Verarbeitung</li>
+                </ul>
+                <p style="margin-bottom: 2rem;">Bitte wenden Sie sich dazu an: <a href="mailto:info@securestay.de" style="color: #00d4ff;">info@securestay.de</a><br>
+                Zudem haben Sie das Recht, sich bei einer Datenschutzaufsichtsbehörde zu beschweren.</p>
+
+                <h3 style="color: #00d4ff; margin-bottom: 1rem;">Datensicherheit</h3>
+                <p style="margin-bottom: 2rem;">Wir schützen Ihre Daten durch technische und organisatorische Maßnahmen vor Verlust, Zerstörung, unberechtigtem Zugriff oder Manipulation.</p>
+
+                <h3 style="color: #00d4ff; margin-bottom: 1rem;">Änderungen dieser Datenschutzerklärung</h3>
+                <p>Wir behalten uns vor, diese Datenschutzerklärung bei Änderungen unserer Website oder rechtlicher Vorgaben zu aktualisieren. Die jeweils aktuelle Version finden Sie jederzeit auf dieser Seite.</p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
+```
