@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- Startseite -->
   <url>
     <loc>https://www.securestay.de/</loc>
     <lastmod>2026-03-09</lastmod>
@@ -9,7 +8,13 @@
     <priority>1.0</priority>
   </url>
 
-  <!-- Leistungen -->
+  <url>
+    <loc>https://www.securestay.de/wissen.html</loc>
+    <lastmod>2026-03-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
   <url>
     <loc>https://www.securestay.de/#leistungen</loc>
     <lastmod>2026-03-09</lastmod>
@@ -17,7 +22,6 @@
     <priority>0.9</priority>
   </url>
 
-  <!-- Analytics -->
   <url>
     <loc>https://www.securestay.de/#analytics</loc>
     <lastmod>2026-03-09</lastmod>
@@ -25,7 +29,6 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- Über uns -->
   <url>
     <loc>https://www.securestay.de/#about</loc>
     <lastmod>2026-03-09</lastmod>
@@ -33,63 +36,55 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- Blog Übersicht -->
   <url>
     <loc>https://www.securestay.de/#blog</loc>
     <lastmod>2026-03-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
   </url>
 
-  <!-- Blog Artikel 1: KRITIS-Dachgesetz 2026 -->
   <url>
     <loc>https://www.securestay.de/#artikel1</loc>
     <lastmod>2026-03-09</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
   </url>
 
-  <!-- Blog Artikel 2: Iran-Konflikt und deutsche Infrastruktur -->
   <url>
     <loc>https://www.securestay.de/#artikel2</loc>
-    <lastmod>2026-03-09</lastmod>
+    <lastmod>2026-03-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- Blog Artikel 3: Schutz jüdischer Gemeinden -->
   <url>
     <loc>https://www.securestay.de/#artikel3</loc>
-    <lastmod>2026-02-15</lastmod>
+    <lastmod>2026-01-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- Blog Artikel 4: NIS2 und physische Sicherheit -->
   <url>
     <loc>https://www.securestay.de/#artikel4</loc>
-    <lastmod>2026-01-20</lastmod>
+    <lastmod>2025-11-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- Blog Artikel 5: Mainz und Rheinland-Pfalz -->
   <url>
     <loc>https://www.securestay.de/#artikel5</loc>
-    <lastmod>2026-01-10</lastmod>
+    <lastmod>2025-09-22</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.75</priority>
   </url>
 
-  <!-- Blog Artikel 6: Sicherheitskonzept erstellen lassen -->
   <url>
     <loc>https://www.securestay.de/#artikel6</loc>
-    <lastmod>2025-12-15</lastmod>
+    <lastmod>2025-08-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- Kontakt -->
   <url>
     <loc>https://www.securestay.de/#kontakt</loc>
     <lastmod>2026-03-09</lastmod>
@@ -97,7 +92,6 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- Impressum -->
   <url>
     <loc>https://www.securestay.de/#impressum</loc>
     <lastmod>2026-03-09</lastmod>
@@ -105,7 +99,6 @@
     <priority>0.2</priority>
   </url>
 
-  <!-- Datenschutz -->
   <url>
     <loc>https://www.securestay.de/#datenschutz</loc>
     <lastmod>2026-03-09</lastmod>
