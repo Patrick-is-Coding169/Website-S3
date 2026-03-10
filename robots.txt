@@ -1,0 +1,12 @@
+# robots.txt – SecureStay Solutions
+# https://www.securestay.de/
+
+# Alle Crawler erlaubt
+User-agent: *
+Allow: /
+
+# Keine internen App-Ressourcen indexieren
+Disallow: /app/
+
+# Sitemap
+Sitemap: https://www.securestay.de/sitemap.xml
