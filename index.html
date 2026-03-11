@@ -422,7 +422,138 @@
     @media (max-width: 1100px) { .services-grid { grid-template-columns: 1fr 1fr; } .sectors-grid { grid-template-columns: 1fr 1fr; } .footer-grid { grid-template-columns: 1fr 1fr; } .blog-grid { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 900px) { .hero__inner,.contact-grid,.analytics-teaser,.team-grid { grid-template-columns: 1fr; } .hero__visual { display: none; } .process-steps { grid-template-columns: 1fr 1fr; gap: 32px; } .process-steps::before { display: none; } }
     @media (max-width: 640px) { .container { padding: 0 20px; } .section { padding: 48px 0; } .section-hero { padding: 40px 20px 32px; } .services-grid,.sectors-grid,.process-steps,.blog-grid,.team-grid { grid-template-columns: 1fr; } .footer-grid { grid-template-columns: 1fr; gap: 28px; } .app-nav { display: none; } .hamburger { display: flex; } .form-row { grid-template-columns: 1fr; } .blog-cta { padding: 28px 24px; } .blog-article { padding: 0 20px 48px; } }
-  </style>
+  
+/* ── SCROLL TO TOP ── */
+.scroll-top {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #0f172a;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 20px rgba(20,184,166,0.5);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: opacity 0.25s ease, transform 0.25s ease, background 0.15s;
+  z-index: 999;
+}
+.scroll-top.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+.scroll-top:hover {
+  background: var(--accent-soft);
+}
+@media (max-width: 640px) {
+  .scroll-top { bottom: 18px; right: 18px; width: 40px; height: 40px; }
+}
+
+    /* ── SCROLL TO TOP BUTTON ── */
+    .scroll-top {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 999;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #0f172a;
+      border: none;
+      cursor: pointer;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 18px rgba(20,184,166,0.45);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(10px);
+      transition: opacity .25s ease, transform .25s ease, background .18s ease;
+    }
+    .scroll-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+    .scroll-top:hover {
+      background: var(--accent-soft);
+      box-shadow: 0 8px 28px rgba(20,184,166,0.6);
+    }
+    @media (max-width: 640px) {
+      .scroll-top { bottom: 18px; right: 18px; width: 40px; height: 40px; }
+    }
+  
+    /* ── SCROLL TO TOP ── */
+    .scroll-top {
+      position: fixed; bottom: 28px; right: 28px; z-index: 999;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--accent); color: #0f172a;
+      border: none; cursor: pointer; font-size: 1.1rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 18px rgba(20,184,166,0.45);
+      opacity: 0; pointer-events: none;
+      transform: translateY(10px);
+      transition: opacity .25s ease, transform .25s ease, background .18s ease;
+    }
+    .scroll-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+    .scroll-top:hover { background: var(--accent-soft); box-shadow: 0 8px 28px rgba(20,184,166,0.6); }
+    @media (max-width: 640px) { .scroll-top { bottom: 18px; right: 18px; width: 40px; height: 40px; } }
+  
+/* ── Scroll-to-top Button ── */
+#scrollTopBtn {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 999;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid var(--border-subtle);
+  background: rgba(2,6,23,0.92);
+  color: var(--accent);
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.25s ease, transform 0.25s ease, border-color 0.18s ease, background 0.18s ease;
+  pointer-events: none;
+  backdrop-filter: blur(8px);
+}
+#scrollTopBtn.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+#scrollTopBtn:hover {
+  background: rgba(20,184,166,0.15);
+  border-color: var(--accent);
+}
+@media (max-width: 640px) {
+  #scrollTopBtn {
+    bottom: 18px;
+    right: 18px;
+    width: 42px;
+    height: 42px;
+    font-size: 1rem;
+  }
+}
+</style>
 </head>
 <body>
 
@@ -439,7 +570,7 @@
     <button class="nav-btn" onclick="showSection('blog')">Blog</button>
     <button class="nav-btn" onclick="showSection('prozess')">Wie wir arbeiten</button>
     <a class="nav-btn" href="wissen.html" target="_blank" style="text-decoration:none;">Wissenszentrum</a>
-    <a class="nav-btn cta" href="mailto:securestay@outlook.de?subject=Erstberatung%20Anfrage">Beratung anfragen</a>
+    <a class="nav-btn cta" href="#" data-m="1">Beratung anfragen</a>
   </nav>
   <button class="hamburger" onclick="toggleMobileMenu()" aria-label="Menü">
     <span></span><span></span><span></span>
@@ -454,7 +585,7 @@
   <button class="nav-btn" onclick="showSection('blog')">Blog</button>
   <button class="nav-btn" onclick="showSection('prozess')">Wie wir arbeiten</button>
   <a class="nav-btn" href="wissen.html" style="text-decoration:none;">Wissenszentrum</a>
-  <a class="nav-btn cta" href="mailto:securestay@outlook.de?subject=Erstberatung%20Anfrage">Beratung anfragen</a>
+  <a class="nav-btn cta" href="#" data-m="1">Beratung anfragen</a>
 </div>
 
 
@@ -469,7 +600,7 @@
           <h1 class="hero__title">Physische<em>Sicherheit.</em>Strategisch.</h1>
           <p class="hero__desc">SecureStay Solutions ist Ihr Partner für professionelle Sicherheitsberatung, Risikomanagement und KRITIS-Compliance im Rhein-Main-Gebiet und deutschlandweit. Rein strategisch – ohne Wachschutz, ohne IT.</p>
           <div class="hero__actions">
-            <a class="primary-btn" href="mailto:securestay@outlook.de?subject=Erstberatung%20Anfrage">Kostenlose Erstberatung →</a>
+            <a class="primary-btn" href="#" data-m="1">Kostenlose Erstberatung →</a>
             <a class="secondary-btn" onclick="showSection('leistungen')">Unsere Leistungen</a>
           </div>
           <div class="hero__stats">
@@ -692,7 +823,7 @@
       <h2>Was kostet Nicht-Compliance?</h2>
       <p>Bußgelder bis zu <strong>2 Prozent des weltweiten Jahresumsatzes</strong> sind möglich. Die geschätzten Gesamtkosten für die Wirtschaft: 1,7 Milliarden Euro einmalig, 500 Millionen Euro jährlich.</p>
     </div>
-    <div class="blog-cta"><div class="blog-cta__inner"><span class="blog-cta__label">Kostenlose Erstberatung</span><h3 class="blog-cta__title">KRITIS-Dachgesetz betrifft Ihr Unternehmen?</h3><p class="blog-cta__sub">Sprechen Sie jetzt mit unseren Experten – kostenlos, unverbindlich, innerhalb von 48 Stunden.</p><a class="blog-cta__btn" href="mailto:securestay@outlook.de?subject=Erstberatung%20Anfrage">Jetzt kostenlos beraten lassen →</a></div></div>
+    <div class="blog-cta"><div class="blog-cta__inner"><span class="blog-cta__label">Kostenlose Erstberatung</span><h3 class="blog-cta__title">KRITIS-Dachgesetz betrifft Ihr Unternehmen?</h3><p class="blog-cta__sub">Sprechen Sie jetzt mit unseren Experten – kostenlos, unverbindlich, innerhalb von 48 Stunden.</p><a class="blog-cta__btn" href="#" data-m="1">Jetzt kostenlos beraten lassen →</a></div></div>
   </div>
 </section>
 
@@ -725,7 +856,7 @@
         <li>Koordination mit LKA RLP und Verfassungsschutz</li>
       </ul>
     </div>
-    <div class="blog-cta"><div class="blog-cta__inner"><span class="blog-cta__label">Kostenlose Erstberatung</span><h3 class="blog-cta__title">Bedrohungslage konkret analysieren?</h3><p class="blog-cta__sub">Unsere Experten kennen die aktuelle Sicherheitslage in der Region. Kostenlos und unverbindlich.</p><a class="blog-cta__btn" href="mailto:securestay@outlook.de?subject=Erstberatung%20Anfrage">Jetzt kostenlos beraten lassen →</a></div></div>
+    <div class="blog-cta"><div class="blog-cta__inner"><span class="blog-cta__label">Kostenlose Erstberatung</span><h3 class="blog-cta__title">Bedrohungslage konkret analysieren?</h3><p class="blog-cta__sub">Unsere Experten kennen die aktuelle Sicherheitslage in der Region. Kostenlos und unverbindlich.</p><a class="blog-cta__btn" href="#" data-m="1">Jetzt kostenlos beraten lassen →</a></div></div>
   </div>
 </section>
 
@@ -761,7 +892,7 @@
         <li>Enge Abstimmung mit örtlicher Polizei und LKA</li>
       </ul>
     </div>
-    <div class="blog-cta"><div class="blog-cta__inner"><span class="blog-cta__label">Kostenlose Erstberatung</span><h3 class="blog-cta__title">Schutz für Ihre Gemeinde oder Einrichtung?</h3><p class="blog-cta__sub">Vertraulich, respektvoll und auf dem aktuellen Stand der Bedrohungslage. Kontaktieren Sie uns kostenlos.</p><a class="blog-cta__btn" href="mailto:securestay@outlook.de?subject=Erstberatung%20Anfrage">Jetzt kostenlos beraten lassen →</a></div></div>
+    <div class="blog-cta"><div class="blog-cta__inner"><span class="blog-cta__label">Kostenlose Erstberatung</span><h3 class="blog-cta__title">Schutz für Ihre Gemeinde oder Einrichtung?</h3><p class="blog-cta__sub">Vertraulich, respektvoll und auf dem aktuellen Stand der Bedrohungslage. Kontaktieren Sie uns kostenlos.</p><a class="blog-cta__btn" href="#" data-m="1">Jetzt kostenlos beraten lassen →</a></div></div>
   </div>
 </section>
 
@@ -793,7 +924,7 @@
         <li>Abschaltung des Betriebs als letzte Konsequenz</li>
       </ul>
     </div>
-    <div class="blog-cta"><div class="blog-cta__inner"><span class="blog-cta__label">Kostenlose Erstberatung</span><h3 class="blog-cta__title">NIS2-Compliance lückenlos abdecken?</h3><p class="blog-cta__sub">Wir übernehmen den physischen Teil Ihrer NIS2-Compliance – normenkonform, prüfbar, ohne IT-Kompromisse.</p><a class="blog-cta__btn" href="mailto:securestay@outlook.de?subject=Erstberatung%20Anfrage">Jetzt kostenlos beraten lassen →</a></div></div>
+    <div class="blog-cta"><div class="blog-cta__inner"><span class="blog-cta__label">Kostenlose Erstberatung</span><h3 class="blog-cta__title">NIS2-Compliance lückenlos abdecken?</h3><p class="blog-cta__sub">Wir übernehmen den physischen Teil Ihrer NIS2-Compliance – normenkonform, prüfbar, ohne IT-Kompromisse.</p><a class="blog-cta__btn" href="#" data-m="1">Jetzt kostenlos beraten lassen →</a></div></div>
   </div>
 </section>
 
@@ -822,7 +953,7 @@
       <h2>Was das für lokale Unternehmen bedeutet</h2>
       <p>Unternehmen in Mainz und RLP sind erhöhten Risiken durch die geopolitische Lage ausgesetzt. Eine regionale Sicherheitsberatung, die diese spezifischen Gegebenheiten kennt, ist kein Luxus – sondern Notwendigkeit.</p>
     </div>
-    <div class="blog-cta"><div class="blog-cta__inner"><span class="blog-cta__label">Kostenlose Erstberatung</span><h3 class="blog-cta__title">Sicherheitsberatung in Mainz und RLP?</h3><p class="blog-cta__sub">Wir kennen die Region und ihre spezifischen Risiken. Kostenlos, lokal, kompetent.</p><a class="blog-cta__btn" href="mailto:securestay@outlook.de?subject=Erstberatung%20Anfrage">Jetzt kostenlos beraten lassen →</a></div></div>
+    <div class="blog-cta"><div class="blog-cta__inner"><span class="blog-cta__label">Kostenlose Erstberatung</span><h3 class="blog-cta__title">Sicherheitsberatung in Mainz und RLP?</h3><p class="blog-cta__sub">Wir kennen die Region und ihre spezifischen Risiken. Kostenlos, lokal, kompetent.</p><a class="blog-cta__btn" href="#" data-m="1">Jetzt kostenlos beraten lassen →</a></div></div>
   </div>
 </section>
 
@@ -863,7 +994,7 @@
         <li><strong>Optionale Implementierungsbegleitung</strong></li>
       </ol>
     </div>
-    <div class="blog-cta"><div class="blog-cta__inner"><span class="blog-cta__label">Kostenlose Erstberatung</span><h3 class="blog-cta__title">Sicherheitskonzept für Ihr Unternehmen?</h3><p class="blog-cta__sub">Kostenloses Erstgespräch, Angebot in 48 Stunden. Starten Sie jetzt – unverbindlich.</p><a class="blog-cta__btn" href="mailto:securestay@outlook.de?subject=Erstberatung%20Anfrage">Jetzt kostenlos beraten lassen →</a></div></div>
+    <div class="blog-cta"><div class="blog-cta__inner"><span class="blog-cta__label">Kostenlose Erstberatung</span><h3 class="blog-cta__title">Sicherheitskonzept für Ihr Unternehmen?</h3><p class="blog-cta__sub">Kostenloses Erstgespräch, Angebot in 48 Stunden. Starten Sie jetzt – unverbindlich.</p><a class="blog-cta__btn" href="#" data-m="1">Jetzt kostenlos beraten lassen →</a></div></div>
   </div>
 </section>
 
@@ -1317,7 +1448,7 @@
       </div>
     </div>
     <div class="ooda-cta">
-      <a class="primary-btn" href="mailto:securestay@outlook.de?subject=Erstberatung%20Anfrage">Erstgespräch vereinbaren →</a>
+      <a class="primary-btn" href="#" data-m="1">Erstgespräch vereinbaren →</a>
       <a class="secondary-btn" onclick="showSection('leistungen')">Unsere Leistungen ansehen</a>
     </div>
   </div>
@@ -1341,11 +1472,9 @@
           <p class="contact__info-sub">Alle Gespräche sind vertraulich und unverbindlich.</p>
           <div class="contact-detail"><div class="contact-detail__icon">📍</div><div><div class="contact-detail__label">Adresse</div><div class="contact-detail__val">Kirchstr. 8b<br>55270 Essenheim<br>Rheinland-Pfalz</div></div></div>
           <div class="contact-detail"><div class="contact-detail__icon">📞</div><div><div class="contact-detail__label">Telefon</div><div class="contact-detail__val"><a href="tel:+491746703741">+49 174 6703741</a></div></div></div>
-          <div class="contact-detail"><div class="contact-detail__icon">✉️</div><div><div class="contact-detail__label">E-Mail</div><div class="contact-detail__val"><a href="mailto:securestay@outlook.de" style="color:inherit;">securestay@outlook.de</a></div></div></div>
+          <div class="contact-detail"><div class="contact-detail__icon">✉️</div><div><div class="contact-detail__label">E-Mail</div><div class="contact-detail__val"><a href="#" data-m="1" style="color:inherit;"><span class="js-addr"></span></a></div></div></div>
           <div class="contact-detail"><div class="contact-detail__icon">🕐</div><div><div class="contact-detail__label">Erreichbarkeit</div><div class="contact-detail__val">Mo–Fr: 08:00–18:00 Uhr<br>Sa: 09:00–13:00 Uhr</div></div></div>
-          <a href="mailto:securestay@outlook.de?subject=Erstberatung%20Anfrage" class="primary-btn" style="margin-top:28px;display:inline-flex;">
-            ✉️ &nbsp;Jetzt Erstberatung anfragen →
-          </a>
+          <a href="#" data-m="1" style="color:inherit;"><span class="js-addr"></span></a>
         </div>
       </div>
     </div>
@@ -1361,7 +1490,7 @@
     <p class="legal-date">Angaben gemäß § 5 DDG sowie § 18 Abs. 2 MStV | Stand: März 2026</p>
     <div class="legal-section"><h2>Anbieter &amp; Verantwortlicher</h2><div class="legal-highlight"><p><strong>SecureStay Solutions UG (haftungsbeschränkt)</strong><br>Kirchstr. 8b · 55270 Essenheim · Deutschland</p></div></div>
     <div class="legal-section"><h2>Vertretungsberechtigte Geschäftsführer</h2><p>Patrick Devosse<br>Grygoriy Ogorinskyy</p></div>
-    <div class="legal-section"><h2>Kontakt</h2><p>Telefon: <a href="tel:+491746703741">+49 174 6703741</a><br>E-Mail: <a href="mailto:securestay@outlook.de" style="color:inherit;">securestay@outlook.de</a></p></div>
+    <div class="legal-section"><h2>Kontakt</h2><p>Telefon: <a href="tel:+491746703741">+49 174 6703741</a><br>E-Mail: <a href="#" data-m="1" style="color:inherit;"><span class="js-addr"></span></a></p></div>
     <div class="legal-section"><h2>Handelsregister</h2><p>Registergericht: Amtsgericht Mainz · HRB 53600</p><p>Stammkapital: 2.000,00 €</p></div>
     <div class="legal-section"><h2>Umsatzsteuer</h2><p>Gemäß <strong>§ 19 UStG</strong> wird keine Umsatzsteuer berechnet und ausgewiesen (Kleinunternehmerregelung). Eine Umsatzsteuer-Identifikationsnummer liegt daher nicht vor.</p></div>
     <div class="legal-section"><h2>Verantwortlich für redaktionelle Inhalte (§ 18 Abs. 2 MStV)</h2><p>Patrick Devosse · Kirchstr. 8b, 55270 Essenheim</p></div>
@@ -1379,7 +1508,7 @@
     <span class="section-label">Rechtliches</span>
     <h1 class="legal-title">Datenschutzerklärung</h1>
     <p class="legal-date">Stand: März 2026 | Gemäß DSGVO, BDSG und DDG</p>
-    <div class="legal-section"><h2>1. Verantwortlicher (Art. 4 Nr. 7 DSGVO)</h2><div class="legal-highlight"><p><strong>SecureStay Solutions UG (haftungsbeschränkt)</strong><br>Kirchstr. 8b, 55270 Essenheim · E-Mail: <a href="mailto:securestay@outlook.de" style="color:inherit;">securestay@outlook.de</a> · Tel.: +49 174 6703741</p></div></div>
+    <div class="legal-section"><h2>1. Verantwortlicher (Art. 4 Nr. 7 DSGVO)</h2><div class="legal-highlight"><p><strong>SecureStay Solutions UG (haftungsbeschränkt)</strong><br>Kirchstr. 8b, 55270 Essenheim · E-Mail: <a href="#" data-m="1" style="color:inherit;"><span class="js-addr"></span></a> · Tel.: +49 174 6703741</p></div></div>
     <div class="legal-section"><h2>2. Erhobene Daten</h2>
       <h3>2.1 Server-Logfiles</h3><p>Beim Seitenaufruf: anonymisierte IP-Adresse, Datum/Uhrzeit, URL, Browsertyp, Betriebssystem. Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO. Speicherdauer: 7 Tage.</p>
       <h3>2.2 Kontaktaufnahme per E-Mail</h3><p>Name, E-Mail, Nachricht zur Bearbeitung Ihrer Anfrage. Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO. Speicherdauer: bis zu 6 Jahre (§§ 147 AO, 257 HGB).</p>
@@ -1403,7 +1532,7 @@
           <span class="logo-text">SecureStay Solutions</span>
         </div>
         <p class="footer__brand-desc">Professionelle Sicherheitsberatung für Unternehmen, Institutionen und Behörden. Physisch. Strategisch. Unabhängig.</p>
-        <p style="font-size:0.8rem;color:var(--text-soft);margin-top:14px;line-height:1.7;">Kirchstr. 8b · 55270 Essenheim<br><a href="tel:+491746703741" style="color:var(--text-soft);">+49 174 6703741</a><br><a href="mailto:securestay@outlook.de" style="color:inherit;">securestay@outlook.de</a></p>
+        <p style="font-size:0.8rem;color:var(--text-soft);margin-top:14px;line-height:1.7;">Kirchstr. 8b · 55270 Essenheim<br><a href="tel:+491746703741" style="color:var(--text-soft);">+49 174 6703741</a><br><a href="#" data-m="1" style="color:inherit;"><span class="js-addr"></span></a></p>
       </div>
       <div>
         <div class="footer__col-title">Leistungen</div>
@@ -1432,7 +1561,7 @@
         <div class="footer__col-title">Kontakt</div>
         <ul class="footer__links">
           <li><a href="tel:+491746703741">+49 174 6703741</a></li>
-          <li><a href="mailto:securestay@outlook.de">securestay@outlook.de</a></li>
+          <li><a href="#" data-m="1" style="color:inherit;"><span class="js-addr"></span></a></li>
           <li style="color:var(--text-soft);font-size:0.82rem;margin-top:8px;">Kirchstr. 8b<br>55270 Essenheim</li>
         </ul>
       </div>
@@ -1440,14 +1569,34 @@
     <div class="footer__bottom">
       <span>© 2026 SecureStay Solutions UG (haftungsbeschränkt) · Alle Rechte vorbehalten</span>
       <div style="display:flex;gap:16px;">
-        <a onclick="showSection('impressum')">Impressum</a>
-        <a onclick="showSection('datenschutz')">Datenschutz</a>
+        <a onclick="showSection('impressum')" style="color:var(--text-soft);cursor:pointer;font-size:0.82rem;">Impressum</a>
+        <a onclick="showSection('datenschutz')" style="color:var(--text-soft);cursor:pointer;font-size:0.82rem;">Datenschutz</a>
       </div>
     </div>
   </div>
 </footer>
 
+  <!-- Scroll to Top -->
+  <button class="scroll-top" id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Nach oben">↑</button>
+
 <script>
+// ── E-Mail (assembled at runtime – no plain address in source) ──
+(function() {
+  var p1 = 'secure', p2 = 'stay', p3 = 'outl', p4 = 'ook', p5 = 'de';
+  var u = p1 + p2, d = p3 + p4 + '.' + p5;
+  var addr = u + '\u0040' + d;
+  var mt = 'mail' + 'to:' + addr;
+  var mtS = mt + '?subject=Erstberatung%20Anfrage';
+  document.querySelectorAll('[data-m]').forEach(function(el) {
+    el.href = mtS;
+  });
+  document.querySelectorAll('.js-addr').forEach(function(el) {
+    el.textContent = addr;
+    var a = el.closest('a');
+    if (a) a.href = mt;
+  });
+})();
+
 // ── Navigation ──
 function showSection(id) {
   document.querySelectorAll('.page-section').forEach(function(s) {
@@ -1478,11 +1627,23 @@ document.addEventListener('click', function(e) {
   if (nav && nav.classList.contains('open') && !nav.contains(e.target) && (!btn || !btn.contains(e.target)))
     nav.classList.remove('open');
 });
-// ── Ensure home visible on load ──
 document.addEventListener('DOMContentLoaded', function() {
   var home = document.getElementById('home');
   if (home) { home.style.display = 'block'; home.classList.add('active'); }
 });
+// ── Scroll-to-top ──
+(function() {
+  var btn = document.getElementById('scrollTopBtn');
+  if (!btn) return;
+  window.addEventListener('scroll', function() {
+    btn.classList.toggle('visible', window.scrollY > 300);
+  }, { passive: true });
+})();
 </script>
+
+<!-- ── Scroll-to-top Button ── -->
+<button id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Nach oben scrollen">
+  ↑
+</button>
 </body>
 </html>
