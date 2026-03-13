@@ -10,7 +10,7 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --bg:#020617;--bg2:#0a1628;--bg3:#0f1f3d;--bg4:#111b2e;
-  --surface:rgba(10,22,40,.7);--surface2:rgba(15,30,56,.6);
+  --surface:rgba(10,22,40,.7);--surface2:rgba(15,30,56,.6);--surface3:rgba(8,18,35,.85);
   --border:#1e293b;--border2:#334155;--border3:rgba(148,163,184,.12);
   --text:#e2e8f0;--text2:#f8fafc;--muted:#94a3b8;--soft:#64748b;--dim:#475569;
   --accent:#14b8a6;--accent2:#2dd4bf;--accent3:#99f6e4;--accentDim:rgba(20,184,166,.12);
@@ -30,74 +30,78 @@
 html{scroll-behavior:smooth}
 body{min-height:100vh;background:var(--bg);color:var(--text);font-family:var(--ff);font-size:15px;line-height:1.6;overflow-x:hidden}
 body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 50% at 20% 10%,rgba(20,184,166,.04) 0,transparent 60%),radial-gradient(ellipse 60% 40% at 80% 90%,rgba(249,115,22,.03) 0,transparent 50%);pointer-events:none;z-index:0}
-
-/* SCROLLBAR */
-::-webkit-scrollbar{width:6px}
-::-webkit-scrollbar-track{background:transparent}
-::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
-::-webkit-scrollbar-thumb:hover{background:var(--soft)}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
 
 /* ── HEADER ── */
-.hdr{display:flex;align-items:center;justify-content:space-between;padding:12px 28px;background:rgba(2,6,23,.92);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200;backdrop-filter:blur(16px) saturate(1.4)}
+.hdr{display:flex;align-items:center;justify-content:space-between;padding:10px 28px;background:rgba(2,6,23,.94);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200;backdrop-filter:blur(16px) saturate(1.4)}
 .logo{display:flex;align-items:center;gap:12px}
 .logo-mark{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,rgba(20,184,166,.15),rgba(249,115,22,.1));border:1px solid rgba(20,184,166,.3);display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-weight:900;font-size:.95rem;color:var(--text2);position:relative;overflow:hidden}
 .logo-mark::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent 40%,rgba(255,255,255,.06));pointer-events:none}
 .logo-mark span{color:var(--accent)}
-.logo-text{display:flex;flex-direction:column;gap:0}
+.logo-text{display:flex;flex-direction:column}
 .logo-name{font-family:var(--fh);font-weight:700;font-size:.92rem;letter-spacing:.04em;color:var(--text2)}
-.logo-sub{font-family:var(--fm);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);opacity:.8}
-.hdr-badge{font-family:var(--fm);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);background:var(--orangeDim);padding:4px 14px;border-radius:var(--rpill);border:1px solid rgba(249,115,22,.2)}
+.logo-sub{font-family:var(--fm);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);opacity:.8}
+
+/* ── TOP NAV TABS ── */
+.top-nav{display:flex;align-items:center;gap:4px;background:rgba(15,23,42,.6);border-radius:var(--rpill);padding:3px;border:1px solid var(--border)}
+.top-nav-btn{padding:7px 18px;border-radius:var(--rpill);border:none;background:transparent;color:var(--muted);font-family:var(--ff);font-size:.8rem;font-weight:600;cursor:pointer;transition:.2s;display:flex;align-items:center;gap:6px}
+.top-nav-btn:hover{color:var(--text)}
+.top-nav-btn.active{background:var(--accentDim);color:var(--accent);border:1px solid rgba(20,184,166,.25)}
+.top-nav-btn.active.db{background:var(--orangeDim);color:var(--orange);border-color:rgba(249,115,22,.25)}
+.hdr-right{display:flex;align-items:center;gap:12px}
+.hdr-badge{font-family:var(--fm);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;padding:4px 12px;border-radius:var(--rpill);border:1px solid rgba(20,184,166,.2);color:var(--accent);background:var(--accentDim)}
 
 /* ── LAYOUT ── */
-.wrap{max-width:1160px;margin:0 auto;padding:28px 24px 100px;position:relative;z-index:1}
+.wrap{max-width:1200px;margin:0 auto;padding:24px 24px 100px;position:relative;z-index:1}
 
 /* ── PROGRESS ── */
-.progress-bar{height:3px;background:var(--border);border-radius:3px;margin-bottom:28px;overflow:hidden}
+.progress-bar{height:3px;background:var(--border);border-radius:3px;margin-bottom:24px;overflow:hidden}
 .progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--orange));border-radius:3px;transition:.5s cubic-bezier(.4,0,.2,1)}
 
 /* ── STEPPER ── */
-.stepper{display:flex;gap:0;margin-bottom:36px;overflow-x:auto;padding-bottom:6px;-ms-overflow-style:none;scrollbar-width:thin}
+.stepper{display:flex;gap:0;margin-bottom:32px;overflow-x:auto;padding-bottom:4px;scrollbar-width:thin}
 .step{display:flex;align-items:center;gap:0;flex-shrink:0}
-.step-btn{display:flex;align-items:center;gap:8px;padding:8px 12px;background:none;border:none;cursor:pointer;border-radius:var(--r);transition:.2s}
-.step-num{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--fm);font-size:.65rem;font-weight:700;border:2px solid var(--border2);color:var(--soft);background:var(--bg2);transition:.2s;flex-shrink:0}
-.step-label{font-family:var(--ff);font-size:.72rem;color:var(--muted);white-space:nowrap;transition:.2s;font-weight:500}
+.step-btn{display:flex;align-items:center;gap:7px;padding:7px 10px;background:none;border:none;cursor:pointer;border-radius:var(--r);transition:.2s}
+.step-num{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--fm);font-size:.6rem;font-weight:700;border:2px solid var(--border2);color:var(--soft);background:var(--bg2);transition:.2s;flex-shrink:0}
+.step-label{font-family:var(--ff);font-size:.68rem;color:var(--muted);white-space:nowrap;transition:.2s;font-weight:500}
 .step-btn:hover{background:rgba(255,255,255,.02)}
 .step-btn:hover .step-label{color:var(--text)}
 .step-btn.active .step-num{border-color:var(--accent);background:var(--accentDim);color:var(--accent)}
 .step-btn.active .step-label{color:var(--accent);font-weight:600}
 .step-btn.done .step-num{border-color:var(--ok);background:var(--okDim);color:var(--ok)}
 .step-btn.done .step-label{color:var(--ok)}
-.step-line{width:20px;height:2px;background:var(--border);flex-shrink:0}
+.step-line{width:16px;height:2px;background:var(--border);flex-shrink:0}
 .step:last-child .step-line{display:none}
 
 /* ── PANEL ── */
-.panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px 32px;box-shadow:var(--sh);backdrop-filter:blur(6px)}
-.panel-title{font-family:var(--fh);font-size:1.4rem;font-weight:800;color:var(--text2);margin-bottom:4px;letter-spacing:-.01em}
-.panel-sub{font-size:.85rem;color:var(--muted);margin-bottom:24px;line-height:1.65}
-.section-divider{height:1px;background:linear-gradient(90deg,transparent,var(--border2),transparent);margin:28px 0}
+.panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px 32px;box-shadow:var(--sh);backdrop-filter:blur(6px);animation:fadeUp .35s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.panel-title{font-family:var(--fh);font-size:1.35rem;font-weight:800;color:var(--text2);margin-bottom:4px;letter-spacing:-.01em}
+.panel-sub{font-size:.84rem;color:var(--muted);margin-bottom:22px;line-height:1.65}
+.section-divider{height:1px;background:linear-gradient(90deg,transparent,var(--border2),transparent);margin:24px 0}
 
 /* ── BADGES ── */
-.norm-badge{display:inline-flex;align-items:center;gap:6px;font-family:var(--fm);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:var(--rpill);margin-bottom:16px;margin-right:6px}
-.norm-badge.security{color:var(--accent);background:var(--accentDim);border:1px solid rgba(20,184,166,.2)}
-.norm-badge.qm{color:var(--orange);background:var(--orangeDim);border:1px solid rgba(249,115,22,.2)}
-.norm-badge.combined{color:var(--purple);background:var(--purpleDim);border:1px solid rgba(167,139,250,.2)}
-.module-indicator{display:inline-flex;align-items:center;gap:4px;font-family:var(--fm);font-size:.55rem;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:var(--rpill)}
-.module-indicator.sec{color:var(--accent);background:var(--accentDim);border:1px solid rgba(20,184,166,.15)}
-.module-indicator.qm{color:var(--orange);background:var(--orangeDim);border:1px solid rgba(249,115,22,.15)}
+.norm-badge{display:inline-flex;align-items:center;gap:5px;font-family:var(--fm);font-size:.55rem;letter-spacing:.08em;text-transform:uppercase;padding:2px 9px;border-radius:var(--rpill);margin-bottom:4px;margin-right:4px}
+.norm-badge.security{color:var(--accent);background:var(--accentDim);border:1px solid rgba(20,184,166,.18)}
+.norm-badge.qm{color:var(--orange);background:var(--orangeDim);border:1px solid rgba(249,115,22,.18)}
+.norm-badge.combined{color:var(--purple);background:var(--purpleDim);border:1px solid rgba(167,139,250,.18)}
+.module-indicator{display:inline-flex;align-items:center;gap:3px;font-family:var(--fm);font-size:.5rem;letter-spacing:.08em;text-transform:uppercase;padding:1px 7px;border-radius:var(--rpill)}
+.module-indicator.sec{color:var(--accent);background:var(--accentDim);border:1px solid rgba(20,184,166,.12)}
+.module-indicator.qm{color:var(--orange);background:var(--orangeDim);border:1px solid rgba(249,115,22,.12)}
 
-/* ── FORM ELEMENTS ── */
-.meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.fg{display:flex;flex-direction:column;gap:5px}
-.fg label{font-family:var(--fm);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--soft)}
-.fg input,.fg select,.fg textarea{background:rgba(15,23,42,.8);border:1px solid var(--border);border-radius:8px;padding:10px 13px;color:var(--text);font-size:.87rem;font-family:var(--ff);outline:none;transition:.2s}
+/* ── FORMS ── */
+.meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.fg{display:flex;flex-direction:column;gap:4px}
+.fg label{font-family:var(--fm);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--soft)}
+.fg input,.fg select,.fg textarea{background:rgba(15,23,42,.8);border:1px solid var(--border);border-radius:8px;padding:9px 12px;color:var(--text);font-size:.85rem;font-family:var(--ff);outline:none;transition:.2s}
 .fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--accent2);box-shadow:0 0 0 3px rgba(20,184,166,.1)}
 .fg select option{background:#0f172a}
-.fg textarea{resize:vertical;min-height:80px}
+.fg textarea{resize:vertical;min-height:70px}
 .fg-full{grid-column:1/-1}
 
-/* ── MODULE SELECTOR ── */
-.module-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:28px}
-.module-card{background:var(--surface2);border:2px solid var(--border);border-radius:var(--r2);padding:24px 20px;cursor:pointer;transition:.25s;position:relative;overflow:hidden}
+/* ── MODULE CARDS ── */
+.module-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:24px}
+.module-card{background:var(--surface2);border:2px solid var(--border);border-radius:var(--r2);padding:22px 18px;cursor:pointer;transition:.25s;position:relative;overflow:hidden}
 .module-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;opacity:0;transition:.25s}
 .module-card:hover{border-color:var(--border2);transform:translateY(-2px);box-shadow:var(--sh2)}
 .module-card.selected{border-color:var(--accent);background:rgba(20,184,166,.04)}
@@ -105,153 +109,204 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .module-card.selected.sec::before{background:linear-gradient(90deg,var(--accent),var(--accent2))}
 .module-card.selected.qm::before{background:linear-gradient(90deg,var(--orange),var(--orange2))}
 .module-card.selected.combo::before{background:linear-gradient(90deg,var(--accent),var(--purple),var(--orange))}
-.mc-icon{font-size:2rem;margin-bottom:12px}
-.mc-title{font-family:var(--fh);font-size:1.05rem;font-weight:700;color:var(--text2);margin-bottom:4px}
-.mc-desc{font-size:.78rem;color:var(--muted);line-height:1.5}
-.mc-norms{margin-top:12px;display:flex;flex-wrap:wrap;gap:4px}
-.mc-check{position:absolute;top:14px;right:14px;width:24px;height:24px;border-radius:50%;border:2px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:.7rem;color:transparent;transition:.2s}
+.mc-icon{font-size:1.8rem;margin-bottom:10px}
+.mc-title{font-family:var(--fh);font-size:1rem;font-weight:700;color:var(--text2);margin-bottom:3px}
+.mc-desc{font-size:.76rem;color:var(--muted);line-height:1.5}
+.mc-norms{margin-top:10px;display:flex;flex-wrap:wrap;gap:3px}
+.mc-check{position:absolute;top:12px;right:12px;width:22px;height:22px;border-radius:50%;border:2px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:.65rem;color:transparent;transition:.2s}
 .module-card.selected .mc-check{border-color:var(--ok);color:var(--ok);background:var(--okDim)}
 
 /* ── NORM SELECTOR ── */
-.norm-selector{margin-bottom:24px}
-.norm-group{margin-bottom:16px}
-.norm-group-title{font-family:var(--fm);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:8px}
-.norm-group-title.sec{color:var(--accent)}
-.norm-group-title.qm{color:var(--orange)}
-.norm-chips{display:flex;flex-wrap:wrap;gap:6px}
-.norm-chip{padding:7px 14px;border-radius:var(--rpill);border:1px solid var(--border);background:var(--bg2);font-size:.76rem;color:var(--muted);cursor:pointer;transition:.2s;font-weight:500;user-select:none}
+.norm-group{margin-bottom:14px}
+.norm-group-title{font-family:var(--fm);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.norm-group-title.sec{color:var(--accent)}.norm-group-title.qm{color:var(--orange)}
+.norm-chips{display:flex;flex-wrap:wrap;gap:5px}
+.norm-chip{padding:6px 13px;border-radius:var(--rpill);border:1px solid var(--border);background:var(--bg2);font-size:.74rem;color:var(--muted);cursor:pointer;transition:.2s;font-weight:500;user-select:none}
 .norm-chip:hover{border-color:var(--border2);color:var(--text)}
 .norm-chip.active{border-color:var(--accent);color:var(--accent);background:var(--accentDim)}
 .norm-chip.active.qm-chip{border-color:var(--orange);color:var(--orange);background:var(--orangeDim)}
 
 /* ── NORM DETAILS DROPDOWN ── */
-.norm-details{margin-top:16px;background:rgba(15,23,42,.5);border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
-.nd-header{padding:12px 16px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;transition:.15s}
+.norm-details{margin-top:14px;background:rgba(15,23,42,.5);border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
+.nd-header{padding:11px 14px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;transition:.15s}
 .nd-header:hover{background:rgba(255,255,255,.02)}
-.nd-title{font-size:.82rem;font-weight:600;color:var(--text2)}
-.nd-arrow{font-size:.7rem;color:var(--soft);transition:.2s}
+.nd-title{font-size:.8rem;font-weight:600;color:var(--text2)}
+.nd-arrow{font-size:.65rem;color:var(--soft);transition:.2s}
 .nd-header.open .nd-arrow{transform:rotate(180deg)}
 .nd-body{max-height:0;overflow:hidden;transition:.3s ease}
-.nd-body.open{max-height:2000px}
-.nd-content{padding:0 16px 16px}
-.nd-req{padding:8px 0;border-bottom:1px solid var(--border);font-size:.8rem;color:var(--muted);display:flex;gap:8px;align-items:flex-start}
+.nd-body.open{max-height:3000px}
+.nd-content{padding:0 14px 14px}
+.nd-req{padding:6px 0;border-bottom:1px solid var(--border);font-size:.78rem;color:var(--muted);display:flex;gap:8px;align-items:flex-start}
 .nd-req:last-child{border-bottom:none}
-.nd-req-num{font-family:var(--fm);font-size:.65rem;color:var(--accent);min-width:36px;flex-shrink:0;padding-top:1px}
+.nd-req-num{font-family:var(--fm);font-size:.62rem;color:var(--accent);min-width:34px;flex-shrink:0;padding-top:1px}
 .nd-req.qm-req .nd-req-num{color:var(--orange)}
 
 /* ── CHECK ITEMS ── */
-.check-section{margin-bottom:20px}
-.check-section-title{font-family:var(--fm);font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
+.check-section-title{font-family:var(--fm);font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;padding-bottom:7px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
 .check-section-title.qm-section{color:var(--orange)}
-.check-item{background:rgba(15,23,42,.5);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:8px;transition:.2s}
+.check-item{background:rgba(15,23,42,.5);border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:7px;transition:.2s}
 .check-item:hover{border-color:var(--border2)}
 .check-item.status-ok{border-left:3px solid var(--ok)}
 .check-item.status-mangel{border-left:3px solid var(--warn)}
 .check-item.status-kritisch{border-left:3px solid var(--danger)}
-.check-item.status-na{border-left:3px solid var(--na);opacity:.55}
-.ci-top{display:flex;align-items:flex-start;gap:12px}
+.check-item.status-na{border-left:3px solid var(--na);opacity:.5}
+.ci-top{display:flex;align-items:flex-start;gap:10px}
 .ci-text{flex:1;min-width:0}
-.ci-label{font-size:.87rem;color:var(--text2);font-weight:600;margin-bottom:2px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.ci-norm{font-family:var(--fm);font-size:.58rem;color:var(--accent);letter-spacing:.06em}
+.ci-label{font-size:.85rem;color:var(--text2);font-weight:600;margin-bottom:2px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.ci-norm{font-family:var(--fm);font-size:.55rem;color:var(--accent);letter-spacing:.05em}
 .ci-norm.qm{color:var(--orange)}
-.ci-desc{font-size:.77rem;color:var(--muted);margin-top:3px;line-height:1.5}
-.ci-btns{display:flex;gap:5px;flex-shrink:0;flex-wrap:wrap}
-.ci-btn{padding:5px 11px;border-radius:var(--rpill);border:1px solid transparent;font-size:.7rem;font-weight:600;cursor:pointer;transition:.18s;white-space:nowrap;font-family:var(--ff)}
+.ci-desc{font-size:.75rem;color:var(--muted);margin-top:2px;line-height:1.5}
+.ci-doc-link{margin-top:6px;display:flex;align-items:center;gap:5px;font-size:.7rem}
+.ci-doc-link a{color:var(--accent);text-decoration:none;font-weight:500}
+.ci-doc-link a:hover{text-decoration:underline}
+.ci-doc-link .doc-status{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.ci-doc-link .doc-status.green{background:var(--ok)}.ci-doc-link .doc-status.yellow{background:var(--warn)}.ci-doc-link .doc-status.red{background:var(--danger)}.ci-doc-link .doc-status.gray{background:var(--na)}
+.ci-btns{display:flex;gap:4px;flex-shrink:0;flex-wrap:wrap}
+.ci-btn{padding:4px 10px;border-radius:var(--rpill);border:1px solid transparent;font-size:.68rem;font-weight:600;cursor:pointer;transition:.18s;white-space:nowrap;font-family:var(--ff)}
 .ci-btn.ok{border-color:rgba(34,197,94,.25);color:#86efac;background:rgba(34,197,94,.06)}
-.ci-btn.ok.active{background:rgba(34,197,94,.18);border-color:#22c55e;color:#22c55e;box-shadow:0 0 8px rgba(34,197,94,.25)}
+.ci-btn.ok.active{background:rgba(34,197,94,.18);border-color:#22c55e;color:#22c55e;box-shadow:0 0 8px rgba(34,197,94,.2)}
 .ci-btn.mangel{border-color:rgba(234,179,8,.25);color:#fde047;background:rgba(234,179,8,.06)}
-.ci-btn.mangel.active{background:rgba(234,179,8,.18);border-color:#eab308;color:#eab308;box-shadow:0 0 8px rgba(234,179,8,.25)}
+.ci-btn.mangel.active{background:rgba(234,179,8,.18);border-color:#eab308;color:#eab308;box-shadow:0 0 8px rgba(234,179,8,.2)}
 .ci-btn.kritisch{border-color:rgba(239,68,68,.25);color:#fca5a5;background:rgba(239,68,68,.06)}
-.ci-btn.kritisch.active{background:rgba(239,68,68,.18);border-color:#ef4444;color:#ef4444;box-shadow:0 0 8px rgba(239,68,68,.25)}
+.ci-btn.kritisch.active{background:rgba(239,68,68,.18);border-color:#ef4444;color:#ef4444;box-shadow:0 0 8px rgba(239,68,68,.2)}
 .ci-btn.na{border-color:rgba(100,116,139,.25);color:var(--muted);background:transparent}
-.ci-btn.na.active{background:rgba(100,116,139,.15);border-color:var(--na);color:var(--muted)}
-.ci-note{margin-top:10px;display:none}
+.ci-btn.na.active{background:rgba(100,116,139,.15);border-color:var(--na)}
+.ci-note{margin-top:8px;display:none}
 .ci-note.show{display:block}
-.ci-note input{width:100%;background:rgba(15,23,42,.8);border:1px solid var(--border);border-radius:6px;padding:7px 10px;color:var(--text);font-size:.8rem;font-family:var(--ff);outline:none}
+.ci-note input{width:100%;background:rgba(15,23,42,.8);border:1px solid var(--border);border-radius:6px;padding:6px 10px;color:var(--text);font-size:.78rem;font-family:var(--ff);outline:none}
 .ci-note input:focus{border-color:var(--accent2)}
 
 /* ── BUTTONS ── */
-.nav-row{display:flex;justify-content:space-between;align-items:center;margin-top:28px;gap:12px}
-.btn-primary{background:linear-gradient(135deg,var(--accent),#0d9488);color:#0f172a;border:none;border-radius:var(--rpill);padding:11px 26px;font-size:.88rem;font-weight:700;font-family:var(--ff);cursor:pointer;display:inline-flex;align-items:center;gap:7px;box-shadow:0 8px 24px rgba(20,184,166,.35);transition:.2s}
+.nav-row{display:flex;justify-content:space-between;align-items:center;margin-top:24px;gap:10px}
+.btn-primary{background:linear-gradient(135deg,var(--accent),#0d9488);color:#0f172a;border:none;border-radius:var(--rpill);padding:10px 24px;font-size:.86rem;font-weight:700;font-family:var(--ff);cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 8px 24px rgba(20,184,166,.35);transition:.2s}
 .btn-primary:hover{transform:translateY(-1px);box-shadow:0 12px 28px rgba(20,184,166,.4)}
-.btn-secondary{background:transparent;color:var(--text);border:1px solid var(--border);border-radius:var(--rpill);padding:11px 20px;font-size:.86rem;font-weight:500;font-family:var(--ff);cursor:pointer;transition:.2s}
+.btn-secondary{background:transparent;color:var(--text);border:1px solid var(--border);border-radius:var(--rpill);padding:10px 18px;font-size:.84rem;font-weight:500;font-family:var(--ff);cursor:pointer;transition:.2s}
 .btn-secondary:hover{border-color:var(--border2);background:rgba(15,23,42,.6)}
+.btn-sm{padding:6px 14px;font-size:.76rem;border-radius:var(--rpill);border:1px solid var(--border);background:var(--bg2);color:var(--text);font-family:var(--ff);cursor:pointer;transition:.15s;font-weight:500}
+.btn-sm:hover{border-color:var(--border2);background:rgba(20,184,166,.06)}
+.btn-sm.accent{border-color:rgba(20,184,166,.3);color:var(--accent);background:var(--accentDim)}
+.btn-sm.danger{border-color:rgba(239,68,68,.3);color:#fca5a5;background:var(--dangerDim)}
+
+/* ══════════════════════════════════════
+   DATABASE SECTION
+   ══════════════════════════════════════ */
+
+/* ── DB TABS ── */
+.db-tabs{display:flex;gap:3px;margin-bottom:24px;background:rgba(15,23,42,.5);border:1px solid var(--border);border-radius:var(--rpill);padding:3px;width:fit-content}
+.db-tab{padding:7px 16px;border-radius:var(--rpill);border:none;background:transparent;color:var(--muted);font-family:var(--ff);font-size:.78rem;font-weight:500;cursor:pointer;transition:.2s;display:flex;align-items:center;gap:5px;white-space:nowrap}
+.db-tab:hover{color:var(--text)}
+.db-tab.active{background:var(--orangeDim);color:var(--orange);border:1px solid rgba(249,115,22,.2)}
+.db-tab .count{font-family:var(--fm);font-size:.6rem;background:rgba(255,255,255,.06);padding:1px 6px;border-radius:var(--rpill);margin-left:2px}
+
+/* ── DB STATS ── */
+.db-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:24px}
+.db-stat{background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);padding:16px;text-align:center}
+.db-stat-val{font-family:var(--fh);font-size:1.6rem;font-weight:800;line-height:1;margin-bottom:3px}
+.db-stat-lbl{font-family:var(--fm);font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;color:var(--soft)}
+.db-stat.green .db-stat-val{color:var(--ok)}
+.db-stat.yellow .db-stat-val{color:var(--warn)}
+.db-stat.red .db-stat-val{color:var(--danger)}
+.db-stat.total .db-stat-val{color:var(--orange)}
+
+/* ── DB SEARCH ── */
+.db-search{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap}
+.db-search input{flex:1;min-width:200px;background:rgba(15,23,42,.8);border:1px solid var(--border);border-radius:var(--rpill);padding:9px 16px;color:var(--text);font-size:.84rem;font-family:var(--ff);outline:none;transition:.2s}
+.db-search input:focus{border-color:var(--accent2);box-shadow:0 0 0 3px rgba(20,184,166,.08)}
+.db-search select{background:rgba(15,23,42,.8);border:1px solid var(--border);border-radius:var(--rpill);padding:9px 14px;color:var(--text);font-size:.82rem;font-family:var(--ff);outline:none;cursor:pointer}
+.db-search select option{background:#0f172a}
+
+/* ── DOC CARDS ── */
+.doc-grid{display:grid;grid-template-columns:1fr;gap:8px}
+.doc-card{background:rgba(15,23,42,.5);border:1px solid var(--border);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:14px;transition:.2s}
+.doc-card:hover{border-color:var(--border2);background:rgba(15,23,42,.7)}
+.doc-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;background:var(--surface2);border:1px solid var(--border)}
+.doc-body{flex:1;min-width:0}
+.doc-name{font-size:.88rem;font-weight:600;color:var(--text2);margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.doc-meta{font-size:.72rem;color:var(--muted);display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.doc-meta span{display:flex;align-items:center;gap:3px}
+.doc-norms{display:flex;flex-wrap:wrap;gap:3px;margin-top:4px}
+.doc-status-pill{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:var(--rpill);font-family:var(--fm);font-size:.58rem;font-weight:600;letter-spacing:.04em}
+.doc-status-pill.green{color:var(--ok);background:var(--okDim);border:1px solid rgba(34,197,94,.2)}
+.doc-status-pill.yellow{color:var(--warn);background:var(--warnDim);border:1px solid rgba(234,179,8,.2)}
+.doc-status-pill.red{color:var(--danger);background:var(--dangerDim);border:1px solid rgba(239,68,68,.2)}
+.doc-status-pill.gray{color:var(--na);background:rgba(100,116,139,.08);border:1px solid rgba(100,116,139,.2)}
+.doc-actions{display:flex;gap:5px;flex-shrink:0}
+
+/* ── ADD DOC MODAL ── */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(2,6,23,.8);backdrop-filter:blur(8px);z-index:300;align-items:center;justify-content:center}
+.modal-overlay.open{display:flex}
+.modal{background:var(--surface3);border:1px solid var(--border2);border-radius:var(--r2);padding:28px 30px;max-width:640px;width:95%;max-height:85vh;overflow-y:auto;box-shadow:0 30px 60px rgba(0,0,0,.7);animation:fadeUp .25s ease}
+.modal-title{font-family:var(--fh);font-size:1.15rem;font-weight:800;color:var(--text2);margin-bottom:4px}
+.modal-sub{font-size:.82rem;color:var(--muted);margin-bottom:20px}
+.modal-close{position:absolute;top:16px;right:18px;background:none;border:none;color:var(--muted);font-size:1.2rem;cursor:pointer}
+
+/* ── COMPLIANCE VIEW ── */
+.compliance-norm{background:rgba(15,23,42,.5);border:1px solid var(--border);border-radius:var(--r);margin-bottom:12px;overflow:hidden}
+.compliance-norm-header{padding:14px 16px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;transition:.15s}
+.compliance-norm-header:hover{background:rgba(255,255,255,.02)}
+.cn-left{display:flex;align-items:center;gap:10px}
+.cn-name{font-size:.88rem;font-weight:600;color:var(--text2)}
+.cn-bar{flex:1;height:6px;background:var(--border);border-radius:3px;min-width:80px;max-width:160px;overflow:hidden}
+.cn-bar-fill{height:100%;border-radius:3px;transition:.4s}
+.cn-pct{font-family:var(--fm);font-size:.72rem;font-weight:600;min-width:36px;text-align:right}
+.cn-arrow{color:var(--soft);font-size:.6rem;transition:.2s}
+.compliance-norm-header.open .cn-arrow{transform:rotate(180deg)}
+.cn-body{max-height:0;overflow:hidden;transition:.3s ease}
+.cn-body.open{max-height:5000px}
+.cn-body-inner{padding:0 16px 14px}
+.cn-req-row{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid var(--border);font-size:.8rem}
+.cn-req-row:last-child{border-bottom:none}
+.cn-req-num{font-family:var(--fm);font-size:.6rem;color:var(--soft);min-width:40px}
+.cn-req-text{flex:1;color:var(--muted)}
+.cn-req-docs{display:flex;gap:4px;flex-wrap:wrap}
 
 /* ── REPORT ── */
-.report-header{background:linear-gradient(135deg,rgba(20,184,166,.08),rgba(249,115,22,.05),rgba(15,23,42,.9));border:1px solid rgba(20,184,166,.25);border-radius:var(--r2);padding:32px;margin-bottom:24px;position:relative;overflow:hidden}
-.report-header::before{content:'';position:absolute;top:-40%;right:-10%;width:300px;height:300px;background:radial-gradient(circle,rgba(20,184,166,.06),transparent 70%);pointer-events:none}
-.report-title{font-family:var(--fh);font-size:1.6rem;font-weight:800;color:var(--text2);margin-bottom:6px;position:relative}
-.report-meta{font-size:.82rem;color:var(--muted);line-height:1.7;position:relative}
-.report-kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:24px}
-.kpi{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center}
-.kpi-val{font-family:var(--fh);font-size:1.8rem;font-weight:800;line-height:1;margin-bottom:4px}
-.kpi-lbl{font-family:var(--fm);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--soft)}
+.report-header{background:linear-gradient(135deg,rgba(20,184,166,.08),rgba(249,115,22,.05),rgba(15,23,42,.9));border:1px solid rgba(20,184,166,.25);border-radius:var(--r2);padding:28px;margin-bottom:20px;position:relative;overflow:hidden}
+.report-header::before{content:'';position:absolute;top:-40%;right:-10%;width:280px;height:280px;background:radial-gradient(circle,rgba(20,184,166,.06),transparent 70%);pointer-events:none}
+.report-title{font-family:var(--fh);font-size:1.5rem;font-weight:800;color:var(--text2);margin-bottom:5px;position:relative}
+.report-meta{font-size:.8rem;color:var(--muted);line-height:1.7;position:relative}
+.report-kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:20px}
+.kpi{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px;text-align:center}
+.kpi-val{font-family:var(--fh);font-size:1.6rem;font-weight:800;line-height:1;margin-bottom:3px}
+.kpi-lbl{font-family:var(--fm);font-size:.56rem;letter-spacing:.07em;text-transform:uppercase;color:var(--soft)}
 .kpi.ok .kpi-val{color:var(--ok)}.kpi.warn .kpi-val{color:var(--warn)}.kpi.danger .kpi-val{color:var(--danger)}.kpi.total .kpi-val{color:var(--accent)}.kpi.purple .kpi-val{color:var(--purple)}
-.risk-level{display:inline-flex;align-items:center;gap:8px;padding:8px 20px;border-radius:var(--rpill);font-size:.85rem;font-weight:700;margin-bottom:24px;font-family:var(--ff)}
-.risk-level.gering{background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.35);color:#4ade80}
-.risk-level.mittel{background:rgba(234,179,8,.12);border:1px solid rgba(234,179,8,.35);color:#fbbf24}
-.risk-level.hoch{background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.35);color:#f87171}
+.risk-level{display:inline-flex;align-items:center;gap:7px;padding:7px 18px;border-radius:var(--rpill);font-size:.82rem;font-weight:700;margin-bottom:20px;font-family:var(--ff)}
+.risk-level.gering{background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.3);color:#4ade80}
+.risk-level.mittel{background:rgba(234,179,8,.12);border:1px solid rgba(234,179,8,.3);color:#fbbf24}
+.risk-level.hoch{background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.3);color:#f87171}
 .risk-level.kritisch{background:rgba(220,38,38,.15);border:1px solid rgba(220,38,38,.4);color:#fca5a5;animation:pulse-d 2s ease-in-out infinite}
 @keyframes pulse-d{0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,.25)}50%{box-shadow:0 0 0 6px rgba(239,68,68,0)}}
-
-.finding{border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:8px;display:flex;gap:14px;align-items:flex-start;transition:.15s}
+.finding{border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:7px;display:flex;gap:12px;align-items:flex-start;transition:.15s}
 .finding:hover{border-color:var(--border2)}
-.finding.kritisch{border-color:rgba(239,68,68,.35);background:var(--dangerDim)}
-.finding.mangel{border-color:rgba(234,179,8,.35);background:var(--warnDim)}
-.finding-icon{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0}
+.finding.kritisch{border-color:rgba(239,68,68,.3);background:var(--dangerDim)}
+.finding.mangel{border-color:rgba(234,179,8,.3);background:var(--warnDim)}
+.finding-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0}
 .finding.kritisch .finding-icon{background:rgba(239,68,68,.12)}
 .finding.mangel .finding-icon{background:rgba(234,179,8,.12)}
 .finding-body{flex:1;min-width:0}
-.finding-label{font-size:.87rem;font-weight:600;color:var(--text2);margin-bottom:2px}
-.finding-section{font-size:.7rem;color:var(--muted);display:flex;align-items:center;gap:6px;flex-wrap:wrap}
-.finding-note{font-size:.77rem;color:var(--muted);margin-top:4px;font-style:italic}
+.finding-label{font-size:.85rem;font-weight:600;color:var(--text2);margin-bottom:1px}
+.finding-section{font-size:.68rem;color:var(--muted)}
+.finding-note{font-size:.75rem;color:var(--muted);margin-top:3px;font-style:italic}
 .finding-cost{margin-left:auto;text-align:right;flex-shrink:0}
-.finding-cost-val{font-family:var(--fm);font-size:.82rem;font-weight:700;color:var(--accent)}
-.finding-cost-lbl{font-family:var(--fm);font-size:.55rem;color:var(--soft)}
-
-.cost-summary{background:rgba(20,184,166,.04);border:1px solid rgba(20,184,166,.18);border-radius:12px;padding:20px 24px;margin-bottom:24px}
-.cost-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.04)}
-.cost-row:last-child{border-bottom:none;padding-top:12px;margin-top:4px;font-weight:700;font-size:1rem}
-.cost-row span:first-child{color:var(--muted);font-size:.84rem}
-.cost-row span:last-child{color:var(--accent);font-weight:600;font-family:var(--fm);font-size:.85rem}
+.finding-cost-val{font-family:var(--fm);font-size:.8rem;font-weight:700;color:var(--accent)}
+.finding-cost-lbl{font-family:var(--fm);font-size:.5rem;color:var(--soft)}
+.cost-summary{background:rgba(20,184,166,.04);border:1px solid rgba(20,184,166,.18);border-radius:12px;padding:18px 22px;margin-bottom:20px}
+.cost-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.cost-row:last-child{border-bottom:none;padding-top:10px;margin-top:3px;font-weight:700;font-size:.95rem}
+.cost-row span:first-child{color:var(--muted);font-size:.82rem}
+.cost-row span:last-child{color:var(--accent);font-weight:600;font-family:var(--fm);font-size:.82rem}
 .cost-row:last-child span{color:var(--text2)}
-
-.prio-section{margin-bottom:22px}
-.prio-title{font-family:var(--fm);font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.prio-title{font-family:var(--fm);font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:8px}
 .prio-title.k{color:var(--danger)}.prio-title.m{color:var(--warn)}
-
-.print-btn{background:rgba(15,23,42,.8);color:var(--text);border:1px solid var(--border2);border-radius:var(--rpill);padding:10px 20px;font-size:.84rem;font-family:var(--ff);cursor:pointer;transition:.2s;font-weight:500}
+.print-btn{background:rgba(15,23,42,.8);color:var(--text);border:1px solid var(--border2);border-radius:var(--rpill);padding:8px 18px;font-size:.82rem;font-family:var(--ff);cursor:pointer;transition:.2s;font-weight:500}
 .print-btn:hover{border-color:var(--accent);color:var(--accent)}
 
-/* ── COMPLIANCE GAUGE ── */
-.gauge-container{display:flex;justify-content:center;margin:20px 0}
-.gauge-wrap{position:relative;width:180px;height:100px}
-.gauge-svg{width:180px;height:100px}
-.gauge-label{position:absolute;bottom:4px;left:50%;transform:translateX(-50%);text-align:center}
-.gauge-val{font-family:var(--fh);font-size:1.8rem;font-weight:800;color:var(--text2)}
-.gauge-sublabel{font-family:var(--fm);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:var(--soft)}
-
 /* ── RESPONSIVE ── */
-@media(max-width:900px){.module-cards{grid-template-columns:1fr}.report-kpis{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:768px){
-  .hdr{padding:10px 16px}.wrap{padding:16px 14px 60px}.meta-grid{grid-template-columns:1fr}
-  .report-kpis{grid-template-columns:1fr 1fr}.panel{padding:20px 16px}
-  .ci-btns{gap:3px}.ci-btn{padding:4px 8px;font-size:.64rem}
-}
+@media(max-width:900px){.module-cards{grid-template-columns:1fr}.report-kpis{grid-template-columns:repeat(3,1fr)}.db-stats{grid-template-columns:1fr 1fr}}
+@media(max-width:768px){.hdr{padding:8px 14px;flex-wrap:wrap;gap:8px}.wrap{padding:14px 12px 60px}.meta-grid{grid-template-columns:1fr}.panel{padding:18px 14px}.ci-btns{gap:3px}.ci-btn{padding:3px 7px;font-size:.62rem}.report-kpis{grid-template-columns:1fr 1fr}.top-nav{order:10;width:100%}}
 
 /* ── PRINT ── */
-@media print{
-  .hdr,.stepper,.progress-bar,.nav-row,.print-btn,.mc-check{display:none!important}
-  body{background:#fff;color:#111}
-  body::before{display:none}
-  .panel,.report-header,.finding,.kpi,.cost-summary,.check-item{background:#fff!important;border-color:#ddd!important;box-shadow:none!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  .panel-title,.report-title,.finding-label,.kpi-val,.ci-label{color:#111!important}
-  .norm-badge,.module-indicator{border-color:#999!important}
-}
-
-/* ── ANIMATIONS ── */
-@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
-.panel{animation:fadeUp .4s ease}
+@media print{.hdr,.stepper,.progress-bar,.nav-row,.print-btn,.mc-check,.top-nav,.db-tabs,.db-search,.btn-sm,.doc-actions{display:none!important}body{background:#fff;color:#111}body::before{display:none}.panel,.report-header,.finding,.kpi,.cost-summary,.check-item,.doc-card,.compliance-norm{background:#fff!important;border-color:#ddd!important;box-shadow:none!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}}
 </style>
 </head>
 <body>
@@ -264,830 +319,611 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
       <span class="logo-sub">Audit & Compliance Platform</span>
     </div>
   </div>
-  <div class="hdr-badge" id="hdrBadge">Modul wählen</div>
+  <div class="top-nav" id="topNav">
+    <button class="top-nav-btn active" onclick="switchMode('audit')">🛡️ Audit</button>
+    <button class="top-nav-btn db" onclick="switchMode('database')">📁 Datenbank</button>
+  </div>
+  <div class="hdr-right">
+    <div class="hdr-badge" id="hdrBadge">Modul wählen</div>
+  </div>
 </header>
 
 <div class="wrap">
-  <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
-  <div class="stepper" id="stepper"></div>
+  <div id="auditSection">
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+    <div class="stepper" id="stepper"></div>
+  </div>
   <div id="mainContent"></div>
 </div>
 
-<script>
-// ═══════════════════════════════════════════════════
-// SecureStay: Analytics – Complete Audit Data Engine
-// ═══════════════════════════════════════════════════
+<!-- ADD DOC MODAL -->
+<div class="modal-overlay" id="docModal">
+  <div class="modal" style="position:relative">
+    <button class="modal-close" onclick="closeDocModal()">&times;</button>
+    <div class="modal-title" id="docModalTitle">Dokument hinzufügen</div>
+    <div class="modal-sub">Erfassen Sie ein Dokument mit Metadaten für die Audit-Datenbank.</div>
+    <div class="meta-grid" id="docForm">
+      <div class="fg fg-full"><label>Dokumentenname</label><input type="text" id="df_name" placeholder="z.B. Brandschutzordnung Teil B"></div>
+      <div class="fg"><label>Kategorie</label>
+        <select id="df_category">
+          <option value="Richtlinie">📄 Richtlinie / Policy</option>
+          <option value="Zertifikat">🏅 Zertifikat</option>
+          <option value="Protokoll">📝 Protokoll / Nachweis</option>
+          <option value="Schulung">🎓 Schulungsnachweis</option>
+          <option value="Wartung">🔧 Wartungs-/Prüfbericht</option>
+          <option value="Vertrag">📋 Vertrag / Vereinbarung</option>
+          <option value="Plan">🗺️ Plan / Konzept</option>
+          <option value="Analyse">📊 Analyse / Bewertung</option>
+          <option value="Sonstiges">📎 Sonstiges</option>
+        </select>
+      </div>
+      <div class="fg"><label>Ablaufdatum (optional)</label><input type="date" id="df_expiry"></div>
+      <div class="fg"><label>Version / Stand</label><input type="text" id="df_version" placeholder="z.B. v2.1 / März 2025"></div>
+      <div class="fg"><label>Verantwortlich</label><input type="text" id="df_owner" placeholder="z.B. QM-Beauftragter"></div>
+      <div class="fg fg-full"><label>Norm-Zuordnung (Mehrfachauswahl)</label><div class="norm-chips" id="df_norms"></div></div>
+      <div class="fg fg-full"><label>Prüfpunkt-Verknüpfung (optional)</label><select id="df_checkpoints" multiple style="min-height:80px"><option value="">Keine Verknüpfung</option></select></div>
+      <div class="fg fg-full"><label>Datei hochladen (Referenz)</label><input type="file" id="df_file" style="font-size:.82rem"></div>
+      <div class="fg fg-full"><label>Notizen</label><textarea id="df_notes" rows="2" placeholder="Bemerkungen zum Dokument..."></textarea></div>
+    </div>
+    <div class="nav-row" style="margin-top:18px">
+      <button class="btn-secondary" onclick="closeDocModal()">Abbrechen</button>
+      <button class="btn-primary" onclick="saveDoc()">💾 Speichern</button>
+    </div>
+  </div>
+</div>
 
-// ── NORM DEFINITIONS with requirements ──
+<script>
+// ═══════════════════════════════════════════════════════════════
+// SecureStay: Analytics – Complete Platform with Document Database
+// ═══════════════════════════════════════════════════════════════
+
 const NORM_DEFS = {
-  // ─── SECURITY NORMS ───
-  'ISO 31000': {
-    module:'security', fullName:'ISO 31000:2018 – Risikomanagement',
-    desc:'Leitlinien für ein systematisches Risikomanagement.',
-    reqs:[
-      {num:'5.2',text:'Risikomanagement-Rahmenwerk: Führung und Verpflichtung'},
-      {num:'5.3',text:'Integration in Organisationsprozesse'},
-      {num:'5.4',text:'Design des Risikomanagement-Rahmenwerks'},
-      {num:'6.1',text:'Kommunikation und Konsultation'},
-      {num:'6.2',text:'Festlegung des Anwendungsbereichs, Kontexts und der Kriterien'},
-      {num:'6.3',text:'Risikoidentifikation'},
-      {num:'6.4',text:'Risikoanalyse'},
-      {num:'6.5',text:'Risikobewertung'},
-      {num:'6.6',text:'Risikobehandlung'},
-      {num:'6.7',text:'Überwachung und Überprüfung'},
-    ]
-  },
-  'ISO/IEC 27001': {
-    module:'security', fullName:'ISO/IEC 27001:2022 – Informationssicherheit',
-    desc:'Anforderungen an ein ISMS (Informationssicherheits-Managementsystem).',
-    reqs:[
-      {num:'A.5',text:'Informationssicherheitsrichtlinien'},
-      {num:'A.6',text:'Organisation der Informationssicherheit'},
-      {num:'A.7',text:'Personalsicherheit'},
-      {num:'A.8',text:'Asset Management'},
-      {num:'A.9',text:'Zugangssteuerung'},
-      {num:'A.10',text:'Kryptographie'},
-      {num:'A.11',text:'Physische und umgebungsbezogene Sicherheit'},
-      {num:'A.12',text:'Betriebssicherheit'},
-      {num:'A.13',text:'Kommunikationssicherheit'},
-      {num:'A.14',text:'Systementwicklung und -wartung'},
-      {num:'A.15',text:'Lieferantenbeziehungen'},
-      {num:'A.16',text:'Handhabung von Informationssicherheitsvorfällen'},
-      {num:'A.17',text:'Business Continuity Management'},
-      {num:'A.18',text:'Compliance'},
-    ]
-  },
-  'ISO 22301': {
-    module:'security', fullName:'ISO 22301:2019 – Business Continuity Management',
-    desc:'Anforderungen an ein BCMS für organisatorische Resilienz.',
-    reqs:[
-      {num:'4',text:'Kontext der Organisation verstehen'},
-      {num:'5',text:'Führung und Verpflichtung'},
-      {num:'6',text:'Planung – Risiken und Chancen'},
-      {num:'7',text:'Unterstützung – Ressourcen, Kompetenz, Bewusstsein'},
-      {num:'8.2',text:'Business Impact Analyse (BIA)'},
-      {num:'8.3',text:'Business Continuity Strategien'},
-      {num:'8.4',text:'BC-Pläne und -Verfahren'},
-      {num:'8.5',text:'Übungsprogramm'},
-      {num:'9',text:'Leistungsbewertung'},
-      {num:'10',text:'Verbesserung'},
-    ]
-  },
-  'BSI IT-Grundschutz': {
-    module:'security', fullName:'BSI IT-Grundschutz-Kompendium',
-    desc:'Deutscher Standard für IT-Sicherheit mit Bausteinen und Maßnahmen.',
-    reqs:[
-      {num:'ISMS.1',text:'Sicherheitsmanagement'},
-      {num:'ORP.1',text:'Organisation'},
-      {num:'ORP.2',text:'Personal'},
-      {num:'ORP.3',text:'Sensibilisierung und Schulung'},
-      {num:'CON.1',text:'Kryptokonzept'},
-      {num:'CON.3',text:'Datensicherungskonzept'},
-      {num:'OPS.1',text:'Eigener IT-Betrieb'},
-      {num:'DER.1',text:'Detektion von sicherheitsrelevanten Ereignissen'},
-      {num:'DER.2',text:'Security Incident Management'},
-      {num:'INF.1',text:'Allgemeines Gebäude'},
-      {num:'INF.2',text:'Rechenzentrum / Serverraum'},
-    ]
-  },
-  'KRITIS-DachG': {
-    module:'security', fullName:'KRITIS-Dachgesetz',
-    desc:'Physischer Schutz kritischer Infrastrukturen in Deutschland.',
-    reqs:[
-      {num:'§13',text:'Resilienzmaßnahmen für KRITIS-Betreiber'},
-      {num:'§14',text:'Risikoanalyse und -bewertung'},
-      {num:'§15',text:'Meldepflichten bei Sicherheitsvorfällen'},
-      {num:'§16',text:'Zuverlässigkeitsüberprüfung von Personal'},
-      {num:'§17',text:'Nachweispflicht gegenüber Behörden'},
-    ]
-  },
-  'NIS2': {
-    module:'security', fullName:'NIS2-Umsetzungsgesetz (BSIG §§28-39)',
-    desc:'EU-Richtlinie für Netz- und Informationssicherheit, umgesetzt in deutsches Recht.',
-    reqs:[
-      {num:'§30(1)',text:'Risikomanagementmaßnahmen'},
-      {num:'§30(2)',text:'Technische und organisatorische Maßnahmen'},
-      {num:'§31',text:'Meldepflicht bei erheblichen Sicherheitsvorfällen'},
-      {num:'§32',text:'Registrierungspflicht'},
-      {num:'§38',text:'Billigungs-, Überwachungs- und Schulungspflicht der Geschäftsleitung'},
-    ]
-  },
-  // ─── QM NORMS ───
-  'ISO 9001': {
-    module:'qm', fullName:'ISO 9001:2015 – Qualitätsmanagementsysteme',
-    desc:'Anforderungen an ein QMS für konsistente Produkt-/Dienstleistungsqualität.',
-    reqs:[
-      {num:'4.1',text:'Verstehen der Organisation und ihres Kontexts'},
-      {num:'4.2',text:'Erfordernisse und Erwartungen interessierter Parteien'},
-      {num:'4.3',text:'Festlegen des Anwendungsbereichs des QMS'},
-      {num:'4.4',text:'QMS und seine Prozesse'},
-      {num:'5.1',text:'Führung und Verpflichtung'},
-      {num:'5.2',text:'Qualitätspolitik'},
-      {num:'5.3',text:'Rollen, Verantwortlichkeiten und Befugnisse'},
-      {num:'6.1',text:'Maßnahmen zum Umgang mit Risiken und Chancen'},
-      {num:'6.2',text:'Qualitätsziele und Planung'},
-      {num:'6.3',text:'Planung von Änderungen'},
-      {num:'7.1',text:'Ressourcen (Personen, Infrastruktur, Umgebung)'},
-      {num:'7.2',text:'Kompetenz'},
-      {num:'7.3',text:'Bewusstsein'},
-      {num:'7.4',text:'Kommunikation'},
-      {num:'7.5',text:'Dokumentierte Information'},
-      {num:'8.1',text:'Betriebliche Planung und Steuerung'},
-      {num:'8.2',text:'Anforderungen an Produkte/Dienstleistungen'},
-      {num:'8.4',text:'Steuerung extern bereitgestellter Prozesse'},
-      {num:'8.5',text:'Produktion und Dienstleistungserbringung'},
-      {num:'8.7',text:'Steuerung nichtkonformer Ergebnisse'},
-      {num:'9.1',text:'Überwachung, Messung, Analyse und Bewertung'},
-      {num:'9.2',text:'Internes Audit'},
-      {num:'9.3',text:'Managementbewertung'},
-      {num:'10.1',text:'Verbesserung – Allgemeines'},
-      {num:'10.2',text:'Nichtkonformität und Korrekturmaßnahmen'},
-      {num:'10.3',text:'Fortlaufende Verbesserung'},
-    ]
-  },
-  'ISO 45001': {
-    module:'qm', fullName:'ISO 45001:2018 – Arbeits- und Gesundheitsschutz',
-    desc:'Managementsystem für Sicherheit und Gesundheit bei der Arbeit.',
-    reqs:[
-      {num:'4.1',text:'Verstehen der Organisation und ihres Kontexts'},
-      {num:'4.2',text:'Erfordernisse und Erwartungen von Arbeitnehmern'},
-      {num:'5.1',text:'Führung und Verpflichtung'},
-      {num:'5.2',text:'SGA-Politik'},
-      {num:'5.4',text:'Konsultation und Beteiligung von Arbeitnehmern'},
-      {num:'6.1',text:'Maßnahmen zum Umgang mit Risiken und Chancen'},
-      {num:'6.1.2',text:'Gefährdungsidentifizierung'},
-      {num:'6.1.3',text:'Bestimmung gesetzlicher Anforderungen'},
-      {num:'6.2',text:'SGA-Ziele und Planung'},
-      {num:'7.1',text:'Ressourcen'},
-      {num:'7.2',text:'Kompetenz'},
-      {num:'7.3',text:'Bewusstsein'},
-      {num:'7.4',text:'Kommunikation'},
-      {num:'7.5',text:'Dokumentierte Information'},
-      {num:'8.1',text:'Betriebliche Planung und Steuerung'},
-      {num:'8.1.2',text:'Beseitigung von Gefährdungen, Risikominderung'},
-      {num:'8.2',text:'Notfallplanung und -reaktion'},
-      {num:'9.1',text:'Überwachung, Messung, Analyse'},
-      {num:'9.1.2',text:'Bewertung der Einhaltung gesetzlicher Anforderungen'},
-      {num:'9.2',text:'Internes Audit'},
-      {num:'9.3',text:'Managementbewertung'},
-      {num:'10.2',text:'Vorfall, Nichtkonformität, Korrekturmaßnahme'},
-      {num:'10.3',text:'Fortlaufende Verbesserung'},
-    ]
-  },
+  'ISO 31000':{module:'security',fullName:'ISO 31000:2018 – Risikomanagement',desc:'Leitlinien für systematisches Risikomanagement.',reqs:[{num:'5.2',text:'Führung und Verpflichtung'},{num:'5.3',text:'Integration in Organisationsprozesse'},{num:'6.1',text:'Kommunikation und Konsultation'},{num:'6.3',text:'Risikoidentifikation'},{num:'6.4',text:'Risikoanalyse'},{num:'6.5',text:'Risikobewertung'},{num:'6.6',text:'Risikobehandlung'},{num:'6.7',text:'Überwachung und Überprüfung'}]},
+  'ISO/IEC 27001':{module:'security',fullName:'ISO/IEC 27001:2022 – Informationssicherheit',desc:'ISMS-Anforderungen.',reqs:[{num:'A.5',text:'Informationssicherheitsrichtlinien'},{num:'A.6',text:'Organisation der Informationssicherheit'},{num:'A.7',text:'Personalsicherheit'},{num:'A.8',text:'Asset Management'},{num:'A.9',text:'Zugangssteuerung'},{num:'A.11',text:'Physische und umgebungsbezogene Sicherheit'},{num:'A.12',text:'Betriebssicherheit'},{num:'A.13',text:'Kommunikationssicherheit'},{num:'A.15',text:'Lieferantenbeziehungen'},{num:'A.16',text:'Informationssicherheitsvorfälle'},{num:'A.17',text:'Business Continuity Management'},{num:'A.18',text:'Compliance'}]},
+  'ISO 22301':{module:'security',fullName:'ISO 22301:2019 – Business Continuity',desc:'BCMS für organisatorische Resilienz.',reqs:[{num:'4',text:'Kontext der Organisation'},{num:'5',text:'Führung und Verpflichtung'},{num:'6',text:'Planung – Risiken und Chancen'},{num:'8.2',text:'Business Impact Analyse (BIA)'},{num:'8.3',text:'BC-Strategien'},{num:'8.4',text:'BC-Pläne und -Verfahren'},{num:'8.5',text:'Übungsprogramm'},{num:'9',text:'Leistungsbewertung'},{num:'10',text:'Verbesserung'}]},
+  'BSI IT-Grundschutz':{module:'security',fullName:'BSI IT-Grundschutz-Kompendium',desc:'Deutscher Standard für IT-Sicherheit.',reqs:[{num:'ISMS.1',text:'Sicherheitsmanagement'},{num:'ORP.1',text:'Organisation'},{num:'ORP.2',text:'Personal'},{num:'ORP.3',text:'Sensibilisierung und Schulung'},{num:'CON.3',text:'Datensicherungskonzept'},{num:'OPS.1',text:'Eigener IT-Betrieb'},{num:'DER.1',text:'Detektion sicherheitsrelevanter Ereignisse'},{num:'DER.2',text:'Security Incident Management'},{num:'INF.1',text:'Allgemeines Gebäude'},{num:'INF.2',text:'Rechenzentrum / Serverraum'}]},
+  'KRITIS-DachG':{module:'security',fullName:'KRITIS-Dachgesetz',desc:'Physischer Schutz kritischer Infrastrukturen.',reqs:[{num:'§13',text:'Resilienzmaßnahmen'},{num:'§14',text:'Risikoanalyse und -bewertung'},{num:'§15',text:'Meldepflichten'},{num:'§16',text:'Zuverlässigkeitsüberprüfung Personal'},{num:'§17',text:'Nachweispflicht'}]},
+  'NIS2':{module:'security',fullName:'NIS2-Umsetzungsgesetz (BSIG §§28-39)',desc:'EU-Richtlinie Netz- und Informationssicherheit.',reqs:[{num:'§30(1)',text:'Risikomanagementmaßnahmen'},{num:'§30(2)',text:'Technische/organisatorische Maßnahmen'},{num:'§31',text:'Meldepflicht bei Sicherheitsvorfällen'},{num:'§38',text:'Schulungspflicht Geschäftsleitung'}]},
+  'ISO 9001':{module:'qm',fullName:'ISO 9001:2015 – Qualitätsmanagement',desc:'QMS-Anforderungen.',reqs:[{num:'4.1',text:'Kontext der Organisation'},{num:'4.2',text:'Interessierte Parteien'},{num:'4.3',text:'Anwendungsbereich QMS'},{num:'5.1',text:'Führung und Verpflichtung'},{num:'5.2',text:'Qualitätspolitik'},{num:'5.3',text:'Rollen und Verantwortlichkeiten'},{num:'6.1',text:'Risiken und Chancen'},{num:'6.2',text:'Qualitätsziele'},{num:'7.1',text:'Ressourcen'},{num:'7.2',text:'Kompetenz'},{num:'7.4',text:'Kommunikation'},{num:'7.5',text:'Dokumentierte Information'},{num:'8.1',text:'Betriebliche Planung'},{num:'8.2',text:'Kundenanforderungen'},{num:'8.4',text:'Externe Anbieter'},{num:'8.5',text:'Produktion/DL-Erbringung'},{num:'8.7',text:'Nichtkonformitäten'},{num:'9.1',text:'Überwachung und Messung'},{num:'9.2',text:'Internes Audit'},{num:'9.3',text:'Managementbewertung'},{num:'10.2',text:'Korrekturmaßnahmen'},{num:'10.3',text:'Fortlaufende Verbesserung'}]},
+  'ISO 45001':{module:'qm',fullName:'ISO 45001:2018 – Arbeitsschutz',desc:'SGA-Managementsystem.',reqs:[{num:'4.1',text:'Kontext der Organisation'},{num:'4.2',text:'Arbeitnehmer-Erfordernisse'},{num:'5.1',text:'Führung und Verpflichtung'},{num:'5.2',text:'SGA-Politik'},{num:'5.4',text:'Konsultation Arbeitnehmer'},{num:'6.1',text:'Risiken und Chancen'},{num:'6.1.2',text:'Gefährdungsidentifizierung'},{num:'6.2',text:'SGA-Ziele'},{num:'7.2',text:'Kompetenz'},{num:'7.5',text:'Dokumentierte Information'},{num:'8.1',text:'Betriebliche Steuerung'},{num:'8.1.2',text:'Gefahrenbeseitigung'},{num:'8.2',text:'Notfallplanung'},{num:'9.1',text:'Überwachung'},{num:'9.2',text:'Internes Audit'},{num:'9.3',text:'Managementbewertung'},{num:'10.2',text:'Vorfall/Korrekturmaßnahme'},{num:'10.3',text:'Fortlaufende Verbesserung'}]}
 };
 
-// ── AUDIT CHECK AREAS with items ──
 const CHECKS = [
-  // ═══ SECURITY AREAS ═══
-  {
-    id:'perimeter', label:'Perimeter & Gelände', module:'security',
-    norms:['ISO 31000','KRITIS-DachG','BSI IT-Grundschutz'],
-    icon:'🏗️', sub:'Äußere Sicherungslinie, Geländebegrenzung, Fahrzeugschutz und Beleuchtung.',
-    items:[
-      {id:'p1',label:'Geländeeinfriedung / Zaunanlage',norm:'DIN EN 1627 · BSI INF.1',desc:'Zustand, Höhe (≥2m), Material, Übersteigschutz und Lückenfreiheit.',costs:{mangel:'2.000–8.000',kritisch:'8.000–25.000'},module:'security'},
-      {id:'p2',label:'Fahrzeugsperre / Poller',norm:'PAS 68 · IWA 14',desc:'Schutz vor Fahrzeugrammen an Eingängen, Ladezonen und Fassaden.',costs:{mangel:'5.000–15.000',kritisch:'15.000–60.000'},module:'security'},
-      {id:'p3',label:'Geländebeleuchtung',norm:'DIN EN 12464 · BSI INF.1',desc:'Lückenlose Ausleuchtung aller Zugänge, Ecken, Nischen und Parkflächen.',costs:{mangel:'2.000–6.000',kritisch:'6.000–15.000'},module:'security'},
-      {id:'p4',label:'Kennzeichnung & Beschilderung',norm:'ASR A1.3 · ISO 7010',desc:'Sicherheits-, Verbots- und Hinweisschilder an allen relevanten Stellen.',costs:{mangel:'200–800',kritisch:'800–2.000'},module:'security'},
-      {id:'p5',label:'Drohnen-/Luftraumüberwachung',norm:'KRITIS-DachG §13',desc:'Maßnahmen gegen unbemannten Luftfahrzeugzugang (KRITIS-relevant).',costs:{mangel:'10.000–30.000',kritisch:'30.000–100.000'},module:'security'},
-    ]
-  },
-  {
-    id:'zutritt', label:'Zutrittskontrolle', module:'security',
-    norms:['ISO/IEC 27001','BSI IT-Grundschutz','NIS2'],
-    icon:'🔐', sub:'Zutrittsmanagementsysteme, Schlüsselverwaltung, Schleusensysteme und Besuchermanagement.',
-    items:[
-      {id:'z1',label:'Elektronische Zutrittskontrolle (ZKS)',norm:'DIN VDE 0830-8 · ISO 27001 A.11',desc:'ZKS mit Protokollierung, Karten/PIN/Biometrie, zeitgesteuerte Zonen.',costs:{mangel:'5.000–15.000',kritisch:'15.000–40.000'},module:'security'},
-      {id:'z2',label:'Schlüsselverwaltung',norm:'VdS 2311',desc:'Dokumentiertes Schlüsselregister, Ausgabe-/Rückgabeprotokoll.',costs:{mangel:'500–2.000',kritisch:'2.000–8.000'},module:'security'},
-      {id:'z3',label:'Einlassschleuse / Vereinzelung',norm:'DIN EN 1627',desc:'Sicherheitsschleuse oder Vereinzelungsanlage für Hochsicherheitsbereiche.',costs:{mangel:'8.000–20.000',kritisch:'20.000–60.000'},module:'security'},
-      {id:'z4',label:'Besuchermanagement',norm:'ISO 27001 A.11 · ISO 9001 8.4',desc:'Registrierung, Begleitpflicht, Besucherausweis, Dokumentation.',costs:{mangel:'1.000–4.000',kritisch:'4.000–10.000'},module:'security'},
-      {id:'z5',label:'Berechtigungskonzept',norm:'ISO 27001 A.9 · BSI ORP.1',desc:'Dokumentiertes Konzept: Wer darf wohin, regelmäßige Überprüfung.',costs:{mangel:'1.500–4.000',kritisch:'4.000–8.000'},module:'security'},
-      {id:'z6',label:'Serverraum / Technikräume',norm:'ISO 27001 A.11 · BSI INF.2',desc:'Separater Zugang, personenbezogene Protokollierung, Klimaüberwachung.',costs:{mangel:'3.000–10.000',kritisch:'10.000–25.000'},module:'security'},
-    ]
-  },
-  {
-    id:'einbruch', label:'Einbruchhemmung', module:'security',
-    norms:['ISO 31000','BSI IT-Grundschutz'],
-    icon:'🚪', sub:'Widerstandsklassen von Türen, Fenstern, Tresoren und Schließanlagen.',
-    items:[
-      {id:'e1',label:'Außentüren – Widerstandsklasse',norm:'DIN EN 1627 RC2–RC4',desc:'Türen inkl. Zargen ≥ RC2 an allen kritischen Zugängen.',costs:{mangel:'1.500–5.000',kritisch:'5.000–15.000'},module:'security'},
-      {id:'e2',label:'Fenster & Verglasungen',norm:'DIN EN 1627 · EN 356',desc:'Einbruchhemmende Verglasung ≥ P6B an EG-Fenstern.',costs:{mangel:'2.000–8.000',kritisch:'8.000–25.000'},module:'security'},
-      {id:'e3',label:'Tresore & Wertbehältnisse',norm:'EN 1143-1',desc:'Zertifizierung, Verankerung, korrekte Sicherheitsstufe.',costs:{mangel:'2.000–6.000',kritisch:'6.000–20.000'},module:'security'},
-      {id:'e4',label:'Schlösser & Schließanlagen',norm:'DIN 18251',desc:'Sicherheitsschlösser, BZ-Zylinder, Patentschutz.',costs:{mangel:'500–2.500',kritisch:'2.500–8.000'},module:'security'},
-      {id:'e5',label:'Kellerzugänge / Nebeneingänge',norm:'DIN EN 1627 · BSI INF.1',desc:'Gleiches Sicherheitsniveau wie Hauptzugang.',costs:{mangel:'800–3.000',kritisch:'3.000–10.000'},module:'security'},
-    ]
-  },
-  {
-    id:'video', label:'Videoüberwachung', module:'security',
-    norms:['ISO/IEC 27001','BSI IT-Grundschutz','NIS2'],
-    icon:'📹', sub:'Kameraabdeckung, Auflösung, Speicherdauer, DSGVO-Konformität und Monitoring.',
-    items:[
-      {id:'v1',label:'Kameraabdeckung Eingänge',norm:'DIN EN 62676-4',desc:'Alle Zugänge mit Vollbild-Identifikationsqualität abgedeckt.',costs:{mangel:'3.000–8.000',kritisch:'8.000–20.000'},module:'security'},
-      {id:'v2',label:'Innenraum-Überwachung',norm:'DIN EN 62676-4 · ISO 27001 A.11',desc:'Empfang, Serverraum, Tresor, Lagerbereich überwacht.',costs:{mangel:'2.000–6.000',kritisch:'6.000–15.000'},module:'security'},
-      {id:'v3',label:'Bildqualität & Auflösung',norm:'DIN EN 62676-4',desc:'Min. 1080p, ausreichende Framerate für Bewegungserfassung.',costs:{mangel:'4.000–12.000',kritisch:'12.000–30.000'},module:'security'},
-      {id:'v4',label:'Speicherdauer & -sicherheit',norm:'VdS 2366 · DSGVO',desc:'Min. 72h Speicherung, manipulationsgeschützt.',costs:{mangel:'1.500–4.000',kritisch:'4.000–10.000'},module:'security'},
-      {id:'v5',label:'DSGVO-konforme Kennzeichnung',norm:'DSGVO Art. 13 · BDSG §4',desc:'Sichtbare Hinweisschilder an allen überwachten Bereichen.',costs:{mangel:'200–600',kritisch:'600–2.000'},module:'security'},
-      {id:'v6',label:'Leitwarte / aktives Monitoring',norm:'VdS 2366',desc:'24/7-Monitoring oder Aufschaltung auf Wachdienstleitstelle.',costs:{mangel:'5.000–15.000',kritisch:'15.000–50.000'},module:'security'},
-    ]
-  },
-  {
-    id:'alarm', label:'Alarm & Meldeanlagen', module:'security',
-    norms:['ISO 31000','BSI IT-Grundschutz'],
-    icon:'🚨', sub:'EMA, ÜMA, Aufschaltung, Bewegungsmelder, Wartungsnachweise.',
-    items:[
-      {id:'a1',label:'Einbruchmeldeanlage (EMA)',norm:'DIN EN 50131 Grad 2–3',desc:'VdS-anerkannte EMA mit zertifizierten Komponenten.',costs:{mangel:'5.000–15.000',kritisch:'15.000–40.000'},module:'security'},
-      {id:'a2',label:'Aufschaltung auf NSL',norm:'VdS 2311',desc:'24/7-Aufschaltung auf Notruf- & Serviceleitstelle.',costs:{mangel:'2.000–5.000',kritisch:'5.000–12.000'},module:'security'},
-      {id:'a3',label:'Überfallmeldeanlage (ÜMA)',norm:'DIN VDE 0833-3',desc:'Stille Alarmgeber an Empfang, Kasse und kritischen Positionen.',costs:{mangel:'1.500–4.000',kritisch:'4.000–10.000'},module:'security'},
-      {id:'a4',label:'Bewegungsmelder',norm:'DIN EN 50131-2',desc:'PIR/Dual-Tech-Melder in allen kritischen Zonen.',costs:{mangel:'2.000–6.000',kritisch:'6.000–15.000'},module:'security'},
-      {id:'a5',label:'Wartung & Prüfnachweis',norm:'VdS 2311',desc:'Jährliche Wartung dokumentiert, Prüfprotokoll aktuell.',costs:{mangel:'500–1.500',kritisch:'1.500–4.000'},module:'security'},
-    ]
-  },
-  {
-    id:'brand', label:'Brandschutz', module:'security',
-    norms:['ISO 45001','BSI IT-Grundschutz'],
-    icon:'🔥', sub:'Brandmelde- und Löschanlagen, Fluchtwege, Brandschutzordnung, Brandschutzbeauftragter.',
-    items:[
-      {id:'b1',label:'Brandmeldeanlage (BMA)',norm:'DIN 14675 · VDE 0833-2',desc:'BMA mit automatischen Meldern, aufgeschaltet auf Feuerwehr.',costs:{mangel:'8.000–25.000',kritisch:'25.000–80.000'},module:'security'},
-      {id:'b2',label:'Handlöscher & Löscheinrichtungen',norm:'DIN EN 3 · ASR A2.2',desc:'Ausreichend Feuerlöscher, korrekte Löschmittelklassen, geprüft.',costs:{mangel:'500–2.000',kritisch:'2.000–6.000'},module:'security'},
-      {id:'b3',label:'Fluchtwege & Notausgänge',norm:'ASR A2.3 · DIN EN 1838',desc:'Freie, gekennzeichnete Fluchtwege, Notbeleuchtung funktionsfähig.',costs:{mangel:'1.000–4.000',kritisch:'4.000–12.000'},module:'security'},
-      {id:'b4',label:'Brandschutzordnung (Teil A/B/C)',norm:'DIN 14096',desc:'Aktuelle Aushänge, dokumentierte Ordnung, Schulungsnachweise.',costs:{mangel:'800–2.500',kritisch:'2.500–6.000'},module:'security'},
-      {id:'b5',label:'Brandschutzbeauftragter',norm:'DGUV I 205-003',desc:'Schriftliche Bestellung, Ausbildungsnachweis, Aufgabenprofil.',costs:{mangel:'2.000–5.000',kritisch:'5.000–10.000'},module:'security'},
-    ]
-  },
-  {
-    id:'orga_sec', label:'Sicherheitsorganisation', module:'security',
-    norms:['ISO 31000','ISO/IEC 27001','ISO 22301','NIS2','KRITIS-DachG'],
-    icon:'📋', sub:'Sicherheitsrichtlinien, Verantwortlichkeiten, Schulungen, Notfall- und BCM-Planung.',
-    items:[
-      {id:'o1',label:'Sicherheitsrichtlinie',norm:'ISO 31000 · ISO 27001 A.5',desc:'Schriftliche Policy, von GF unterzeichnet, allen Mitarbeitern bekannt.',costs:{mangel:'2.000–5.000',kritisch:'5.000–10.000'},module:'security'},
-      {id:'o2',label:'Sicherheitsverantwortlicher benannt',norm:'NIS2 §38 · KRITIS-DachG',desc:'Namentliche Benennung, Stellvertretung, Kompetenznachweis.',costs:{mangel:'1.000–3.000',kritisch:'3.000–8.000'},module:'security'},
-      {id:'o3',label:'Security Awareness Schulungen',norm:'ISO 27001 A.7 · BSI ORP.3',desc:'Regelmäßige Schulungen mit Nachweisen, Schulungskonzept vorhanden.',costs:{mangel:'3.000–8.000',kritisch:'8.000–20.000'},module:'security'},
-      {id:'o4',label:'Notfall- & Krisenplan',norm:'ISO 22301 §8.4',desc:'Schriftlicher Plan, getestet, Verantwortlichkeiten definiert.',costs:{mangel:'4.000–10.000',kritisch:'10.000–25.000'},module:'security'},
-      {id:'o5',label:'Business Impact Analyse (BIA)',norm:'ISO 22301 §8.2',desc:'Dokumentierte BIA, maximale Ausfallzeiten (RTO/RPO) festgelegt.',costs:{mangel:'3.000–8.000',kritisch:'8.000–18.000'},module:'security'},
-      {id:'o6',label:'BC-Übungsprogramm',norm:'ISO 22301 §8.5',desc:'Regelmäßige BC/DR-Tests, Ergebnisdokumentation, Lessons Learned.',costs:{mangel:'2.000–6.000',kritisch:'6.000–15.000'},module:'security'},
-      {id:'o7',label:'Zuverlässigkeitsüberprüfung Personal',norm:'KRITIS-DachG §16',desc:'Verfahren für sicherheitsrelevante Positionen dokumentiert.',costs:{mangel:'1.500–4.000',kritisch:'4.000–10.000'},module:'security'},
-      {id:'o8',label:'Sicherheitsaudits & Reviews',norm:'ISO 27001 9.2 · ISO 31000',desc:'Regelmäßige interne/externe Audits, Maßnahmenverfolgung.',costs:{mangel:'3.000–8.000',kritisch:'8.000–15.000'},module:'security'},
-      {id:'o9',label:'Lieferanten-Sicherheitsanforderungen',norm:'ISO 27001 A.15 · NIS2',desc:'Vertragliche Anforderungen, Dienstleister-Audits.',costs:{mangel:'2.000–5.000',kritisch:'5.000–12.000'},module:'security'},
-      {id:'o10',label:'Meldepflicht-Prozess',norm:'NIS2 §31 · KRITIS-DachG §15',desc:'Definierter Meldeprozess (24h/72h), Verantwortlichkeiten klar.',costs:{mangel:'1.000–3.000',kritisch:'3.000–8.000'},module:'security'},
-    ]
-  },
-  {
-    id:'it_phys', label:'IT-Infrastruktur (physisch)', module:'security',
-    norms:['ISO/IEC 27001','BSI IT-Grundschutz','NIS2'],
-    icon:'🖥️', sub:'Physischer Schutz von Serverräumen, Netzwerk, Endgeräten und Datenträgern.',
-    items:[
-      {id:'i1',label:'Serverraum / RZ gesichert',norm:'ISO 27001 A.11 · BSI INF.2',desc:'Separater Zugang, ZKS, Klimatisierung, USV, Brandschutz.',costs:{mangel:'5.000–15.000',kritisch:'15.000–50.000'},module:'security'},
-      {id:'i2',label:'Netzwerkschränke abgesichert',norm:'ISO 27001 A.11.2 · BSI INF.2',desc:'Verschlossen, Zugang nur autorisiert, dokumentiert.',costs:{mangel:'500–2.000',kritisch:'2.000–6.000'},module:'security'},
-      {id:'i3',label:'Kabelführung & Schutz',norm:'ISO 27001 A.11.2',desc:'Schutz vor physischem Zugriff, Beschädigung, Abhören.',costs:{mangel:'1.000–4.000',kritisch:'4.000–12.000'},module:'security'},
-      {id:'i4',label:'Datenträgervernichtung',norm:'DIN 66399 · ISO 21964',desc:'Zertifizierte Vernichtung, Vernichtungsnachweis.',costs:{mangel:'500–2.000',kritisch:'2.000–5.000'},module:'security'},
-      {id:'i5',label:'Clean-Desk-Policy',norm:'ISO 27001 A.11.2 · BSI ORP.1',desc:'Schriftliche Policy, Stichproben, keine offenen Unterlagen.',costs:{mangel:'500–1.500',kritisch:'1.500–4.000'},module:'security'},
-    ]
-  },
-  // ═══ QM AREAS ═══
-  {
-    id:'qm_kontext', label:'Kontext & Führung (QM)', module:'qm',
-    norms:['ISO 9001','ISO 45001'],
-    icon:'🎯', sub:'Kontext der Organisation, interessierte Parteien, Anwendungsbereich, Führung und Politik.',
-    items:[
-      {id:'q1',label:'Kontext der Organisation bestimmt',norm:'ISO 9001 4.1 · ISO 45001 4.1',desc:'Interne/externe Themen identifiziert und dokumentiert.',costs:{mangel:'1.500–4.000',kritisch:'4.000–10.000'},module:'qm'},
-      {id:'q2',label:'Interessierte Parteien ermittelt',norm:'ISO 9001 4.2 · ISO 45001 4.2',desc:'Stakeholder-Analyse mit Erwartungen und Anforderungen.',costs:{mangel:'1.000–3.000',kritisch:'3.000–8.000'},module:'qm'},
-      {id:'q3',label:'Anwendungsbereich festgelegt',norm:'ISO 9001 4.3',desc:'Klar definiert, dokumentiert, Ausschlüsse begründet.',costs:{mangel:'500–2.000',kritisch:'2.000–5.000'},module:'qm'},
-      {id:'q4',label:'Qualitätspolitik',norm:'ISO 9001 5.2',desc:'Von GF festgelegt, kommuniziert, angemessen, regelmäßig überprüft.',costs:{mangel:'1.000–3.000',kritisch:'3.000–6.000'},module:'qm'},
-      {id:'q5',label:'SGA-Politik (Arbeitsschutz)',norm:'ISO 45001 5.2',desc:'Verpflichtung zur sicheren Arbeitsumgebung, dokumentiert.',costs:{mangel:'1.000–3.000',kritisch:'3.000–6.000'},module:'qm'},
-      {id:'q6',label:'Rollen & Verantwortlichkeiten',norm:'ISO 9001 5.3 · ISO 45001 5.3',desc:'Organigramm, Stellenbeschreibungen, Vertretungsregelung.',costs:{mangel:'1.500–4.000',kritisch:'4.000–8.000'},module:'qm'},
-      {id:'q7',label:'Arbeitnehmer-Konsultation',norm:'ISO 45001 5.4',desc:'Beteiligungsverfahren dokumentiert, regelmäßig durchgeführt.',costs:{mangel:'1.000–3.000',kritisch:'3.000–7.000'},module:'qm'},
-    ]
-  },
-  {
-    id:'qm_planung', label:'Planung & Risiken (QM)', module:'qm',
-    norms:['ISO 9001','ISO 45001'],
-    icon:'📊', sub:'Risiko- und Chancenbewertung, Qualitäts-/SGA-Ziele, Gefährdungsbeurteilungen.',
-    items:[
-      {id:'qp1',label:'Risiken & Chancen bewertet',norm:'ISO 9001 6.1 · ISO 45001 6.1',desc:'Systematische Bewertung (z.B. FMEA, Risikomatrix), dokumentiert.',costs:{mangel:'2.000–6.000',kritisch:'6.000–15.000'},module:'qm'},
-      {id:'qp2',label:'Qualitätsziele definiert',norm:'ISO 9001 6.2',desc:'SMART-Ziele, messbar, kommuniziert, nachverfolgt.',costs:{mangel:'1.000–3.000',kritisch:'3.000–6.000'},module:'qm'},
-      {id:'qp3',label:'SGA-Ziele definiert',norm:'ISO 45001 6.2',desc:'Arbeitsschutz-Ziele messbar definiert und nachverfolgt.',costs:{mangel:'1.000–3.000',kritisch:'3.000–6.000'},module:'qm'},
-      {id:'qp4',label:'Gefährdungsbeurteilung',norm:'ISO 45001 6.1.2 · ArbSchG §5',desc:'Alle Arbeitsplätze beurteilt, Maßnahmen abgeleitet, aktuell.',costs:{mangel:'3.000–8.000',kritisch:'8.000–20.000'},module:'qm'},
-      {id:'qp5',label:'Rechtskataster / Compliance-Register',norm:'ISO 45001 6.1.3 · ISO 9001 8.2',desc:'Alle zutreffenden Gesetze/Vorschriften erfasst und aktuell.',costs:{mangel:'2.000–5.000',kritisch:'5.000–12.000'},module:'qm'},
-      {id:'qp6',label:'Änderungsmanagement',norm:'ISO 9001 6.3',desc:'Geplante Änderungen bewertet, Auswirkungen analysiert.',costs:{mangel:'1.500–4.000',kritisch:'4.000–8.000'},module:'qm'},
-    ]
-  },
-  {
-    id:'qm_support', label:'Ressourcen & Kompetenz', module:'qm',
-    norms:['ISO 9001','ISO 45001'],
-    icon:'👥', sub:'Personal, Infrastruktur, Kompetenz, Bewusstsein, Kommunikation und dokumentierte Information.',
-    items:[
-      {id:'qs1',label:'Ressourcen bereitgestellt',norm:'ISO 9001 7.1',desc:'Personal, Infrastruktur, Arbeitsumgebung ausreichend.',costs:{mangel:'2.000–6.000',kritisch:'6.000–15.000'},module:'qm'},
-      {id:'qs2',label:'Kompetenzmanagement',norm:'ISO 9001 7.2 · ISO 45001 7.2',desc:'Ausbildung, Schulung, Erfahrung nachgewiesen, Schulungsplan.',costs:{mangel:'2.000–6.000',kritisch:'6.000–15.000'},module:'qm'},
-      {id:'qs3',label:'Bewusstsein der Mitarbeiter',norm:'ISO 9001 7.3 · ISO 45001 7.3',desc:'Mitarbeiter kennen Politik, Ziele, ihren Beitrag zum QMS/SGAMS.',costs:{mangel:'1.000–3.000',kritisch:'3.000–8.000'},module:'qm'},
-      {id:'qs4',label:'Interne/externe Kommunikation',norm:'ISO 9001 7.4 · ISO 45001 7.4',desc:'Kommunikationswege definiert: Was, wann, an wen, wie.',costs:{mangel:'1.000–3.000',kritisch:'3.000–6.000'},module:'qm'},
-      {id:'qs5',label:'Dokumentenlenkung',norm:'ISO 9001 7.5',desc:'Erstellung, Genehmigung, Verteilung, Archivierung geregelt.',costs:{mangel:'2.000–5.000',kritisch:'5.000–10.000'},module:'qm'},
-      {id:'qs6',label:'Prüf- und Messmittelmanagement',norm:'ISO 9001 7.1.5',desc:'Kalibrierung, Rückführbarkeit, Prüfmittelüberwachung.',costs:{mangel:'1.500–4.000',kritisch:'4.000–10.000'},module:'qm'},
-    ]
-  },
-  {
-    id:'qm_betrieb', label:'Betrieb & Steuerung (QM)', module:'qm',
-    norms:['ISO 9001','ISO 45001'],
-    icon:'⚙️', sub:'Operative Planung, Kundenanforderungen, Lieferanten, Produktion, Nichtkonformitäten.',
-    items:[
-      {id:'qb1',label:'Betriebliche Planung & Steuerung',norm:'ISO 9001 8.1 · ISO 45001 8.1',desc:'Prozesse geplant, gesteuert, Kriterien festgelegt.',costs:{mangel:'2.000–5.000',kritisch:'5.000–12.000'},module:'qm'},
-      {id:'qb2',label:'Kundenanforderungen ermittelt',norm:'ISO 9001 8.2',desc:'Anforderungen an Produkte/DL bestimmt, überprüft, bestätigt.',costs:{mangel:'1.500–4.000',kritisch:'4.000–10.000'},module:'qm'},
-      {id:'qb3',label:'Lieferantensteuerung',norm:'ISO 9001 8.4',desc:'Bewertung, Auswahl, Überwachung externer Anbieter.',costs:{mangel:'2.000–5.000',kritisch:'5.000–12.000'},module:'qm'},
-      {id:'qb4',label:'Produktions-/DL-Steuerung',norm:'ISO 9001 8.5',desc:'Kontrollierte Bedingungen, Rückverfolgbarkeit, Eigentumsschutz.',costs:{mangel:'2.000–6.000',kritisch:'6.000–15.000'},module:'qm'},
-      {id:'qb5',label:'Nichtkonformitäten-Management',norm:'ISO 9001 8.7 · ISO 45001 10.2',desc:'Fehlerhafte Ergebnisse identifiziert, bewertet, korrigiert.',costs:{mangel:'1.500–4.000',kritisch:'4.000–10.000'},module:'qm'},
-      {id:'qb6',label:'Gefahrenbeseitigung / Risikominderung',norm:'ISO 45001 8.1.2',desc:'Hierarchie der Maßnahmen (Elimination → PSA) angewendet.',costs:{mangel:'2.000–6.000',kritisch:'6.000–15.000'},module:'qm'},
-      {id:'qb7',label:'Notfallplanung (SGA)',norm:'ISO 45001 8.2',desc:'Notfallverfahren festgelegt, geübt, Erste-Hilfe-Organisation.',costs:{mangel:'2.000–5.000',kritisch:'5.000–12.000'},module:'qm'},
-    ]
-  },
-  {
-    id:'qm_bewertung', label:'Bewertung & Verbesserung', module:'qm',
-    norms:['ISO 9001','ISO 45001'],
-    icon:'📈', sub:'Überwachung, Messung, Audits, Managementbewertung, Korrekturmaßnahmen, KVP.',
-    items:[
-      {id:'qv1',label:'Überwachung & Messung',norm:'ISO 9001 9.1 · ISO 45001 9.1',desc:'KPIs definiert, regelmäßig gemessen, analysiert.',costs:{mangel:'2.000–5.000',kritisch:'5.000–12.000'},module:'qm'},
-      {id:'qv2',label:'Kundenzufriedenheit',norm:'ISO 9001 9.1.2',desc:'Systematische Erfassung, Auswertung, Maßnahmenableitung.',costs:{mangel:'1.000–3.000',kritisch:'3.000–8.000'},module:'qm'},
-      {id:'qv3',label:'Compliance-Bewertung (SGA)',norm:'ISO 45001 9.1.2',desc:'Regelmäßige Bewertung der Einhaltung gesetzlicher Anforderungen.',costs:{mangel:'2.000–5.000',kritisch:'5.000–10.000'},module:'qm'},
-      {id:'qv4',label:'Internes Audit-Programm',norm:'ISO 9001 9.2 · ISO 45001 9.2',desc:'Auditplan, qualifizierte Auditoren, Berichte, Maßnahmen.',costs:{mangel:'3.000–8.000',kritisch:'8.000–18.000'},module:'qm'},
-      {id:'qv5',label:'Managementbewertung',norm:'ISO 9001 9.3 · ISO 45001 9.3',desc:'Regelmäßig (mind. jährlich), dokumentiert, Maßnahmen abgeleitet.',costs:{mangel:'2.000–5.000',kritisch:'5.000–10.000'},module:'qm'},
-      {id:'qv6',label:'Korrekturmaßnahmen',norm:'ISO 9001 10.2 · ISO 45001 10.2',desc:'Ursachenanalyse, Wirksamkeitsprüfung, dokumentiert.',costs:{mangel:'1.500–4.000',kritisch:'4.000–10.000'},module:'qm'},
-      {id:'qv7',label:'Fortlaufende Verbesserung (KVP)',norm:'ISO 9001 10.3 · ISO 45001 10.3',desc:'Systematischer KVP-Prozess, Verbesserungsvorschläge, Trendanalysen.',costs:{mangel:'1.500–4.000',kritisch:'4.000–8.000'},module:'qm'},
-    ]
-  },
+  {id:'perimeter',label:'Perimeter & Gelände',module:'security',norms:['ISO 31000','KRITIS-DachG','BSI IT-Grundschutz'],icon:'🏗️',sub:'Äußere Sicherungslinie, Geländebegrenzung, Beleuchtung.',items:[
+    {id:'p1',label:'Geländeeinfriedung / Zaunanlage',norm:'DIN EN 1627 · BSI INF.1',desc:'Zustand, Höhe ≥2m, Material, Lückenfreiheit.',costs:{mangel:'2.000–8.000',kritisch:'8.000–25.000'},module:'security'},
+    {id:'p2',label:'Fahrzeugsperre / Poller',norm:'PAS 68 · IWA 14',desc:'Schutz vor Rammen an Eingängen und Ladezonen.',costs:{mangel:'5.000–15.000',kritisch:'15.000–60.000'},module:'security'},
+    {id:'p3',label:'Geländebeleuchtung',norm:'DIN EN 12464 · BSI INF.1',desc:'Lückenlose Ausleuchtung aller Zugänge und Ecken.',costs:{mangel:'2.000–6.000',kritisch:'6.000–15.000'},module:'security'},
+    {id:'p4',label:'Kennzeichnung & Beschilderung',norm:'ASR A1.3 · ISO 7010',desc:'Sicherheits- und Verbotsschilder vollständig.',costs:{mangel:'200–800',kritisch:'800–2.000'},module:'security'},
+    {id:'p5',label:'Drohnen-/Luftraumüberwachung',norm:'KRITIS-DachG §13',desc:'Maßnahmen gegen UAV-Zugang (KRITIS).',costs:{mangel:'10.000–30.000',kritisch:'30.000–100.000'},module:'security'},
+  ]},
+  {id:'zutritt',label:'Zutrittskontrolle',module:'security',norms:['ISO/IEC 27001','BSI IT-Grundschutz','NIS2'],icon:'🔐',sub:'ZKS, Schlüsselverwaltung, Schleusen, Besuchermanagement.',items:[
+    {id:'z1',label:'Elektronische Zutrittskontrolle',norm:'DIN VDE 0830-8 · ISO 27001 A.11',desc:'ZKS mit Protokollierung, Karten/PIN/Biometrie.',costs:{mangel:'5.000–15.000',kritisch:'15.000–40.000'},module:'security'},
+    {id:'z2',label:'Schlüsselverwaltung',norm:'VdS 2311',desc:'Dokumentiertes Register, Ausgabeprotokoll.',costs:{mangel:'500–2.000',kritisch:'2.000–8.000'},module:'security'},
+    {id:'z3',label:'Einlassschleuse / Vereinzelung',norm:'DIN EN 1627',desc:'Sicherheitsschleuse für Hochsicherheitsbereiche.',costs:{mangel:'8.000–20.000',kritisch:'20.000–60.000'},module:'security'},
+    {id:'z4',label:'Besuchermanagement',norm:'ISO 27001 A.11 · ISO 9001 8.4',desc:'Registrierung, Begleitpflicht, Dokumentation.',costs:{mangel:'1.000–4.000',kritisch:'4.000–10.000'},module:'security'},
+    {id:'z5',label:'Berechtigungskonzept',norm:'ISO 27001 A.9 · BSI ORP.1',desc:'Wer darf wohin, regelmäßige Überprüfung.',costs:{mangel:'1.500–4.000',kritisch:'4.000–8.000'},module:'security'},
+    {id:'z6',label:'Serverraum / Technikräume',norm:'ISO 27001 A.11 · BSI INF.2',desc:'Separater Zugang, Protokollierung, Klima.',costs:{mangel:'3.000–10.000',kritisch:'10.000–25.000'},module:'security'},
+  ]},
+  {id:'einbruch',label:'Einbruchhemmung',module:'security',norms:['ISO 31000','BSI IT-Grundschutz'],icon:'🚪',sub:'Türen, Fenster, Tresore, Schließanlagen.',items:[
+    {id:'e1',label:'Außentüren – Widerstandsklasse',norm:'DIN EN 1627 RC2–RC4',desc:'Türen ≥ RC2 an kritischen Zugängen.',costs:{mangel:'1.500–5.000',kritisch:'5.000–15.000'},module:'security'},
+    {id:'e2',label:'Fenster & Verglasungen',norm:'DIN EN 1627 · EN 356',desc:'Einbruchhemmend ≥ P6B im EG.',costs:{mangel:'2.000–8.000',kritisch:'8.000–25.000'},module:'security'},
+    {id:'e3',label:'Tresore & Wertbehältnisse',norm:'EN 1143-1',desc:'Zertifizierung, Verankerung.',costs:{mangel:'2.000–6.000',kritisch:'6.000–20.000'},module:'security'},
+    {id:'e4',label:'Schlösser & Schließanlagen',norm:'DIN 18251',desc:'Sicherheitsschlösser, BZ-Zylinder.',costs:{mangel:'500–2.500',kritisch:'2.500–8.000'},module:'security'},
+  ]},
+  {id:'video',label:'Videoüberwachung',module:'security',norms:['ISO/IEC 27001','BSI IT-Grundschutz'],icon:'📹',sub:'Kameraabdeckung, Auflösung, Speicher, DSGVO.',items:[
+    {id:'v1',label:'Kameraabdeckung Eingänge',norm:'DIN EN 62676-4',desc:'Alle Zugänge mit Identifikationsqualität.',costs:{mangel:'3.000–8.000',kritisch:'8.000–20.000'},module:'security'},
+    {id:'v2',label:'Innenraum-Überwachung',norm:'DIN EN 62676-4 · ISO 27001',desc:'Kritische Bereiche überwacht.',costs:{mangel:'2.000–6.000',kritisch:'6.000–15.000'},module:'security'},
+    {id:'v3',label:'Bildqualität ≥ 1080p',norm:'DIN EN 62676-4',desc:'Auflösung und Framerate ausreichend.',costs:{mangel:'4.000–12.000',kritisch:'12.000–30.000'},module:'security'},
+    {id:'v4',label:'Speicherdauer ≥ 72h',norm:'VdS 2366 · DSGVO',desc:'Manipulationsgeschützte Aufzeichnung.',costs:{mangel:'1.500–4.000',kritisch:'4.000–10.000'},module:'security'},
+    {id:'v5',label:'DSGVO-Kennzeichnung',norm:'DSGVO Art. 13 · BDSG §4',desc:'Hinweisschilder an überwachten Bereichen.',costs:{mangel:'200–600',kritisch:'600–2.000'},module:'security'},
+    {id:'v6',label:'Leitwarte / Monitoring',norm:'VdS 2366',desc:'24/7-Monitoring oder Aufschaltung.',costs:{mangel:'5.000–15.000',kritisch:'15.000–50.000'},module:'security'},
+  ]},
+  {id:'alarm',label:'Alarm & Meldeanlagen',module:'security',norms:['ISO 31000','BSI IT-Grundschutz'],icon:'🚨',sub:'EMA, ÜMA, Aufschaltung NSL, Wartung.',items:[
+    {id:'a1',label:'Einbruchmeldeanlage (EMA)',norm:'DIN EN 50131 Grad 2–3',desc:'VdS-anerkannte EMA.',costs:{mangel:'5.000–15.000',kritisch:'15.000–40.000'},module:'security'},
+    {id:'a2',label:'Aufschaltung auf NSL',norm:'VdS 2311',desc:'24/7-Leitstelle aufgeschaltet.',costs:{mangel:'2.000–5.000',kritisch:'5.000–12.000'},module:'security'},
+    {id:'a3',label:'Überfallmeldeanlage (ÜMA)',norm:'DIN VDE 0833-3',desc:'Stille Alarmgeber an kritischen Positionen.',costs:{mangel:'1.500–4.000',kritisch:'4.000–10.000'},module:'security'},
+    {id:'a4',label:'Bewegungsmelder',norm:'DIN EN 50131-2',desc:'PIR/Dual-Tech in allen Zonen.',costs:{mangel:'2.000–6.000',kritisch:'6.000–15.000'},module:'security'},
+    {id:'a5',label:'Wartung & Prüfnachweis',norm:'VdS 2311',desc:'Jährliche Wartung dokumentiert.',costs:{mangel:'500–1.500',kritisch:'1.500–4.000'},module:'security'},
+  ]},
+  {id:'brand',label:'Brandschutz',module:'security',norms:['ISO 45001','BSI IT-Grundschutz'],icon:'🔥',sub:'BMA, Löscheinrichtungen, Fluchtwege, Brandschutzordnung.',items:[
+    {id:'b1',label:'Brandmeldeanlage (BMA)',norm:'DIN 14675 · VDE 0833-2',desc:'BMA mit automatischen Meldern, Feuerwehr-Aufschaltung.',costs:{mangel:'8.000–25.000',kritisch:'25.000–80.000'},module:'security'},
+    {id:'b2',label:'Handlöscher & Löscheinrichtungen',norm:'DIN EN 3 · ASR A2.2',desc:'Ausreichend, geprüft, korrekte Klassen.',costs:{mangel:'500–2.000',kritisch:'2.000–6.000'},module:'security'},
+    {id:'b3',label:'Fluchtwege & Notausgänge',norm:'ASR A2.3 · DIN EN 1838',desc:'Frei, gekennzeichnet, Notbeleuchtung.',costs:{mangel:'1.000–4.000',kritisch:'4.000–12.000'},module:'security'},
+    {id:'b4',label:'Brandschutzordnung A/B/C',norm:'DIN 14096',desc:'Aktuelle Aushänge und dokumentierte Ordnung.',costs:{mangel:'800–2.500',kritisch:'2.500–6.000'},module:'security'},
+    {id:'b5',label:'Brandschutzbeauftragter',norm:'DGUV I 205-003',desc:'Bestellung, Ausbildungsnachweis.',costs:{mangel:'2.000–5.000',kritisch:'5.000–10.000'},module:'security'},
+  ]},
+  {id:'orga_sec',label:'Sicherheitsorganisation',module:'security',norms:['ISO 31000','ISO/IEC 27001','ISO 22301','NIS2','KRITIS-DachG'],icon:'📋',sub:'Richtlinien, Schulungen, Notfallplanung, BCM, Meldepflichten.',items:[
+    {id:'o1',label:'Sicherheitsrichtlinie',norm:'ISO 31000 · ISO 27001 A.5',desc:'Schriftliche Policy, GF-unterzeichnet, kommuniziert.',costs:{mangel:'2.000–5.000',kritisch:'5.000–10.000'},module:'security'},
+    {id:'o2',label:'Sicherheitsverantwortlicher',norm:'NIS2 §38 · KRITIS-DachG',desc:'Namentlich benannt, Stellvertretung, Kompetenz.',costs:{mangel:'1.000–3.000',kritisch:'3.000–8.000'},module:'security'},
+    {id:'o3',label:'Security Awareness Schulungen',norm:'ISO 27001 A.7 · BSI ORP.3',desc:'Regelmäßig, Nachweise vorhanden.',costs:{mangel:'3.000–8.000',kritisch:'8.000–20.000'},module:'security'},
+    {id:'o4',label:'Notfall- & Krisenplan',norm:'ISO 22301 §8.4',desc:'Schriftlich, getestet, Verantwortlichkeiten klar.',costs:{mangel:'4.000–10.000',kritisch:'10.000–25.000'},module:'security'},
+    {id:'o5',label:'Business Impact Analyse',norm:'ISO 22301 §8.2',desc:'BIA dokumentiert, RTO/RPO festgelegt.',costs:{mangel:'3.000–8.000',kritisch:'8.000–18.000'},module:'security'},
+    {id:'o6',label:'BC-Übungsprogramm',norm:'ISO 22301 §8.5',desc:'Regelmäßige Tests, Ergebnisdokumentation.',costs:{mangel:'2.000–6.000',kritisch:'6.000–15.000'},module:'security'},
+    {id:'o7',label:'Personalüberprüfung',norm:'KRITIS-DachG §16',desc:'Verfahren für sicherheitsrelevante Positionen.',costs:{mangel:'1.500–4.000',kritisch:'4.000–10.000'},module:'security'},
+    {id:'o8',label:'Sicherheitsaudits & Reviews',norm:'ISO 27001 9.2',desc:'Regelmäßige Audits, Maßnahmenverfolgung.',costs:{mangel:'3.000–8.000',kritisch:'8.000–15.000'},module:'security'},
+    {id:'o9',label:'Lieferanten-Sicherheit',norm:'ISO 27001 A.15 · NIS2',desc:'Vertragliche Anforderungen, Audits.',costs:{mangel:'2.000–5.000',kritisch:'5.000–12.000'},module:'security'},
+    {id:'o10',label:'Meldepflicht-Prozess',norm:'NIS2 §31 · KRITIS §15',desc:'24h/72h-Meldeprozess definiert.',costs:{mangel:'1.000–3.000',kritisch:'3.000–8.000'},module:'security'},
+  ]},
+  {id:'it_phys',label:'IT-Infrastruktur (physisch)',module:'security',norms:['ISO/IEC 27001','BSI IT-Grundschutz','NIS2'],icon:'🖥️',sub:'Serverraum, Netzwerk, Datenträger, Clean Desk.',items:[
+    {id:'i1',label:'Serverraum gesichert',norm:'ISO 27001 A.11 · BSI INF.2',desc:'Zugang, ZKS, Klima, USV, Brandschutz.',costs:{mangel:'5.000–15.000',kritisch:'15.000–50.000'},module:'security'},
+    {id:'i2',label:'Netzwerkschränke abgesichert',norm:'ISO 27001 A.11.2',desc:'Verschlossen, Zugang dokumentiert.',costs:{mangel:'500–2.000',kritisch:'2.000–6.000'},module:'security'},
+    {id:'i3',label:'Kabelführung & Schutz',norm:'ISO 27001 A.11.2',desc:'Schutz vor Zugriff und Beschädigung.',costs:{mangel:'1.000–4.000',kritisch:'4.000–12.000'},module:'security'},
+    {id:'i4',label:'Datenträgervernichtung',norm:'DIN 66399',desc:'Zertifizierte Vernichtung mit Nachweis.',costs:{mangel:'500–2.000',kritisch:'2.000–5.000'},module:'security'},
+    {id:'i5',label:'Clean-Desk-Policy',norm:'ISO 27001 A.11.2',desc:'Policy vorhanden, Stichproben.',costs:{mangel:'500–1.500',kritisch:'1.500–4.000'},module:'security'},
+  ]},
+  // ═══ QM ═══
+  {id:'qm_kontext',label:'Kontext & Führung (QM)',module:'qm',norms:['ISO 9001','ISO 45001'],icon:'🎯',sub:'Kontext, interessierte Parteien, Führung, Politik, Rollen.',items:[
+    {id:'q1',label:'Kontext der Organisation',norm:'ISO 9001 4.1 · ISO 45001 4.1',desc:'Interne/externe Themen identifiziert.',costs:{mangel:'1.500–4.000',kritisch:'4.000–10.000'},module:'qm'},
+    {id:'q2',label:'Interessierte Parteien',norm:'ISO 9001 4.2 · ISO 45001 4.2',desc:'Stakeholder-Analyse mit Erwartungen.',costs:{mangel:'1.000–3.000',kritisch:'3.000–8.000'},module:'qm'},
+    {id:'q3',label:'Anwendungsbereich QMS',norm:'ISO 9001 4.3',desc:'Definiert, dokumentiert, Ausschlüsse begründet.',costs:{mangel:'500–2.000',kritisch:'2.000–5.000'},module:'qm'},
+    {id:'q4',label:'Qualitätspolitik',norm:'ISO 9001 5.2',desc:'Von GF festgelegt, kommuniziert, überprüft.',costs:{mangel:'1.000–3.000',kritisch:'3.000–6.000'},module:'qm'},
+    {id:'q5',label:'SGA-Politik',norm:'ISO 45001 5.2',desc:'Arbeitsschutz-Verpflichtung dokumentiert.',costs:{mangel:'1.000–3.000',kritisch:'3.000–6.000'},module:'qm'},
+    {id:'q6',label:'Rollen & Verantwortlichkeiten',norm:'ISO 9001 5.3',desc:'Organigramm, Stellenbeschreibungen.',costs:{mangel:'1.500–4.000',kritisch:'4.000–8.000'},module:'qm'},
+  ]},
+  {id:'qm_planung',label:'Planung & Risiken (QM)',module:'qm',norms:['ISO 9001','ISO 45001'],icon:'📊',sub:'Risikobewertung, Ziele, Gefährdungsbeurteilung, Rechtskataster.',items:[
+    {id:'qp1',label:'Risiken & Chancen bewertet',norm:'ISO 9001 6.1 · ISO 45001 6.1',desc:'Systematische Bewertung dokumentiert.',costs:{mangel:'2.000–6.000',kritisch:'6.000–15.000'},module:'qm'},
+    {id:'qp2',label:'Qualitätsziele (SMART)',norm:'ISO 9001 6.2',desc:'Messbar, kommuniziert, nachverfolgt.',costs:{mangel:'1.000–3.000',kritisch:'3.000–6.000'},module:'qm'},
+    {id:'qp3',label:'SGA-Ziele',norm:'ISO 45001 6.2',desc:'Arbeitsschutz-Ziele messbar definiert.',costs:{mangel:'1.000–3.000',kritisch:'3.000–6.000'},module:'qm'},
+    {id:'qp4',label:'Gefährdungsbeurteilung',norm:'ISO 45001 6.1.2 · ArbSchG §5',desc:'Alle Arbeitsplätze beurteilt, aktuell.',costs:{mangel:'3.000–8.000',kritisch:'8.000–20.000'},module:'qm'},
+    {id:'qp5',label:'Rechtskataster',norm:'ISO 45001 6.1.3',desc:'Alle Gesetze/Vorschriften erfasst, aktuell.',costs:{mangel:'2.000–5.000',kritisch:'5.000–12.000'},module:'qm'},
+  ]},
+  {id:'qm_support',label:'Ressourcen & Kompetenz',module:'qm',norms:['ISO 9001','ISO 45001'],icon:'👥',sub:'Personal, Kompetenz, Bewusstsein, Kommunikation, Dokumente.',items:[
+    {id:'qs1',label:'Ressourcen bereitgestellt',norm:'ISO 9001 7.1',desc:'Personal, Infrastruktur ausreichend.',costs:{mangel:'2.000–6.000',kritisch:'6.000–15.000'},module:'qm'},
+    {id:'qs2',label:'Kompetenzmanagement',norm:'ISO 9001 7.2 · ISO 45001 7.2',desc:'Schulungsplan, Nachweise vorhanden.',costs:{mangel:'2.000–6.000',kritisch:'6.000–15.000'},module:'qm'},
+    {id:'qs3',label:'Mitarbeiter-Bewusstsein',norm:'ISO 9001 7.3',desc:'Kenntnis der Politik und Ziele.',costs:{mangel:'1.000–3.000',kritisch:'3.000–8.000'},module:'qm'},
+    {id:'qs4',label:'Kommunikation geregelt',norm:'ISO 9001 7.4',desc:'Was, wann, an wen, wie definiert.',costs:{mangel:'1.000–3.000',kritisch:'3.000–6.000'},module:'qm'},
+    {id:'qs5',label:'Dokumentenlenkung',norm:'ISO 9001 7.5',desc:'Erstellung, Genehmigung, Verteilung geregelt.',costs:{mangel:'2.000–5.000',kritisch:'5.000–10.000'},module:'qm'},
+  ]},
+  {id:'qm_betrieb',label:'Betrieb & Steuerung (QM)',module:'qm',norms:['ISO 9001','ISO 45001'],icon:'⚙️',sub:'Betriebsplanung, Kundenanforderungen, Lieferanten, Nichtkonformitäten.',items:[
+    {id:'qb1',label:'Betriebliche Planung',norm:'ISO 9001 8.1 · ISO 45001 8.1',desc:'Prozesse geplant und gesteuert.',costs:{mangel:'2.000–5.000',kritisch:'5.000–12.000'},module:'qm'},
+    {id:'qb2',label:'Kundenanforderungen',norm:'ISO 9001 8.2',desc:'Bestimmt, überprüft, bestätigt.',costs:{mangel:'1.500–4.000',kritisch:'4.000–10.000'},module:'qm'},
+    {id:'qb3',label:'Lieferantensteuerung',norm:'ISO 9001 8.4',desc:'Bewertung, Auswahl, Überwachung.',costs:{mangel:'2.000–5.000',kritisch:'5.000–12.000'},module:'qm'},
+    {id:'qb4',label:'Nichtkonformitäten',norm:'ISO 9001 8.7',desc:'Identifiziert, bewertet, korrigiert.',costs:{mangel:'1.500–4.000',kritisch:'4.000–10.000'},module:'qm'},
+    {id:'qb5',label:'Notfallplanung (SGA)',norm:'ISO 45001 8.2',desc:'Notfallverfahren, Erste Hilfe.',costs:{mangel:'2.000–5.000',kritisch:'5.000–12.000'},module:'qm'},
+  ]},
+  {id:'qm_bewertung',label:'Bewertung & KVP',module:'qm',norms:['ISO 9001','ISO 45001'],icon:'📈',sub:'Überwachung, Audits, Managementbewertung, Korrekturmaßnahmen, KVP.',items:[
+    {id:'qv1',label:'KPI-Überwachung',norm:'ISO 9001 9.1',desc:'KPIs definiert, gemessen, analysiert.',costs:{mangel:'2.000–5.000',kritisch:'5.000–12.000'},module:'qm'},
+    {id:'qv2',label:'Kundenzufriedenheit',norm:'ISO 9001 9.1.2',desc:'Systematisch erfasst und ausgewertet.',costs:{mangel:'1.000–3.000',kritisch:'3.000–8.000'},module:'qm'},
+    {id:'qv3',label:'Internes Audit-Programm',norm:'ISO 9001 9.2 · ISO 45001 9.2',desc:'Auditplan, qualifizierte Auditoren.',costs:{mangel:'3.000–8.000',kritisch:'8.000–18.000'},module:'qm'},
+    {id:'qv4',label:'Managementbewertung',norm:'ISO 9001 9.3',desc:'Mind. jährlich, dokumentiert.',costs:{mangel:'2.000–5.000',kritisch:'5.000–10.000'},module:'qm'},
+    {id:'qv5',label:'Korrekturmaßnahmen',norm:'ISO 9001 10.2',desc:'Ursachenanalyse, Wirksamkeitsprüfung.',costs:{mangel:'1.500–4.000',kritisch:'4.000–10.000'},module:'qm'},
+    {id:'qv6',label:'KVP-Prozess',norm:'ISO 9001 10.3',desc:'Systematischer Verbesserungsprozess.',costs:{mangel:'1.500–4.000',kritisch:'4.000–8.000'},module:'qm'},
+  ]},
 ];
+
+const DOC_CATEGORIES = ['Richtlinie','Zertifikat','Protokoll','Schulung','Wartung','Vertrag','Plan','Analyse','Sonstiges'];
+const CAT_ICONS = {Richtlinie:'📄',Zertifikat:'🏅',Protokoll:'📝',Schulung:'🎓',Wartung:'🔧',Vertrag:'📋',Plan:'🗺️',Analyse:'📊',Sonstiges:'📎'};
 
 // ═══ STATE ═══
 let state = {
-  currentStep: 0,
-  selectedModule: null, // 'security','qm','combined'
-  selectedNorms: [],
-  meta: {objekt:'',adresse:'',datum:'',pruefer:'',auftraggeber:'',anlass:'',typ:'',notizen:''},
-  findings: {}
+  mode:'audit', // 'audit' | 'database'
+  dbTab:'all', // 'all' | 'compliance' | 'expiring'
+  currentStep:0,
+  selectedModule:null,
+  selectedNorms:[],
+  meta:{objekt:'',adresse:'',datum:'',pruefer:'',auftraggeber:'',anlass:'',typ:'',notizen:''},
+  findings:{},
+  documents:[], // {id,name,category,norms:[],checkpoints:[],expiry,version,owner,notes,fileName,addedAt}
+  editDocId:null
 };
 
-function getActiveChecks() {
-  if (!state.selectedModule) return [];
-  if (state.selectedModule === 'combined') return CHECKS;
-  return CHECKS.filter(c => c.module === state.selectedModule);
+// ── PERSISTENCE ──
+function saveState(){
+  try{localStorage.setItem('ssa_state',JSON.stringify(state))}catch(e){}
+}
+function loadState(){
+  try{
+    const s=JSON.parse(localStorage.getItem('ssa_state'));
+    if(s){Object.assign(state,s);if(!state.documents)state.documents=[];if(!state.dbTab)state.dbTab='all';}
+  }catch(e){}
+}
+loadState();
+
+function getActiveChecks(){
+  if(!state.selectedModule)return[];
+  if(state.selectedModule==='combined')return CHECKS;
+  return CHECKS.filter(c=>c.module===state.selectedModule);
+}
+function getSteps(){
+  const s=[{id:'module',label:'Modul'},{id:'norms',label:'Normen'},{id:'meta',label:'Objektdaten'}];
+  getActiveChecks().forEach(c=>s.push({id:c.id,label:c.label}));
+  s.push({id:'report',label:'Bericht'});
+  return s;
+}
+function getAllCheckpoints(){
+  let all=[];
+  CHECKS.forEach(c=>c.items.forEach(i=>all.push({id:i.id,label:i.label,section:c.label,module:c.module})));
+  return all;
 }
 
-function getSteps() {
-  const steps = [{id:'module',label:'Modul'},{id:'norms',label:'Normen'},{id:'meta',label:'Objektdaten'}];
-  getActiveChecks().forEach(c => steps.push({id:c.id, label:c.label}));
-  steps.push({id:'report',label:'Bericht'});
-  return steps;
+// ═══ MODE SWITCH ═══
+function switchMode(m){
+  state.mode=m;
+  document.querySelectorAll('.top-nav-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.top-nav-btn').forEach(b=>{if((m==='audit'&&!b.classList.contains('db'))||(m==='database'&&b.classList.contains('db')))b.classList.add('active');});
+  render();saveState();
 }
 
-// ═══ RENDER ENGINE ═══
-function render() {
-  const steps = getSteps();
-  renderStepper(steps);
-  renderProgress(steps);
-  const step = steps[state.currentStep];
-  if (!step) return;
-
-  if (step.id === 'module') renderModuleSelection();
-  else if (step.id === 'norms') renderNormSelection();
-  else if (step.id === 'meta') renderMeta();
-  else if (step.id === 'report') renderReport();
-  else {
-    const check = CHECKS.find(c => c.id === step.id);
-    if (check) renderChecklist(check);
+// ═══ RENDER ═══
+function render(){
+  if(state.mode==='database'){
+    document.getElementById('auditSection').style.display='none';
+    renderDatabase();
+  }else{
+    document.getElementById('auditSection').style.display='';
+    const steps=getSteps();
+    renderStepper(steps);renderProgress(steps);
+    const step=steps[state.currentStep];
+    if(!step)return;
+    if(step.id==='module')renderModuleSelection();
+    else if(step.id==='norms')renderNormSelection();
+    else if(step.id==='meta')renderMeta();
+    else if(step.id==='report')renderReport();
+    else{const c=CHECKS.find(x=>x.id===step.id);if(c)renderChecklist(c);}
   }
   updateHeaderBadge();
 }
 
-function renderStepper(steps) {
-  const el = document.getElementById('stepper');
-  el.innerHTML = steps.map((s,i) => {
-    const isDone = i < state.currentStep;
-    const isActive = i === state.currentStep;
-    return `<div class="step">
-      <button class="step-btn ${isActive?'active':''} ${isDone?'done':''}" onclick="goTo(${i})">
-        <span class="step-num">${isDone?'✓':(i+1)}</span>
-        <span class="step-label">${s.label}</span>
-      </button><div class="step-line"></div>
-    </div>`;
+function renderStepper(steps){
+  document.getElementById('stepper').innerHTML=steps.map((s,i)=>{
+    const isDone=i<state.currentStep,isActive=i===state.currentStep;
+    return`<div class="step"><button class="step-btn ${isActive?'active':''} ${isDone?'done':''}" onclick="goTo(${i})"><span class="step-num">${isDone?'✓':(i+1)}</span><span class="step-label">${s.label}</span></button><div class="step-line"></div></div>`;
   }).join('');
 }
-
-function renderProgress(steps) {
-  const pct = Math.round((state.currentStep / Math.max(steps.length-1,1)) * 100);
-  document.getElementById('progressFill').style.width = pct + '%';
-}
-
-function updateHeaderBadge() {
-  const b = document.getElementById('hdrBadge');
-  if (!state.selectedModule) { b.textContent = 'Modul wählen'; b.style.color='var(--orange)'; b.style.borderColor='rgba(249,115,22,.2)'; b.style.background='var(--orangeDim)'; return; }
-  const labels = {security:'🛡️ Security Audit',qm:'📋 QM Audit',combined:'🔄 Kombiniertes Audit'};
-  b.textContent = labels[state.selectedModule] || '';
-  if (state.selectedModule==='security'){b.style.color='var(--accent)';b.style.borderColor='rgba(20,184,166,.2)';b.style.background='var(--accentDim)';}
-  else if (state.selectedModule==='qm'){b.style.color='var(--orange)';b.style.borderColor='rgba(249,115,22,.2)';b.style.background='var(--orangeDim)';}
+function renderProgress(steps){document.getElementById('progressFill').style.width=Math.round((state.currentStep/Math.max(steps.length-1,1))*100)+'%';}
+function updateHeaderBadge(){
+  const b=document.getElementById('hdrBadge');
+  if(state.mode==='database'){b.textContent='📁 Dokumenten-Datenbank';b.style.color='var(--orange)';b.style.borderColor='rgba(249,115,22,.2)';b.style.background='var(--orangeDim)';return;}
+  if(!state.selectedModule){b.textContent='Modul wählen';b.style.color='var(--accent)';b.style.borderColor='rgba(20,184,166,.2)';b.style.background='var(--accentDim)';return;}
+  const labels={security:'🛡️ Security',qm:'📋 QM',combined:'🔄 Kombiniert'};
+  b.textContent=labels[state.selectedModule]||'';
+  if(state.selectedModule==='security'){b.style.color='var(--accent)';b.style.borderColor='rgba(20,184,166,.2)';b.style.background='var(--accentDim)';}
+  else if(state.selectedModule==='qm'){b.style.color='var(--orange)';b.style.borderColor='rgba(249,115,22,.2)';b.style.background='var(--orangeDim)';}
   else{b.style.color='var(--purple)';b.style.borderColor='rgba(167,139,250,.2)';b.style.background='var(--purpleDim)';}
 }
 
 // ── MODULE SELECTION ──
-function renderModuleSelection() {
-  document.getElementById('mainContent').innerHTML = `
-  <div class="panel">
+function renderModuleSelection(){
+  document.getElementById('mainContent').innerHTML=`<div class="panel">
     <div class="panel-title">Audit-Modul wählen</div>
-    <p class="panel-sub">Wählen Sie, welche Bereiche in dieser Begehung geprüft werden sollen. Die Prüfbereiche und Normen werden entsprechend angepasst.</p>
+    <p class="panel-sub">Wählen Sie, welche Bereiche geprüft werden. Module können auch separat betrieben werden.</p>
     <div class="module-cards">
-      <div class="module-card sec ${state.selectedModule==='security'?'selected':''}" onclick="selectModule('security')">
-        <div class="mc-check">✓</div>
-        <div class="mc-icon">🛡️</div>
-        <div class="mc-title">Security Audit</div>
-        <div class="mc-desc">Physische Sicherheit, Zutrittskontrolle, Videoüberwachung, Alarmanlagen, IT-Infrastruktur, BCM und Sicherheitsorganisation.</div>
-        <div class="mc-norms">
-          <span class="norm-badge security">ISO 31000</span>
-          <span class="norm-badge security">ISO 27001</span>
-          <span class="norm-badge security">ISO 22301</span>
-          <span class="norm-badge security">BSI</span>
-          <span class="norm-badge security">NIS2</span>
-          <span class="norm-badge security">KRITIS</span>
-        </div>
-      </div>
-      <div class="module-card qm ${state.selectedModule==='qm'?'selected':''}" onclick="selectModule('qm')">
-        <div class="mc-check">✓</div>
-        <div class="mc-icon">📋</div>
-        <div class="mc-title">Qualitätsmanagement</div>
-        <div class="mc-desc">QMS-Kontext, Führung, Risiken & Chancen, Ressourcen, Betriebssteuerung, Arbeitsschutz, Audits und KVP.</div>
-        <div class="mc-norms">
-          <span class="norm-badge qm">ISO 9001</span>
-          <span class="norm-badge qm">ISO 45001</span>
-        </div>
-      </div>
-      <div class="module-card combo ${state.selectedModule==='combined'?'selected':''}" onclick="selectModule('combined')">
-        <div class="mc-check">✓</div>
-        <div class="mc-icon">🔄</div>
-        <div class="mc-title">Kombiniertes Audit</div>
-        <div class="mc-desc">Vollständiges Security + QM Audit. Alle Normen, alle Prüfbereiche in einem integrierten Durchlauf.</div>
-        <div class="mc-norms">
-          <span class="norm-badge combined">Alle Normen</span>
-          <span class="norm-badge combined">Integriert</span>
-        </div>
-      </div>
+      <div class="module-card sec ${state.selectedModule==='security'?'selected':''}" onclick="selectModule('security')"><div class="mc-check">✓</div><div class="mc-icon">🛡️</div><div class="mc-title">Security Audit</div><div class="mc-desc">Physische Sicherheit, Zutritt, Video, Alarm, IT, BCM, Organisation.</div><div class="mc-norms"><span class="norm-badge security">ISO 31000</span><span class="norm-badge security">ISO 27001</span><span class="norm-badge security">ISO 22301</span><span class="norm-badge security">BSI</span><span class="norm-badge security">NIS2</span><span class="norm-badge security">KRITIS</span></div></div>
+      <div class="module-card qm ${state.selectedModule==='qm'?'selected':''}" onclick="selectModule('qm')"><div class="mc-check">✓</div><div class="mc-icon">📋</div><div class="mc-title">Qualitätsmanagement</div><div class="mc-desc">QMS-Kontext, Risiken, Ressourcen, Betrieb, Arbeitsschutz, KVP.</div><div class="mc-norms"><span class="norm-badge qm">ISO 9001</span><span class="norm-badge qm">ISO 45001</span></div></div>
+      <div class="module-card combo ${state.selectedModule==='combined'?'selected':''}" onclick="selectModule('combined')"><div class="mc-check">✓</div><div class="mc-icon">🔄</div><div class="mc-title">Kombiniertes Audit</div><div class="mc-desc">Security + QM in einem integrierten Durchlauf.</div><div class="mc-norms"><span class="norm-badge combined">Alle Normen</span></div></div>
     </div>
-    <div class="nav-row">
-      <div></div>
-      <button class="btn-primary" onclick="next()" ${!state.selectedModule?'disabled style="opacity:.4;pointer-events:none"':''}>Weiter zu Normenauswahl →</button>
-    </div>
+    <div class="nav-row"><div></div><button class="btn-primary" onclick="next()" ${!state.selectedModule?'disabled style="opacity:.4;pointer-events:none"':''}>Weiter →</button></div>
   </div>`;
 }
-
-function selectModule(m) {
-  state.selectedModule = m;
-  // auto-select relevant norms
-  if (m === 'security') state.selectedNorms = Object.keys(NORM_DEFS).filter(n => NORM_DEFS[n].module === 'security');
-  else if (m === 'qm') state.selectedNorms = Object.keys(NORM_DEFS).filter(n => NORM_DEFS[n].module === 'qm');
-  else state.selectedNorms = Object.keys(NORM_DEFS);
-  render();
+function selectModule(m){
+  state.selectedModule=m;
+  if(m==='security')state.selectedNorms=Object.keys(NORM_DEFS).filter(n=>NORM_DEFS[n].module==='security');
+  else if(m==='qm')state.selectedNorms=Object.keys(NORM_DEFS).filter(n=>NORM_DEFS[n].module==='qm');
+  else state.selectedNorms=Object.keys(NORM_DEFS);
+  render();saveState();
 }
 
 // ── NORM SELECTION ──
-function renderNormSelection() {
-  const secNorms = Object.entries(NORM_DEFS).filter(([,v]) => v.module === 'security');
-  const qmNorms = Object.entries(NORM_DEFS).filter(([,v]) => v.module === 'qm');
-
-  const showSec = state.selectedModule === 'security' || state.selectedModule === 'combined';
-  const showQm = state.selectedModule === 'qm' || state.selectedModule === 'combined';
-
-  let normsHtml = '';
-  if (showSec) {
-    normsHtml += `<div class="norm-group"><div class="norm-group-title sec">🛡️ Security-Normen</div><div class="norm-chips">`;
-    secNorms.forEach(([key]) => {
-      normsHtml += `<div class="norm-chip ${state.selectedNorms.includes(key)?'active':''}" onclick="toggleNorm('${key}')">${key}</div>`;
-    });
-    normsHtml += `</div></div>`;
-  }
-  if (showQm) {
-    normsHtml += `<div class="norm-group"><div class="norm-group-title qm">📋 QM-Normen</div><div class="norm-chips">`;
-    qmNorms.forEach(([key]) => {
-      normsHtml += `<div class="norm-chip qm-chip ${state.selectedNorms.includes(key)?'active':''}" onclick="toggleNorm('${key}')">${key}</div>`;
-    });
-    normsHtml += `</div></div>`;
-  }
-
-  // Norm details (expandable)
-  let detailsHtml = '';
-  state.selectedNorms.forEach(nk => {
-    const nd = NORM_DEFS[nk];
-    if (!nd) return;
-    const isQm = nd.module === 'qm';
-    detailsHtml += `<div class="norm-details">
-      <div class="nd-header" onclick="toggleNormDetail(this)">
-        <div><span class="nd-title">${nd.fullName}</span><br><span style="font-size:.75rem;color:var(--muted)">${nd.desc}</span></div>
-        <span class="nd-arrow">▼</span>
-      </div>
-      <div class="nd-body"><div class="nd-content">
-        ${nd.reqs.map(r => `<div class="nd-req ${isQm?'qm-req':''}"><span class="nd-req-num">${r.num}</span><span>${r.text}</span></div>`).join('')}
-      </div></div>
-    </div>`;
-  });
-
-  document.getElementById('mainContent').innerHTML = `
-  <div class="panel">
-    <div class="panel-title">Normen & Standards auswählen</div>
-    <p class="panel-sub">Wählen Sie die zu prüfenden Normen. Klicken Sie auf eine Norm, um deren Anforderungen einzusehen. Alle ausgewählten Normen fließen in den Bedarfsbericht ein.</p>
-    <div class="norm-selector">${normsHtml}</div>
-    <div class="section-divider"></div>
-    <div style="font-family:var(--fm);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--soft);margin-bottom:12px">Anforderungen der ausgewählten Normen – zum Aufklappen anklicken</div>
-    ${detailsHtml}
-    <div class="nav-row">
-      <button class="btn-secondary" onclick="prev()">← Zurück</button>
-      <button class="btn-primary" onclick="next()">Weiter zu Objektdaten →</button>
-    </div>
-  </div>`;
+function renderNormSelection(){
+  const showSec=state.selectedModule==='security'||state.selectedModule==='combined';
+  const showQm=state.selectedModule==='qm'||state.selectedModule==='combined';
+  let h='';
+  if(showSec){h+=`<div class="norm-group"><div class="norm-group-title sec">🛡️ Security-Normen</div><div class="norm-chips">${Object.entries(NORM_DEFS).filter(([,v])=>v.module==='security').map(([k])=>`<div class="norm-chip ${state.selectedNorms.includes(k)?'active':''}" onclick="toggleNorm('${k}')">${k}</div>`).join('')}</div></div>`;}
+  if(showQm){h+=`<div class="norm-group"><div class="norm-group-title qm">📋 QM-Normen</div><div class="norm-chips">${Object.entries(NORM_DEFS).filter(([,v])=>v.module==='qm').map(([k])=>`<div class="norm-chip qm-chip ${state.selectedNorms.includes(k)?'active':''}" onclick="toggleNorm('${k}')">${k}</div>`).join('')}</div></div>`;}
+  let det='';
+  state.selectedNorms.forEach(nk=>{const nd=NORM_DEFS[nk];if(!nd)return;const isQm=nd.module==='qm';det+=`<div class="norm-details"><div class="nd-header" onclick="toggleND(this)"><div><span class="nd-title">${nd.fullName}</span><br><span style="font-size:.72rem;color:var(--muted)">${nd.desc}</span></div><span class="nd-arrow">▼</span></div><div class="nd-body"><div class="nd-content">${nd.reqs.map(r=>`<div class="nd-req ${isQm?'qm-req':''}"><span class="nd-req-num">${r.num}</span><span>${r.text}</span></div>`).join('')}</div></div></div>`;});
+  document.getElementById('mainContent').innerHTML=`<div class="panel"><div class="panel-title">Normen & Standards</div><p class="panel-sub">Auswahl der zu prüfenden Normen. Klicken zum Aufklappen der Anforderungen.</p><div class="norm-selector">${h}</div><div class="section-divider"></div><div style="font-family:var(--fm);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--soft);margin-bottom:10px">Anforderungskataloge</div>${det}<div class="nav-row"><button class="btn-secondary" onclick="prev()">← Zurück</button><button class="btn-primary" onclick="next()">Weiter →</button></div></div>`;
 }
-
-function toggleNorm(key) {
-  const idx = state.selectedNorms.indexOf(key);
-  if (idx > -1) state.selectedNorms.splice(idx, 1);
-  else state.selectedNorms.push(key);
-  render();
-}
-
-function toggleNormDetail(el) {
-  el.classList.toggle('open');
-  const body = el.nextElementSibling;
-  body.classList.toggle('open');
-}
+function toggleNorm(k){const i=state.selectedNorms.indexOf(k);if(i>-1)state.selectedNorms.splice(i,1);else state.selectedNorms.push(k);render();saveState();}
+function toggleND(el){el.classList.toggle('open');el.nextElementSibling.classList.toggle('open');}
 
 // ── META ──
-function renderMeta() {
-  document.getElementById('mainContent').innerHTML = `
-  <div class="panel">
-    <div class="panel-title">Objektdaten & Auftragsinformationen</div>
-    <p class="panel-sub">Stammdaten des Prüfobjekts. Diese erscheinen im Bedarfsbericht.</p>
+function renderMeta(){
+  document.getElementById('mainContent').innerHTML=`<div class="panel"><div class="panel-title">Objektdaten</div><p class="panel-sub">Stammdaten des Prüfobjekts für den Bedarfsbericht.</p>
     <div class="meta-grid">
-      <div class="fg"><label>Objektbezeichnung</label><input type="text" value="${esc(state.meta.objekt)}" placeholder="z.B. Verwaltungsgebäude Hauptsitz" oninput="state.meta.objekt=this.value"></div>
-      <div class="fg"><label>Auftraggeber</label><input type="text" value="${esc(state.meta.auftraggeber)}" placeholder="z.B. Musterfirma GmbH" oninput="state.meta.auftraggeber=this.value"></div>
-      <div class="fg fg-full"><label>Adresse / Standort</label><input type="text" value="${esc(state.meta.adresse)}" placeholder="Straße, PLZ, Ort" oninput="state.meta.adresse=this.value"></div>
-      <div class="fg"><label>Datum der Begehung</label><input type="date" value="${esc(state.meta.datum)}" oninput="state.meta.datum=this.value"></div>
-      <div class="fg"><label>Prüfer / Auditor</label><input type="text" value="${esc(state.meta.pruefer)}" placeholder="Name" oninput="state.meta.pruefer=this.value"></div>
-      <div class="fg"><label>Anlass</label>
-        <select onchange="state.meta.anlass=this.value">
-          <option value="">Bitte wählen...</option>
-          ${['Erstaudit','Überwachungsaudit','Re-Zertifizierung','KRITIS-Compliance','NIS2-Audit','Versicherungsanforderung','Internes Audit','Kundenanforderung','Sonstiges'].map(o=>`<option value="${o}" ${state.meta.anlass===o?'selected':''}>${o}</option>`).join('')}
-        </select>
-      </div>
-      <div class="fg"><label>Audit-Typ</label>
-        <select onchange="state.meta.typ=this.value">
-          <option value="">Bitte wählen...</option>
-          ${['Systemaudit','Prozessaudit','Produktaudit','Begehung / Inspektion','Compliance-Check','Gap-Analyse'].map(o=>`<option value="${o}" ${state.meta.typ===o?'selected':''}>${o}</option>`).join('')}
-        </select>
-      </div>
-      <div class="fg fg-full"><label>Notizen / Vorbemerkungen</label><textarea placeholder="Besonderheiten, Zugangsbeschränkungen, Vorinformationen..." oninput="state.meta.notizen=this.value">${esc(state.meta.notizen)}</textarea></div>
+      <div class="fg"><label>Objektbezeichnung</label><input value="${esc(state.meta.objekt)}" placeholder="z.B. Verwaltungsgebäude" oninput="state.meta.objekt=this.value;saveState()"></div>
+      <div class="fg"><label>Auftraggeber</label><input value="${esc(state.meta.auftraggeber)}" placeholder="z.B. Musterfirma GmbH" oninput="state.meta.auftraggeber=this.value;saveState()"></div>
+      <div class="fg fg-full"><label>Adresse</label><input value="${esc(state.meta.adresse)}" placeholder="Straße, PLZ, Ort" oninput="state.meta.adresse=this.value;saveState()"></div>
+      <div class="fg"><label>Datum</label><input type="date" value="${esc(state.meta.datum)}" oninput="state.meta.datum=this.value;saveState()"></div>
+      <div class="fg"><label>Auditor</label><input value="${esc(state.meta.pruefer)}" placeholder="Name" oninput="state.meta.pruefer=this.value;saveState()"></div>
+      <div class="fg"><label>Anlass</label><select onchange="state.meta.anlass=this.value;saveState()">${['','Erstaudit','Überwachungsaudit','Re-Zertifizierung','KRITIS-Compliance','NIS2-Audit','Internes Audit','Sonstiges'].map(o=>`<option value="${o}" ${state.meta.anlass===o?'selected':''}>${o||'Bitte wählen...'}</option>`).join('')}</select></div>
+      <div class="fg"><label>Audit-Typ</label><select onchange="state.meta.typ=this.value;saveState()">${['','Systemaudit','Prozessaudit','Begehung','Compliance-Check','Gap-Analyse'].map(o=>`<option value="${o}" ${state.meta.typ===o?'selected':''}>${o||'Bitte wählen...'}</option>`).join('')}</select></div>
+      <div class="fg fg-full"><label>Notizen</label><textarea oninput="state.meta.notizen=this.value;saveState()" placeholder="Vorbemerkungen...">${esc(state.meta.notizen)}</textarea></div>
     </div>
-    <div class="nav-row">
-      <button class="btn-secondary" onclick="prev()">← Zurück</button>
-      <button class="btn-primary" onclick="next()">Begehung starten →</button>
-    </div>
-  </div>`;
+    <div class="nav-row"><button class="btn-secondary" onclick="prev()">← Zurück</button><button class="btn-primary" onclick="next()">Begehung starten →</button></div></div>`;
 }
 
 // ── CHECKLIST ──
-function renderChecklist(check) {
-  const modClass = check.module === 'qm' ? 'qm' : 'security';
-  const items = check.items.map(item => {
-    const f = state.findings[item.id] || {};
-    const s = f.status || '';
-    const itemModClass = item.module === 'qm' ? 'qm' : '';
-    return `<div class="check-item ${s?'status-'+s:''}" id="ci_${item.id}">
-      <div class="ci-top">
-        <div class="ci-text">
-          <div class="ci-label">${item.label} <span class="module-indicator ${item.module==='qm'?'qm':'sec'}">${item.module==='qm'?'QM':'SEC'}</span></div>
-          <div class="ci-norm ${itemModClass}">${item.norm}</div>
-          <div class="ci-desc">${item.desc}</div>
-        </div>
-        <div class="ci-btns">
-          <button class="ci-btn ok ${s==='ok'?'active':''}" onclick="setStatus('${item.id}','ok')">✓ OK</button>
-          <button class="ci-btn mangel ${s==='mangel'?'active':''}" onclick="setStatus('${item.id}','mangel')">⚠ Mangel</button>
-          <button class="ci-btn kritisch ${s==='kritisch'?'active':''}" onclick="setStatus('${item.id}','kritisch')">✕ Kritisch</button>
-          <button class="ci-btn na ${s==='na'?'active':''}" onclick="setStatus('${item.id}','na')">– N/A</button>
-        </div>
-      </div>
-      <div class="ci-note ${s&&s!=='ok'&&s!=='na'?'show':''}" id="note_${item.id}">
-        <input type="text" placeholder="Notiz / Beobachtung..." value="${esc(f.note||'')}" oninput="setNote('${item.id}',this.value)">
-      </div>
-    </div>`;
+function renderChecklist(check){
+  const items=check.items.map(item=>{
+    const f=state.findings[item.id]||{},s=f.status||'';
+    // Find linked docs
+    const linkedDocs=state.documents.filter(d=>d.checkpoints&&d.checkpoints.includes(item.id));
+    let docHtml='';
+    if(linkedDocs.length>0){docHtml=linkedDocs.map(d=>{const st=getDocStatus(d);return`<div class="ci-doc-link"><span class="doc-status ${st}"></span><a href="#" onclick="switchMode('database');return false;">${esc(d.name)}</a></div>`;}).join('');}
+    else{docHtml=`<div class="ci-doc-link"><span class="doc-status gray"></span><span style="color:var(--soft);font-size:.68rem">Kein Dokument verknüpft</span></div>`;}
+    return`<div class="check-item ${s?'status-'+s:''}" id="ci_${item.id}"><div class="ci-top"><div class="ci-text"><div class="ci-label">${item.label} <span class="module-indicator ${item.module==='qm'?'qm':'sec'}">${item.module==='qm'?'QM':'SEC'}</span></div><div class="ci-norm ${item.module==='qm'?'qm':''}">${item.norm}</div><div class="ci-desc">${item.desc}</div>${docHtml}</div><div class="ci-btns"><button class="ci-btn ok ${s==='ok'?'active':''}" onclick="setStatus('${item.id}','ok')">✓ OK</button><button class="ci-btn mangel ${s==='mangel'?'active':''}" onclick="setStatus('${item.id}','mangel')">⚠ Mangel</button><button class="ci-btn kritisch ${s==='kritisch'?'active':''}" onclick="setStatus('${item.id}','kritisch')">✕ Kritisch</button><button class="ci-btn na ${s==='na'?'active':''}" onclick="setStatus('${item.id}','na')">– N/A</button></div></div><div class="ci-note ${s&&s!=='ok'&&s!=='na'?'show':''}" id="note_${item.id}"><input placeholder="Notiz..." value="${esc(f.note||'')}" oninput="setNote('${item.id}',this.value)"></div></div>`;
   }).join('');
+  const done=check.items.filter(i=>state.findings[i.id]?.status).length;
+  const normBadges=check.norms.map(n=>{const nd=NORM_DEFS[n];return`<span class="norm-badge ${nd?.module==='qm'?'qm':'security'}">${n}</span>`;}).join('');
+  document.getElementById('mainContent').innerHTML=`<div class="panel"><div>${normBadges}</div><div class="panel-title">${check.icon} ${check.label}</div><p class="panel-sub">${check.sub} <strong style="color:var(--accent)">${done}/${check.items.length}</strong> bewertet.</p><div class="check-section"><div class="check-section-title ${check.module==='qm'?'qm-section':''}">Prüfpunkte</div>${items}</div><div class="nav-row"><button class="btn-secondary" onclick="prev()">← Zurück</button><button class="btn-primary" onclick="next()">Weiter →</button></div></div>`;
+}
 
-  const done = check.items.filter(i => state.findings[i.id]?.status).length;
-  const total = check.items.length;
-  const normBadges = check.norms.map(n => {
-    const nd = NORM_DEFS[n];
-    const cls = nd?.module === 'qm' ? 'qm' : 'security';
-    return `<span class="norm-badge ${cls}">${n}</span>`;
-  }).join('');
+// ══════════════════════════════════════════
+// DATABASE SECTION
+// ══════════════════════════════════════════
+function renderDatabase(){
+  const docs=state.documents;
+  const now=new Date();
+  const warn30=new Date(now.getTime()+30*86400000);
+  let greenC=0,yellowC=0,redC=0;
+  docs.forEach(d=>{const s=getDocStatus(d);if(s==='green')greenC++;else if(s==='yellow')yellowC++;else if(s==='red')redC++;});
 
-  document.getElementById('mainContent').innerHTML = `
-  <div class="panel">
-    <div>${normBadges}</div>
-    <div class="panel-title">${check.icon} ${check.label}</div>
-    <p class="panel-sub">${check.sub} <strong style="color:var(--accent)">${done}/${total}</strong> bewertet.</p>
-    <div class="check-section">
-      <div class="check-section-title ${check.module==='qm'?'qm-section':''}">Prüfpunkte</div>
-      ${items}
+  const tabCounts={all:docs.length,compliance:0,expiring:yellowC+redC};
+  // Count missing docs per norm
+  let missingTotal=0;
+  Object.entries(NORM_DEFS).forEach(([nk,nd])=>{
+    const docsForNorm=docs.filter(d=>d.norms&&d.norms.includes(nk));
+    if(docsForNorm.length<nd.reqs.length)missingTotal+=nd.reqs.length-docsForNorm.length;
+  });
+  tabCounts.compliance=missingTotal;
+
+  let content='';
+  if(state.dbTab==='compliance')content=renderComplianceView();
+  else if(state.dbTab==='expiring')content=renderExpiringView();
+  else content=renderAllDocsView();
+
+  document.getElementById('mainContent').innerHTML=`<div class="panel">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;margin-bottom:20px">
+      <div><div class="panel-title">📁 Dokumenten-Datenbank</div><p style="font-size:.82rem;color:var(--muted);margin-top:2px">Zentrale Verwaltung aller Audit-relevanten Unterlagen mit Norm-Zuordnung und Ablaufüberwachung.</p></div>
+      <button class="btn-primary" onclick="openDocModal()">+ Dokument hinzufügen</button>
     </div>
-    <div class="nav-row">
-      <button class="btn-secondary" onclick="prev()">← Zurück</button>
-      <button class="btn-primary" onclick="next()">Weiter →</button>
+    <div class="db-stats">
+      <div class="db-stat total"><div class="db-stat-val">${docs.length}</div><div class="db-stat-lbl">Dokumente gesamt</div></div>
+      <div class="db-stat green"><div class="db-stat-val">${greenC}</div><div class="db-stat-lbl">Aktuell ✓</div></div>
+      <div class="db-stat yellow"><div class="db-stat-val">${yellowC}</div><div class="db-stat-lbl">Läuft ab ⚠</div></div>
+      <div class="db-stat red"><div class="db-stat-val">${redC}</div><div class="db-stat-lbl">Überfällig ✕</div></div>
+    </div>
+    <div class="db-tabs">
+      <button class="db-tab ${state.dbTab==='all'?'active':''}" onclick="state.dbTab='all';render()">📄 Alle Dokumente <span class="count">${tabCounts.all}</span></button>
+      <button class="db-tab ${state.dbTab==='compliance'?'active':''}" onclick="state.dbTab='compliance';render()">🔍 Compliance-Check <span class="count">${tabCounts.compliance}</span></button>
+      <button class="db-tab ${state.dbTab==='expiring'?'active':''}" onclick="state.dbTab='expiring';render()">⏰ Ablauf-Tracker <span class="count">${tabCounts.expiring}</span></button>
+    </div>
+    ${content}
+  </div>`;
+}
+
+function renderAllDocsView(){
+  const docs=state.documents;
+  if(docs.length===0)return`<div style="text-align:center;padding:40px 20px"><div style="font-size:2.5rem;margin-bottom:12px;opacity:.5">📁</div><div style="font-size:1rem;font-weight:600;color:var(--text2);margin-bottom:6px">Noch keine Dokumente</div><div style="font-size:.84rem;color:var(--muted)">Fügen Sie Ihr erstes Dokument hinzu, um die Audit-Datenbank aufzubauen.</div></div>`;
+  let h=`<div class="db-search"><input type="text" placeholder="🔍 Dokumente suchen..." oninput="filterDocs(this.value)"><select onchange="filterDocsCat(this.value)"><option value="">Alle Kategorien</option>${DOC_CATEGORIES.map(c=>`<option value="${c}">${CAT_ICONS[c]} ${c}</option>`).join('')}</select></div>`;
+  h+=`<div class="doc-grid" id="docGrid">`;
+  docs.forEach(d=>{h+=renderDocCard(d);});
+  h+=`</div>`;
+  return h;
+}
+
+function renderDocCard(d){
+  const st=getDocStatus(d);
+  const stLabel={green:'Aktuell',yellow:'Läuft ab',red:'Überfällig',gray:'Kein Ablauf'}[st];
+  const normBadges=(d.norms||[]).map(n=>{const nd=NORM_DEFS[n];return`<span class="norm-badge ${nd?.module==='qm'?'qm':'security'}" style="margin-bottom:0;font-size:.5rem">${n}</span>`;}).join('');
+  const cpCount=(d.checkpoints||[]).filter(c=>c).length;
+  const expiryStr=d.expiry?new Date(d.expiry).toLocaleDateString('de-DE',{day:'2-digit',month:'short',year:'numeric'}):'–';
+  return`<div class="doc-card" data-cat="${d.category}" data-name="${(d.name||'').toLowerCase()}">
+    <div class="doc-icon">${CAT_ICONS[d.category]||'📎'}</div>
+    <div class="doc-body">
+      <div class="doc-name">${esc(d.name)}</div>
+      <div class="doc-meta">
+        <span>${CAT_ICONS[d.category]} ${d.category}</span>
+        <span>📅 ${expiryStr}</span>
+        ${d.version?`<span>v${esc(d.version)}</span>`:''}
+        ${cpCount?`<span>🔗 ${cpCount} Prüfpunkte</span>`:''}
+      </div>
+      <div class="doc-norms">${normBadges}</div>
+    </div>
+    <div class="doc-status-pill ${st}">● ${stLabel}</div>
+    <div class="doc-actions">
+      <button class="btn-sm" onclick="editDoc(${d.id})">✏️</button>
+      <button class="btn-sm danger" onclick="deleteDoc(${d.id})">🗑️</button>
     </div>
   </div>`;
+}
+
+function renderComplianceView(){
+  let h='<div style="font-family:var(--fm);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--soft);margin-bottom:12px">Dokumentenabdeckung pro Norm-Anforderung</div>';
+  Object.entries(NORM_DEFS).forEach(([nk,nd])=>{
+    if(!state.selectedNorms.length || state.selectedNorms.includes(nk)){
+      const docsForNorm=state.documents.filter(d=>d.norms&&d.norms.includes(nk));
+      const covered=Math.min(docsForNorm.length,nd.reqs.length);
+      const pct=nd.reqs.length>0?Math.round((covered/nd.reqs.length)*100):0;
+      const barColor=pct>=80?'var(--ok)':pct>=50?'var(--warn)':'var(--danger)';
+      const pctColor=pct>=80?'var(--ok)':pct>=50?'var(--warn)':'var(--danger)';
+      h+=`<div class="compliance-norm"><div class="compliance-norm-header" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
+        <div class="cn-left"><span class="norm-badge ${nd.module==='qm'?'qm':'security'}" style="margin:0">${nk}</span><span class="cn-name">${nd.fullName}</span></div>
+        <div style="display:flex;align-items:center;gap:10px"><div class="cn-bar"><div class="cn-bar-fill" style="width:${pct}%;background:${barColor}"></div></div><span class="cn-pct" style="color:${pctColor}">${pct}%</span><span class="cn-arrow">▼</span></div>
+      </div><div class="cn-body"><div class="cn-body-inner">`;
+      nd.reqs.forEach(r=>{
+        const reqDocs=docsForNorm.filter(d=>{
+          // Check if any doc is loosely linked to this req
+          return true; // simplified: all norm docs count
+        });
+        const hasDoc=reqDocs.length>0;
+        h+=`<div class="cn-req-row"><span class="cn-req-num">${r.num}</span><span class="cn-req-text">${r.text}</span>
+          <div class="cn-req-docs">${hasDoc?`<span class="doc-status-pill green" style="font-size:.5rem">● ${reqDocs.length} Dok.</span>`:`<span class="doc-status-pill red" style="font-size:.5rem">● Fehlt</span>`}</div>
+        </div>`;
+      });
+      h+=`</div></div></div>`;
+    }
+  });
+  return h;
+}
+
+function renderExpiringView(){
+  const now=new Date();
+  const warn30=new Date(now.getTime()+30*86400000);
+  const expiring=state.documents.filter(d=>{
+    if(!d.expiry)return false;
+    const exp=new Date(d.expiry);
+    return exp<=warn30;
+  }).sort((a,b)=>new Date(a.expiry)-new Date(b.expiry));
+
+  if(expiring.length===0)return`<div style="text-align:center;padding:40px 20px"><div style="font-size:2rem;margin-bottom:10px">✅</div><div style="font-size:.95rem;font-weight:600;color:var(--ok);margin-bottom:4px">Keine ablaufenden Dokumente</div><div style="font-size:.82rem;color:var(--muted)">Alle Dokumente mit Ablaufdatum sind aktuell.</div></div>`;
+  let h=`<div style="font-family:var(--fm);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--warn);margin-bottom:12px">⏰ Dokumente mit Handlungsbedarf</div><div class="doc-grid">`;
+  expiring.forEach(d=>{h+=renderDocCard(d);});
+  h+=`</div>`;
+  return h;
+}
+
+// ── DOC STATUS ──
+function getDocStatus(d){
+  if(!d.expiry)return'gray';
+  const now=new Date(),exp=new Date(d.expiry),warn30=new Date(now.getTime()+30*86400000);
+  if(exp<now)return'red';
+  if(exp<=warn30)return'yellow';
+  return'green';
+}
+
+// ── DOC MODAL ──
+function openDocModal(editId){
+  state.editDocId=editId||null;
+  const modal=document.getElementById('docModal');
+  modal.classList.add('open');
+  document.getElementById('docModalTitle').textContent=editId?'Dokument bearbeiten':'Dokument hinzufügen';
+
+  // Populate norm chips
+  const normChipsEl=document.getElementById('df_norms');
+  normChipsEl.innerHTML=Object.entries(NORM_DEFS).map(([k,v])=>`<div class="norm-chip ${v.module==='qm'?'qm-chip':''}" data-norm="${k}" onclick="this.classList.toggle('active')" style="font-size:.7rem;padding:5px 10px">${k}</div>`).join('');
+
+  // Populate checkpoints
+  const cpEl=document.getElementById('df_checkpoints');
+  cpEl.innerHTML=`<option value="">Keine Verknüpfung</option>`;
+  getAllCheckpoints().forEach(cp=>{cpEl.innerHTML+=`<option value="${cp.id}">${cp.section} → ${cp.label}</option>`;});
+
+  if(editId){
+    const d=state.documents.find(x=>x.id===editId);
+    if(d){
+      document.getElementById('df_name').value=d.name||'';
+      document.getElementById('df_category').value=d.category||'Richtlinie';
+      document.getElementById('df_expiry').value=d.expiry||'';
+      document.getElementById('df_version').value=d.version||'';
+      document.getElementById('df_owner').value=d.owner||'';
+      document.getElementById('df_notes').value=d.notes||'';
+      (d.norms||[]).forEach(n=>{const chip=normChipsEl.querySelector(`[data-norm="${n}"]`);if(chip)chip.classList.add('active');});
+      (d.checkpoints||[]).forEach(cp=>{const opt=cpEl.querySelector(`option[value="${cp}"]`);if(opt)opt.selected=true;});
+    }
+  }else{
+    document.getElementById('df_name').value='';
+    document.getElementById('df_category').value='Richtlinie';
+    document.getElementById('df_expiry').value='';
+    document.getElementById('df_version').value='';
+    document.getElementById('df_owner').value='';
+    document.getElementById('df_notes').value='';
+  }
+}
+function closeDocModal(){document.getElementById('docModal').classList.remove('open');state.editDocId=null;}
+
+function saveDoc(){
+  const name=document.getElementById('df_name').value.trim();
+  if(!name){alert('Bitte Dokumentenname eingeben.');return;}
+  const category=document.getElementById('df_category').value;
+  const expiry=document.getElementById('df_expiry').value;
+  const version=document.getElementById('df_version').value.trim();
+  const owner=document.getElementById('df_owner').value.trim();
+  const notes=document.getElementById('df_notes').value.trim();
+  const norms=[...document.querySelectorAll('#df_norms .norm-chip.active')].map(el=>el.dataset.norm);
+  const checkpoints=[...document.getElementById('df_checkpoints').selectedOptions].map(o=>o.value).filter(v=>v);
+  const fileInput=document.getElementById('df_file');
+  const fileName=fileInput.files.length>0?fileInput.files[0].name:'';
+
+  if(state.editDocId){
+    const d=state.documents.find(x=>x.id===state.editDocId);
+    if(d){Object.assign(d,{name,category,expiry,version,owner,notes,norms,checkpoints,fileName:fileName||d.fileName});}
+  }else{
+    state.documents.push({id:Date.now(),name,category,expiry,version,owner,notes,norms,checkpoints,fileName,addedAt:new Date().toISOString()});
+  }
+  saveState();closeDocModal();render();
+}
+function editDoc(id){openDocModal(id);}
+function deleteDoc(id){if(confirm('Dokument wirklich löschen?')){state.documents=state.documents.filter(d=>d.id!==id);saveState();render();}}
+
+function filterDocs(val){
+  val=val.toLowerCase();
+  document.querySelectorAll('.doc-card').forEach(c=>{c.style.display=c.dataset.name.includes(val)?'':'none';});
+}
+function filterDocsCat(val){
+  document.querySelectorAll('.doc-card').forEach(c=>{c.style.display=(!val||c.dataset.cat===val)?'':'none';});
 }
 
 // ── REPORT ──
-function renderReport() {
-  const activeChecks = getActiveChecks();
-  let kritisch=[], mangel=[], ok=0, na=0, notAssessed=0;
-  let costMin=0, costMax=0;
+function renderReport(){
+  const ac=getActiveChecks();let k=[],m=[],ok=0,na=0,na2=0,costMin=0,costMax=0;
+  ac.forEach(ch=>ch.items.forEach(item=>{const f=state.findings[item.id],s=f?.status;if(s==='ok')ok++;else if(s==='na')na++;else if(s==='kritisch'){k.push({...item,note:f?.note||'',section:ch.label,icon:ch.icon});const[a,b]=parseCost(item.costs.kritisch);costMin+=a;costMax+=b;}else if(s==='mangel'){m.push({...item,note:f?.note||'',section:ch.label,icon:ch.icon});const[a,b]=parseCost(item.costs.mangel);costMin+=a;costMax+=b;}else na2++;}));
+  const assessed=k.length+m.length+ok;const compPct=assessed>0?Math.round((ok/assessed)*100):0;
+  let rl,rc;if(k.length>=5||(k.length>=3&&m.length>=4)){rl='Kritisch';rc='kritisch';}else if(k.length>=2||m.length>=6){rl='Hoch';rc='hoch';}else if(k.length>=1||m.length>=3){rl='Mittel';rc='mittel';}else{rl='Gering';rc='gering';}
+  const ds=state.meta.datum?new Date(state.meta.datum).toLocaleDateString('de-DE',{day:'2-digit',month:'long',year:'numeric'}):'–';
+  const ml={security:'Security Audit',qm:'QM Audit',combined:'Kombiniertes Audit'}[state.selectedModule]||'';
+  const gc=compPct>=80?'#22c55e':compPct>=50?'#eab308':'#ef4444';
+  const ga=(compPct/100)*180;
+  const fr=(f,p)=>`<div class="finding ${p}"><div class="finding-icon">${f.icon}</div><div class="finding-body"><div class="finding-label">${f.label} <span class="module-indicator ${f.module==='qm'?'qm':'sec'}">${f.module==='qm'?'QM':'SEC'}</span></div><div class="finding-section">${f.section} · <span style="font-family:var(--fm);font-size:.55rem">${f.norm}</span></div>${f.note?`<div class="finding-note">"${esc(f.note)}"</div>`:''}</div><div class="finding-cost"><div class="finding-cost-val">€ ${f.costs[p]}</div><div class="finding-cost-lbl">Schätzung</div></div></div>`;
+  const nBadges=state.selectedNorms.map(n=>{const nd=NORM_DEFS[n];return nd?`<span class="norm-badge ${nd.module==='qm'?'qm':'security'}">${nd.fullName}</span>`:'';}).join(' ');
+  // Doc summary
+  const docCount=state.documents.length;const docExpiring=state.documents.filter(d=>['yellow','red'].includes(getDocStatus(d))).length;
 
-  activeChecks.forEach(check => {
-    check.items.forEach(item => {
-      const f = state.findings[item.id];
-      const s = f?.status;
-      if (s==='ok') ok++;
-      else if (s==='na') na++;
-      else if (s==='kritisch') {
-        kritisch.push({...item, note:f?.note||'', section:check.label, icon:check.icon});
-        const [mn,mx] = parseCost(item.costs.kritisch);
-        costMin+=mn; costMax+=mx;
-      } else if (s==='mangel') {
-        mangel.push({...item, note:f?.note||'', section:check.label, icon:check.icon});
-        const [mn,mx] = parseCost(item.costs.mangel);
-        costMin+=mn; costMax+=mx;
-      } else notAssessed++;
-    });
-  });
-
-  const totalItems = kritisch.length + mangel.length + ok + na + notAssessed;
-  const assessed = kritisch.length + mangel.length + ok;
-  const compliancePct = assessed > 0 ? Math.round((ok / assessed) * 100) : 0;
-
-  let riskLevel, riskClass;
-  if (kritisch.length >= 5 || (kritisch.length >= 3 && mangel.length >= 4)) {riskLevel='Kritisch';riskClass='kritisch';}
-  else if (kritisch.length >= 2 || mangel.length >= 6) {riskLevel='Hoch';riskClass='hoch';}
-  else if (kritisch.length >= 1 || mangel.length >= 3) {riskLevel='Mittel';riskClass='mittel';}
-  else {riskLevel='Gering';riskClass='gering';}
-
-  const datumStr = state.meta.datum ? new Date(state.meta.datum).toLocaleDateString('de-DE',{day:'2-digit',month:'long',year:'numeric'}) : '–';
-  const modLabel = {security:'Security Audit',qm:'QM Audit',combined:'Kombiniertes Security + QM Audit'}[state.selectedModule]||'';
-
-  // Gauge SVG
-  const gaugeAngle = (compliancePct / 100) * 180;
-  const gaugeColor = compliancePct >= 80 ? '#22c55e' : compliancePct >= 50 ? '#eab308' : '#ef4444';
-
-  const findingRow = (f, prio) => `
-    <div class="finding ${prio}">
-      <div class="finding-icon">${f.icon}</div>
-      <div class="finding-body">
-        <div class="finding-label">${f.label} <span class="module-indicator ${f.module==='qm'?'qm':'sec'}">${f.module==='qm'?'QM':'SEC'}</span></div>
-        <div class="finding-section">${f.section} · <span style="font-family:var(--fm);font-size:.58rem">${f.norm}</span></div>
-        ${f.note ? `<div class="finding-note">"${esc(f.note)}"</div>` : ''}
-      </div>
-      <div class="finding-cost">
-        <div class="finding-cost-val">€ ${f.costs[prio]}</div>
-        <div class="finding-cost-lbl">Schätzung</div>
-      </div>
-    </div>`;
-
-  // Norms list for report
-  const normsList = state.selectedNorms.map(n => {
-    const nd = NORM_DEFS[n];
-    return nd ? `<span class="norm-badge ${nd.module==='qm'?'qm':'security'}">${nd.fullName}</span>` : '';
-  }).join(' ');
-
-  document.getElementById('mainContent').innerHTML = `
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;flex-wrap:wrap;gap:10px">
-    <div style="font-size:.74rem;color:var(--muted)">Bericht erstellt: ${new Date().toLocaleDateString('de-DE',{day:'2-digit',month:'long',year:'numeric',hour:'2-digit',minute:'2-digit'})}</div>
-    <div style="display:flex;gap:8px">
-      <button class="print-btn" onclick="window.print()">🖨 Drucken / PDF</button>
-    </div>
+  document.getElementById('mainContent').innerHTML=`
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:8px">
+    <div style="font-size:.72rem;color:var(--muted)">Erstellt: ${new Date().toLocaleDateString('de-DE',{day:'2-digit',month:'long',year:'numeric',hour:'2-digit',minute:'2-digit'})}</div>
+    <button class="print-btn" onclick="window.print()">🖨 Drucken / PDF</button>
   </div>
-
   <div class="report-header">
-    <div style="font-family:var(--fm);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:8px">SecureStay: Analytics · ${modLabel}</div>
-    <div class="report-title">${esc(state.meta.objekt)||'Objekt (ohne Bezeichnung)'}</div>
-    <div class="report-meta">
-      ${state.meta.auftraggeber?`<strong style="color:var(--text2)">${esc(state.meta.auftraggeber)}</strong> · `:''}
-      ${state.meta.adresse?`${esc(state.meta.adresse)} · `:''}
-      Begehung: ${datumStr}
-      ${state.meta.pruefer?` · Auditor: <strong style="color:var(--text2)">${esc(state.meta.pruefer)}</strong>`:''}
-      ${state.meta.anlass?` · ${esc(state.meta.anlass)}`:''}
-      ${state.meta.typ?` · ${esc(state.meta.typ)}`:''}
-    </div>
-    <div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:4px">${normsList}</div>
+    <div style="font-family:var(--fm);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:6px">SecureStay: Analytics · ${ml}</div>
+    <div class="report-title">${esc(state.meta.objekt)||'Objekt'}</div>
+    <div class="report-meta">${state.meta.auftraggeber?`<strong style="color:var(--text2)">${esc(state.meta.auftraggeber)}</strong> · `:''}${state.meta.adresse?`${esc(state.meta.adresse)} · `:''}${ds}${state.meta.pruefer?` · ${esc(state.meta.pruefer)}`:''}${state.meta.anlass?` · ${esc(state.meta.anlass)}`:''}</div>
+    <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:3px">${nBadges}</div>
   </div>
-
   <div class="report-kpis">
-    <div class="kpi danger"><div class="kpi-val">${kritisch.length}</div><div class="kpi-lbl">Kritisch</div></div>
-    <div class="kpi warn"><div class="kpi-val">${mangel.length}</div><div class="kpi-lbl">Mängel</div></div>
+    <div class="kpi danger"><div class="kpi-val">${k.length}</div><div class="kpi-lbl">Kritisch</div></div>
+    <div class="kpi warn"><div class="kpi-val">${m.length}</div><div class="kpi-lbl">Mängel</div></div>
     <div class="kpi ok"><div class="kpi-val">${ok}</div><div class="kpi-lbl">Bestanden</div></div>
     <div class="kpi total"><div class="kpi-val">${assessed}</div><div class="kpi-lbl">Bewertet</div></div>
-    <div class="kpi purple"><div class="kpi-val">${compliancePct}%</div><div class="kpi-lbl">Compliance</div></div>
+    <div class="kpi purple"><div class="kpi-val">${compPct}%</div><div class="kpi-lbl">Compliance</div></div>
   </div>
-
-  <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:24px">
-    <div class="risk-level ${riskClass}"><span>●</span> Gesamtrisiko: <strong>${riskLevel}</strong></div>
-    <div class="gauge-container">
-      <div class="gauge-wrap">
-        <svg class="gauge-svg" viewBox="0 0 180 100">
-          <path d="M 10 90 A 80 80 0 0 1 170 90" fill="none" stroke="var(--border)" stroke-width="10" stroke-linecap="round"/>
-          <path d="M 10 90 A 80 80 0 0 1 170 90" fill="none" stroke="${gaugeColor}" stroke-width="10" stroke-linecap="round"
-            stroke-dasharray="${gaugeAngle * Math.PI * 80 / 180} 999" opacity=".9"/>
-        </svg>
-        <div class="gauge-label">
-          <div class="gauge-val">${compliancePct}%</div>
-          <div class="gauge-sublabel">Compliance-Rate</div>
-        </div>
-      </div>
+  <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:20px">
+    <div class="risk-level ${rc}"><span>●</span> Risiko: <strong>${rl}</strong></div>
+    <div style="position:relative;width:150px;height:84px">
+      <svg viewBox="0 0 150 84" style="width:150px;height:84px"><path d="M 8 76 A 66 66 0 0 1 142 76" fill="none" stroke="var(--border)" stroke-width="8" stroke-linecap="round"/><path d="M 8 76 A 66 66 0 0 1 142 76" fill="none" stroke="${gc}" stroke-width="8" stroke-linecap="round" stroke-dasharray="${ga*Math.PI*66/180} 999" opacity=".85"/></svg>
+      <div style="position:absolute;bottom:2px;left:50%;transform:translateX(-50%);text-align:center"><div style="font-family:var(--fh);font-size:1.5rem;font-weight:800;color:var(--text2)">${compPct}%</div><div style="font-family:var(--fm);font-size:.5rem;letter-spacing:.08em;text-transform:uppercase;color:var(--soft)">Compliance</div></div>
     </div>
+    ${docCount>0?`<div style="background:var(--orangeDim);border:1px solid rgba(249,115,22,.2);border-radius:var(--rpill);padding:6px 14px;font-size:.78rem;color:var(--orange);font-weight:600">📁 ${docCount} Dokumente${docExpiring>0?` · ⚠ ${docExpiring} ablaufend`:''}</div>`:''}
   </div>
-
-  ${kritisch.length>0?`<div class="prio-section"><div class="prio-title k">✕ Kritische Mängel – sofortiger Handlungsbedarf (${kritisch.length})</div>${kritisch.map(f=>findingRow(f,'kritisch')).join('')}</div>`:''}
-  ${mangel.length>0?`<div class="prio-section"><div class="prio-title m">⚠ Mängel – mittelfristiger Handlungsbedarf (${mangel.length})</div>${mangel.map(f=>findingRow(f,'mangel')).join('')}</div>`:''}
-
-  ${kritisch.length===0&&mangel.length===0?`
-  <div style="background:var(--okDim);border:1px solid rgba(34,197,94,.25);border-radius:12px;padding:28px;text-align:center;margin-bottom:24px">
-    <div style="font-size:2rem;margin-bottom:8px">✅</div>
-    <div style="font-size:1rem;font-weight:700;color:#4ade80;margin-bottom:6px">Keine Mängel festgestellt</div>
-    <div style="font-size:.84rem;color:var(--muted)">Alle bewerteten Prüfpunkte wurden als konform eingestuft.</div>
-  </div>`:''}
-
+  ${k.length>0?`<div style="margin-bottom:18px"><div class="prio-title k">✕ Kritisch (${k.length})</div>${k.map(f=>fr(f,'kritisch')).join('')}</div>`:''}
+  ${m.length>0?`<div style="margin-bottom:18px"><div class="prio-title m">⚠ Mängel (${m.length})</div>${m.map(f=>fr(f,'mangel')).join('')}</div>`:''}
+  ${k.length===0&&m.length===0?`<div style="background:var(--okDim);border:1px solid rgba(34,197,94,.2);border-radius:12px;padding:24px;text-align:center;margin-bottom:20px"><div style="font-size:1.8rem;margin-bottom:6px">✅</div><div style="font-size:.95rem;font-weight:700;color:#4ade80">Keine Mängel</div></div>`:''}
   <div class="cost-summary">
-    <div style="font-family:var(--fm);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:12px">Investitionsbedarf (Kostenschätzung)</div>
-    <div class="cost-row"><span>Sofortmaßnahmen (kritisch)</span><span>€ ${fmtCostArr(kritisch,'kritisch')}</span></div>
-    <div class="cost-row"><span>Mittelfristige Maßnahmen</span><span>€ ${fmtCostArr(mangel,'mangel')}</span></div>
-    <div class="cost-row"><span>Gesamtinvestitionsbedarf</span><span>€ ${costMin.toLocaleString('de-DE')} – ${costMax.toLocaleString('de-DE')}</span></div>
-    <div style="font-size:.7rem;color:var(--soft);margin-top:10px">* Schätzungen basierend auf Markterfahrung. Detailkalkulation nach Fachfirmen-Angebot.</div>
+    <div style="font-family:var(--fm);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:10px">Investitionsbedarf</div>
+    <div class="cost-row"><span>Sofortmaßnahmen</span><span>€ ${fmtCA(k,'kritisch')}</span></div>
+    <div class="cost-row"><span>Mittelfristige Maßnahmen</span><span>€ ${fmtCA(m,'mangel')}</span></div>
+    <div class="cost-row"><span>Gesamt</span><span>€ ${costMin.toLocaleString('de-DE')} – ${costMax.toLocaleString('de-DE')}</span></div>
   </div>
-
-  ${state.meta.notizen?`<div style="background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:18px 22px;margin-bottom:24px">
-    <div style="font-family:var(--fm);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:8px">Notizen</div>
-    <div style="font-size:.86rem;color:var(--muted);line-height:1.7">${esc(state.meta.notizen)}</div>
-  </div>`:''}
-
-  <div style="background:linear-gradient(135deg,rgba(20,184,166,.04),rgba(249,115,22,.03));border:1px solid rgba(20,184,166,.15);border-radius:12px;padding:22px;text-align:center">
-    <div style="font-size:.7rem;color:var(--soft);margin-bottom:5px">Erstellt mit</div>
-    <div style="font-family:var(--fh);font-weight:700;color:var(--text2);font-size:1rem">SecureStay: Analytics</div>
-    <div style="font-size:.82rem;color:var(--muted);margin-top:4px">SecureStay Solutions UG (haftungsbeschränkt)</div>
-    <div style="font-size:.76rem;color:var(--soft);margin-top:2px">Kirchstr. 8b · 55270 Essenheim · securestay@outlook.de · +49 174 6703741</div>
+  <div style="background:linear-gradient(135deg,rgba(20,184,166,.04),rgba(249,115,22,.03));border:1px solid rgba(20,184,166,.12);border-radius:12px;padding:20px;text-align:center">
+    <div style="font-size:.68rem;color:var(--soft);margin-bottom:4px">Erstellt mit</div>
+    <div style="font-family:var(--fh);font-weight:700;color:var(--text2)">SecureStay: Analytics</div>
+    <div style="font-size:.8rem;color:var(--muted);margin-top:3px">SecureStay Solutions UG (haftungsbeschränkt)</div>
+    <div style="font-size:.72rem;color:var(--soft);margin-top:2px">Kirchstr. 8b · 55270 Essenheim · securestay@outlook.de · +49 174 6703741</div>
   </div>
-
-  <div class="nav-row">
-    <button class="btn-secondary" onclick="prev()">← Zurück zur Begehung</button>
-    <button class="btn-primary" onclick="window.print()">🖨 Bericht drucken / als PDF</button>
-  </div>`;
+  <div class="nav-row"><button class="btn-secondary" onclick="prev()">← Zurück</button><button class="btn-primary" onclick="window.print()">🖨 Drucken / PDF</button></div>`;
 }
 
 // ═══ HELPERS ═══
-function parseCost(str) {
-  if (!str) return [0,0];
-  const parts = str.replace(/\./g,'').split('–').map(x => parseInt(x.replace(/\D/g,'')) || 0);
-  return [parts[0]||0, parts[1]||parts[0]||0];
-}
+function parseCost(s){if(!s)return[0,0];const p=s.replace(/\./g,'').split('–').map(x=>parseInt(x.replace(/\D/g,''))||0);return[p[0]||0,p[1]||p[0]||0];}
+function fmtCA(items,p){let mn=0,mx=0;items.forEach(f=>{const[a,b]=parseCost(f.costs[p]);mn+=a;mx+=b;});if(mn===0&&mx===0)return'0';return`${mn.toLocaleString('de-DE')} – ${mx.toLocaleString('de-DE')}`;}
+function esc(s){return(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function setStatus(id,s){if(!state.findings[id])state.findings[id]={status:'',note:''};state.findings[id].status=s;const ci=document.getElementById('ci_'+id);if(!ci)return;ci.className='check-item status-'+s;ci.querySelectorAll('.ci-btn').forEach(b=>b.classList.toggle('active',b.classList.contains(s)));const n=document.getElementById('note_'+id);if(n)n.classList.toggle('show',s==='mangel'||s==='kritisch');saveState();}
+function setNote(id,v){if(!state.findings[id])state.findings[id]={status:'',note:''};state.findings[id].note=v;saveState();}
+function goTo(i){state.currentStep=i;render();scrollTo(0,0);saveState();}
+function next(){const s=getSteps();if(state.currentStep<s.length-1){state.currentStep++;render();scrollTo(0,0);saveState();}}
+function prev(){if(state.currentStep>0){state.currentStep--;render();scrollTo(0,0);saveState();}}
 
-function fmtCostArr(items, prio) {
-  let mn=0,mx=0;
-  items.forEach(f => { const [a,b]=parseCost(f.costs[prio]); mn+=a; mx+=b; });
-  if (mn===0&&mx===0) return '0';
-  return `${mn.toLocaleString('de-DE')} – ${mx.toLocaleString('de-DE')}`;
-}
-
-function esc(str) {
-  return (str||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
-
-function setStatus(id, status) {
-  if (!state.findings[id]) state.findings[id] = {status:'',note:''};
-  state.findings[id].status = status;
-  const ci = document.getElementById('ci_'+id);
-  if (!ci) return;
-  ci.className = 'check-item status-'+status;
-  ci.querySelectorAll('.ci-btn').forEach(b => b.classList.toggle('active', b.classList.contains(status)));
-  const noteEl = document.getElementById('note_'+id);
-  if (noteEl) noteEl.classList.toggle('show', status==='mangel'||status==='kritisch');
-  updateCounter();
-}
-
-function setNote(id, val) {
-  if (!state.findings[id]) state.findings[id] = {status:'',note:''};
-  state.findings[id].note = val;
-}
-
-function updateCounter() {
-  const steps = getSteps();
-  const step = steps[state.currentStep];
-  const check = CHECKS.find(c => c.id === step?.id);
-  if (!check) return;
-  const done = check.items.filter(i => state.findings[i.id]?.status).length;
-  const sub = document.querySelector('.panel-sub');
-  if (sub) sub.innerHTML = sub.innerHTML.replace(/<strong[^>]*>\d+\/\d+<\/strong>/, `<strong style="color:var(--accent)">${done}/${check.items.length}</strong>`);
-}
-
-function goTo(i) { state.currentStep=i; render(); scrollTo(0,0); }
-function next() { const steps=getSteps(); if(state.currentStep<steps.length-1){state.currentStep++;render();scrollTo(0,0);} }
-function prev() { if(state.currentStep>0){state.currentStep--;render();scrollTo(0,0);} }
-
-// ═══ INIT ═══
+// INIT
 render();
 </script>
 </body>
